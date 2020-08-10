@@ -49,16 +49,18 @@ function FileList() {
    * @param {String} folder folder name in the current directory
    */
   function renderFileList(folder) {
-    return lsFolder(parsePath(cd.directory + "/" + folder)).then((res) => {
-      if (res.status === 201) {
-        getFileMetadata(cd.directory + "/" + folder).then((res) =>
-          dispatch({ type: "GET_META", payload: res.data })
-        );
-      } else {
-        setRows(res.data);
-        dispatch({ type: "CD", folder: folder });
-      }
-    });
+    return lsFolder(parsePath(cd.directory + "/" + folder))
+      .then(dispatch({ type: "LOADING_TRUE" }))
+      .then((res) => {
+        if (res.status === 201) {
+          getFileMetadata(cd.directory + "/" + folder)
+            .then((res) => dispatch({ type: "GET_META", payload: res.data }))
+            .then(dispatch({ type: "LOADING_FALSE" }));
+        } else {
+          setRows(res.data);
+          dispatch({ type: "CD", folder: folder });
+        }
+      });
   }
 
   return (

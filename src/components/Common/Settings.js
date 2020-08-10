@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import AdminSettings from "../AdminViews/AdminSettings";
 import UserSettings from "../UserViews/UserSettings";
