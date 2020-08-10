@@ -8,7 +8,7 @@ const cookies = new Cookies();
  * Attempts to handle FILE Metadata from Rucio-Server
  * @param {String} filePath RucioFS Path for File
  */
-export function getFileMetadata(filePath) {
+export async function getFileMetadata(filePath) {
   const path = cdToArray(filePath);
 
   const pathObject = {
