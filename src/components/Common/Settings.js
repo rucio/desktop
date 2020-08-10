@@ -3,13 +3,14 @@ import AdminSettings from "../AdminViews/AdminSettings";
 import UserSettings from "../UserViews/UserSettings";
 import { makeStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
+import packageJSON from "../../../package.json";
 
 const useStyles = makeStyles({
   root: {
     width: "inherit",
     textAlign: "left",
     fontFamily: "Cern",
-    overflow: "auto"
+    overflow: "auto",
   },
   title: {
     fontSize: 32,
@@ -25,11 +26,12 @@ const useStyles = makeStyles({
     opacity: 0.5,
   },
   info: {
-    fontSize: 18,
+    fontSize: 14,
     color: "#000000",
     opacity: 0.8,
-    paddingRight: 10
-  }
+    paddingRight: 10,
+    paddingTop: 10,
+  },
 });
 function Settings() {
   const classes = useStyles();
@@ -43,6 +45,12 @@ function Settings() {
         <div style={{ paddingTop: 5, paddingBottom: 10 }}>{account}</div>
       </div>
       {view === "admin" ? <AdminSettings /> : <UserSettings />}
+      <div className={classes.hint}>
+        Version
+        <div className={classes.info}>
+          You're currently using Rucio Desktop v{packageJSON.version}
+        </div>
+      </div>
     </div>
   );
 }
