@@ -1,6 +1,7 @@
 const axios = require("axios");
 const https = require("https");
 const fs = require("fs");
+const packageJSON = require("../../package.json");
 
 /**
  * Retreives DID Metadata from Rucio Server
@@ -15,7 +16,10 @@ async function getDIDmeta(certlocation, hostAddress, token, scope, did) {
   return axios
     .get(`https://${hostAddress}/dids/${scope}/${did}`, {
       httpsAgent,
-      headers: { "X-Rucio-Auth-Token": token },
+      headers: {
+        "User-Agent": `rucio-desktop/${packageJSON.version}`,
+        "X-Rucio-Auth-Token": token,
+      },
     })
     .then(
       console.log(

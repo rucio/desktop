@@ -1,6 +1,7 @@
 const axios = require("axios");
 const https = require("https");
 const fs = require("fs");
+const packageJSON = require("../../package.json");
 
 /**
  * Attempts to get RUCIO_AUTH_TOKEN for a server using USERPASS Strategy.
@@ -16,6 +17,7 @@ async function getTokenWithUserpass(req, res, credentials) {
     .get(`https://${credentials.auth_host}/auth/userpass`, {
       httpsAgent,
       headers: {
+        "User-Agent": `rucio-desktop/${packageJSON.version}`,
         "X-Rucio-Account": credentials.account,
         "X-Rucio-Username": credentials.username,
         "X-Rucio-Password": credentials.password,
@@ -46,6 +48,7 @@ async function getTokenWithX509(req, res, credentials) {
     cert: fs.readFileSync(credentials.client_cert),
     key: fs.readFileSync(credentials.client_key),
     headers: {
+      "User-Agent": `rucio-desktop/${packageJSON.version}`,
       "X-Rucio-Account": credentials.account,
     },
   });

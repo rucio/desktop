@@ -2,6 +2,7 @@ const axios = require("axios");
 const https = require("https");
 const fs = require("fs");
 const superagent = require("superagent");
+const packageJSON = require("../../package.json");
 
 /**
  * Gets all the Server Config sections object from the Rucio Server.
@@ -14,7 +15,10 @@ async function getAllConfig(certlocation, server, token) {
   return axios
     .get(`https://${server.host}/config`, {
       httpsAgent,
-      headers: { "X-Rucio-Auth-Token": token },
+      headers: {
+        "User-Agent": `rucio-desktop/${packageJSON.version}`,
+        "X-Rucio-Auth-Token": token,
+      },
     })
     .then(console.log(`[INFO] Config received for ${server.name}`));
 }
@@ -34,6 +38,7 @@ async function addConfig(certlocation, server, token, payload) {
   return superagent
     .put(`https://${server.host}/config/${section}/${option}/${value}`)
     .set("X-Rucio-Auth-Token", token)
+    .set("User-Agent", `rucio-desktop/${packageJSON.version}`)
     .ca(fs.readFileSync(certlocation))
     .ok((res) => {
       console.log(`[INFO] Added ${section}.${option} on ${server.name}`);
@@ -60,7 +65,10 @@ async function delConfig(certlocation, server, token, payload) {
 
   return axios
     .delete(`https://${server.host}/config/${section}/${option}`, {
-      headers: { "X-Rucio-Auth-Token": token },
+      headers: {
+        "User-Agent": `rucio-desktop/${packageJSON.version}`,
+        "X-Rucio-Auth-Token": token,
+      },
       httpsAgent,
     })
     .then(() => {
