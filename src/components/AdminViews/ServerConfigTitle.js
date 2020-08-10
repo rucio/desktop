@@ -34,15 +34,17 @@ function ServerConfigTitle(props) {
   };
 
   const handleNewSectionSubmit = () => {
+    dispatch({ type: "LOADING_TRUE" })
     addConfig(props.server, {
       section: section,
       option: option,
       value: value,
     })
       .then((res) => setStatus(res.status))
-      .then(setOpen(false))
       .then(props.onSectionAdd())
       .then(async () => await props.fetchConfig())
+      .then(dispatch({ type: "LOADING_FALSE" }))
+      .then(setOpen(false))
       .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
   };
 
@@ -89,6 +91,9 @@ function ServerConfigTitle(props) {
           <AddIcon fontSize="inherit" color="primary" />
         </IconButton>
         <DialogNewSection
+          title="Add New Section"
+          subtitle="Please enter Section name with at least one option and value"
+          loadingMessage="Adding new section"
           setSection={setSection}
           setOption={setOption}
           setValue={setValue}
@@ -106,7 +111,7 @@ function ServerConfigTitle(props) {
 ServerConfigTitle.propTypes = {
   server: PropTypes.string,
   onSectionAdd: PropTypes.func,
-  fetchConfig: PropTypes.func
+  fetchConfig: PropTypes.func,
 };
 
 export default ServerConfigTitle;

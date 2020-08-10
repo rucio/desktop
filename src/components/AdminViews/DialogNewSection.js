@@ -7,6 +7,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { TextField, makeStyles } from "@material-ui/core";
+import LoadingSpinner from "../Utils/LoadingSpinner";
+import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({
   form: {
@@ -17,6 +19,7 @@ const useStyles = makeStyles({
 
 function DialogNewSection(props) {
   const classes = useStyles();
+  const loading = useSelector(state => state.loading)
   return (
     <React.Fragment>
       <Dialog
@@ -25,31 +28,35 @@ function DialogNewSection(props) {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Add New Section"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{props.title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            Please enter Section name with at least one option and value
+            {props.subtitle}
           </DialogContentText>
-          <form className={classes.form}>
-            <TextField
-              label="Section"
-              autoFocus
-              required
-              disabled={props.section}
-              defaultValue={props.section}
-              onChange={(e) => props.setSection(e.target.value)}
-            />
-            <TextField
-              label="Option"
-              required
-              onChange={(e) => props.setOption(e.target.value)}
-            />
-            <TextField
-              label="Value"
-              required
-              onChange={(e) => props.setValue(e.target.value)}
-            />
-          </form>
+          {loading ? (
+            <LoadingSpinner message={props.loadingMessage} />
+          ) : (
+            <form className={classes.form}>
+              <TextField
+                label="Section"
+                autoFocus
+                required
+                disabled={props.section}
+                defaultValue={props.section}
+                onChange={(e) => props.setSection(e.target.value)}
+              />
+              <TextField
+                label="Option"
+                required
+                onChange={(e) => props.setOption(e.target.value)}
+              />
+              <TextField
+                label="Value"
+                required
+                onChange={(e) => props.setValue(e.target.value)}
+              />
+            </form>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose} color="secondary">
@@ -71,6 +78,8 @@ function DialogNewSection(props) {
 }
 
 DialogNewSection.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
   setSection: PropTypes.func,
   setOption: PropTypes.func,
   setValue: PropTypes.func,
@@ -81,6 +90,7 @@ DialogNewSection.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   handleSubmit: PropTypes.func,
+  loadingMessage: PropTypes.string,
 };
 
 export default DialogNewSection;

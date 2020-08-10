@@ -61,23 +61,27 @@ function ServerConfig(props) {
   };
 
   const fetchConfig = async () => {
+    dispatch({ type: "LOADING_TRUE" });
     getConfig(props.server)
       .then((res) => {
         if (res.status === 200) props.setConfig(res.data);
       })
+      .then(dispatch({ type: "LOADING_FALSE" }))
       .catch((err) => console.log(err));
   };
 
   const handleOptionSubmit = () => {
+    dispatch({ type: "LOADING_TRUE" });
     addConfig(props.server, {
       section: section,
       option: option,
       value: value,
     })
       .then((res) => props.setStatus(res.status))
-      .then(setOpen(false))
       .then(setEditSection(null))
       .then(async () => await fetchConfig())
+      .then(dispatch({ type: "LOADING_FALSE" }))
+      .then(setOpen(false))
       .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
   };
 
@@ -86,14 +90,16 @@ function ServerConfig(props) {
   }
 
   const handleDelete = (server, section, option) => {
+    dispatch({ type: "LOADING_TRUE" });
     delConfig(server, {
       section: section,
       option: option,
     })
       .then((res) => props.setStatus(res.status))
-      .then(setOpen(false))
       .then(setEditSection(null))
       .then(async () => await fetchConfig())
+      .then(dispatch({ type: "LOADING_FALSE" }))
+      .then(setOpen(false))
       .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
   };
 
@@ -151,6 +157,9 @@ function ServerConfig(props) {
         ))}
       </div>
       <DialogNewSection
+        title={`Add new option to ${section}`}
+        subtitle="Specify an option with a value to add"
+        loadingMessage="Adding new option"
         section={section}
         setOption={setOption}
         setValue={setValue}

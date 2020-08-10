@@ -6,8 +6,11 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import { useSelector } from "react-redux";
+import LoadingSpinner from "../Utils/LoadingSpinner";
 
 function DialogDelete(props) {
+  const loading = useSelector((state) => state.loading);
   return (
     <div>
       <Dialog
@@ -20,10 +23,14 @@ function DialogDelete(props) {
           {"Confirm Option Delete?"}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete {props.section}.{props.option} on{" "}
-            {props.server} ?
-          </DialogContentText>
+          {loading ? (
+            <LoadingSpinner message={`Deleting Option ${props.option}`} />
+          ) : (
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to delete {props.section}.{props.option} on{" "}
+              {props.server} ?
+            </DialogContentText>
+          )}
         </DialogContent>
         <DialogActions>
           <Button onClick={props.handleClose} color="secondary">
@@ -44,7 +51,7 @@ DialogDelete.propTypes = {
   section: PropTypes.string,
   server: PropTypes.string,
   handleClose: PropTypes.func,
-  handleDelete: PropTypes.func
+  handleDelete: PropTypes.func,
 };
 
 export default DialogDelete;
