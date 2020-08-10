@@ -37,7 +37,7 @@ async function getTokenWithUserpass(req, res, credentials) {
 }
 
 /**
- * Attempts to get RUCIO_AUTH_TOKEN for a server using USERPASS Strategy.
+ * Attempts to get RUCIO_AUTH_TOKEN for a server using X509 Strategy.
  * @param {Request} req
  * @param {Response} res
  * @param {Object} credentials

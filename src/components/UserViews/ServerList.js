@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(16),
     flexBasis: "33.33%",
     flexShrink: 0,
-    paddingTop: 5,
-    paddingBottom: 5,
+    paddingTop: 10,
+    paddingBottom: 10,
   },
   statusC: {
     fontSize: theme.typography.pxToRem(16),
