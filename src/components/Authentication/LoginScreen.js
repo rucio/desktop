@@ -63,7 +63,7 @@ function LoginScreen() {
         <LoginCard text="Admin" iconFor="admin" link="/auth/admin" />
         <LoginCard text="User" iconFor="user" link="/auth/user" />
       </div>
-      <Typography className={classes.text}>New to Rocinante?</Typography>
+      <Typography className={classes.text}>New to Rucio Desktop?</Typography>
       <Button className={classes.buttonPrimary} color="primary" href="#adduser">
         Add your rucio account
       </Button>
