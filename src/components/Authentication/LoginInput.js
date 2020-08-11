@@ -43,7 +43,9 @@ function LoginInput(props) {
    * Validates the form responses to prevent empty required fields
    */
   function validateForm() {
-    return account.length > 0 && username.length > 0 && password.length > 0;
+    return authtype === "userpass"
+      ? account.length > 0 && username.length > 0 && password.length > 0
+      : account.length > 0;
   }
 
   function showIdentityInput(authtype) {

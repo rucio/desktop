@@ -24,7 +24,7 @@ const createWindow = () => {
     icon: path.join(__dirname, 'layout/ruciosq.png')
   });
 
-  window.loadURL("http://localhost:3005");
+  window.loadURL("http://localhost:3005/#/app/explore");
   window.setMenuBarVisibility(false)
 };
 
