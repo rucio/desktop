@@ -1,6 +1,6 @@
 {
   "name": "rocinante",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Desktop Client for Rucio",
   "homepage": "./",
   "private": true,
