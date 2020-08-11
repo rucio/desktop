@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { useSpring, animated } from "react-spring";
 import { makeStyles } from "@material-ui/core";
 import Explore from "./Explore";
 import { Redirect } from "react-router-dom";
@@ -30,6 +31,12 @@ const useStyles = makeStyles((theme) => ({
 
 function RenderLayout(props) {
   const classes = useStyles({ drawerWidth: props.drawerWidth });
+  const fade = useSpring({
+    from: {
+      opacity: 0,
+    },
+    opacity: 1,
+  });
 
   function renderSwitch(page) {
     switch (page) {
@@ -52,19 +59,19 @@ function RenderLayout(props) {
 
   return (
     <React.Fragment>
-      <div className={classes.content}>
+      <animated.div className={classes.content} style={fade}>
         <div id="page-title" className={classes.pageTitle}>
           {props.page}
         </div>
         {renderSwitch(props.page)}
-      </div>
+      </animated.div>
     </React.Fragment>
   );
 }
 
 RenderLayout.propTypes = {
   page: PropTypes.string,
-  drawerWidth: PropTypes.number
-}
+  drawerWidth: PropTypes.number,
+};
 
 export default RenderLayout;
