@@ -18,13 +18,13 @@ const useStyles = makeStyles({
     fontWeight: 500,
     color: grey[800],
     paddingTop: 20,
-    paddingBottom: 20,
   },
   hint: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 500,
     color: "#000000",
     opacity: 0.5,
+    paddingTop: 20
   },
   info: {
     fontSize: 14,
@@ -42,7 +42,7 @@ function Settings() {
   return (
     <div id="settings-root" className={classes.root}>
       <div id="account-name" className={classes.title}>
-        <div className={classes.hint}>account</div>
+        <div className={classes.hint}>Account</div>
         <div style={{ paddingTop: 5, paddingBottom: 10 }}>{account}</div>
       </div>
       {view === "admin" ? <AdminSettings /> : <UserSettings />}

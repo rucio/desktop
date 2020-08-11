@@ -12,11 +12,20 @@ const useStyles = makeStyles({
     fontFamily: "Cern",
   },
   title: {
+    fontSize: 16,
+    fontWeight: 500,
+    color: "#000000",
+    opacity: 0.6,
+    paddingTop: 20
+  },
+  hint: {
     fontSize: 14,
     fontWeight: 500,
     color: "#000000",
-    opacity: 0.5,
-  },
+    opacity: 0.4,
+    paddingTop: 10,
+    paddingBottom: 10
+  }
 });
 
 function AdminSettings() {
@@ -26,6 +35,7 @@ function AdminSettings() {
       <div id="title" className={classes.title}>
         Servers
       </div>
+      <div className={classes.hint}>Manage your server configurations</div>
       <ServerList />
     </div>
   );

@@ -20,17 +20,18 @@ const useStyles = makeStyles({
     fontSize: 32,
     fontWeight: 500,
     color: grey[800],
-    paddingTop: 20,
+    paddingTop: 30,
     paddingBottom: 20,
   },
   hint: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 500,
     color: "#808080",
     display: "flex",
     maxWidth: "50%",
     justifyContent: "space-between",
     alignItems: "center",
+    paddingTop: 10
   },
   link: {
     outline: "none",
@@ -49,6 +50,14 @@ const useStyles = makeStyles({
     fontFamily: "Cern",
     color: red[500],
   },
+  hintSub:{
+    fontSize: 14,
+    fontWeight: 500,
+    color: "#000000",
+    opacity: 0.4,
+    paddingTop: 10,
+    paddingBottom: 10
+  }
 });
 function Account() {
   const classes = useStyles();
@@ -67,20 +76,22 @@ function Account() {
   return (
     <div id="account-root" className={classes.root}>
       <div id="account-name" className={classes.title}>
-        <div className={classes.hint}>current account</div>
+        <div className={classes.hint}>Logged in as</div>
         <div style={{ paddingTop: 5, paddingBottom: 10 }}>{account}</div>
       </div>
       <div id="other-accounts">
         <div className={classes.hint}>
-          <div>all accounts</div>
+          <div>Accounts Settings</div>
           <a className={classes.link} href="#adduser">
             Add New Account
           </a>
         </div>
+        <div className={classes.hintSub}>Manage user account configurations</div>
         <AccountConfig />
       </div>
       <div id="logout">
         <div className={classes.hint}>Back to Login page</div>
+        <div className={classes.hintSub}>This will log you out from all Rucio servers</div>
         <Button
           className={classes.logoutBtn}
           color="inherit"
