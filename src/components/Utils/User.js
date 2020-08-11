@@ -127,6 +127,7 @@ export async function updateConfig(params, index) {
   try {
     accounts.splice(index, 1, params);
     localStorage.setItem("Accounts", JSON.stringify(accounts));
+    saveUserConfigs(params.server_name + ".cfg", "client", params);
     return true;
   } catch (err) {
     return false;
