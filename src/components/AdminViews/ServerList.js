@@ -26,21 +26,25 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     color: "#000000",
     opacity: 0.8,
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(16),
     flexBasis: "33.33%",
     flexShrink: 0,
+    padding: 5,
+    paddingLeft: 5
   },
   statusC: {
-    fontSize: theme.typography.pxToRem(15),
+    fontSize: theme.typography.pxToRem(16),
     color: green[600],
     fontWeight: 500,
     opacity: 1,
+    padding: 5
   },
   statusD: {
     fontSize: theme.typography.pxToRem(15),
     color: red[600],
     fontWeight: 500,
     opacity: 1,
+    padding: 5
   },
 }));
 

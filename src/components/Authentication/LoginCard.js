@@ -8,12 +8,14 @@ import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined"
 import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountOutlined";
 import { makeStyles } from "@material-ui/core";
+import "../../styles/shadow.css"
 
 const useStyles = makeStyles({
   card: {
     height: 150,
     width: 200,
     margin: 20,
+    borderRadius: 8
   },
   cardContent: {
     display: "flex",
@@ -46,6 +48,7 @@ function LoginCard(props) {
       onMouseEnter={() => setEnter(true)}
       onMouseLeave={() => setEnter(false)}
       className={classes.card}
+      elevation={4}
     >
       <CardActionArea
         className={classes.cardContent}

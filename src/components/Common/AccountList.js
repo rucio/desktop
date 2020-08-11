@@ -7,7 +7,8 @@ import {
 } from "@material-ui/core";
 import ExpandIcon from "@material-ui/icons/ExpandMore";
 import AccountDetails from "./AccountDetails";
-const useStyles = makeStyles({
+
+const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "Cern",
     paddingTop: 10,
@@ -15,7 +16,15 @@ const useStyles = makeStyles({
     fontSize: 16,
     width: "50%",
   },
-});
+  listItem: {
+    color: "#000000",
+    opacity: 0.8,
+    fontSize: theme.typography.pxToRem(16),
+    padding: 5,
+    paddingLeft: 5,
+    fontWeight: 500
+  },
+}));
 
 function AccountConfig() {
   const classes = useStyles();
