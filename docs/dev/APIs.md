@@ -18,7 +18,7 @@ Rucio Desktop holds a client side node server which serves several easy REST API
 ### Rucio RSEs
 
 ```HTTPS
-GET /rses
+POST /rses
 ```
 
 BODY:
@@ -34,7 +34,7 @@ const payload = {
 };
 ```
 
-Response Data:
+Response Data: An *Array* of RSEs on the `server`.
 
 ```JS
 [
