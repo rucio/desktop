@@ -93,4 +93,20 @@ router.post("/rse/limits", async (req, res) => {
     });
 });
 
+router.post("/rse/account/limits", async (req, res) => {
+  const payload = req.body.payload;
+
+  await RSE.accountLimits(
+    payload.certlocation,
+    payload.server,
+    payload.token,
+    payload.rse
+  )
+    .then((accLimits) => res.send(accLimits.data))
+    .catch((err) => {
+      console.log(`[ERROR: /rse/account/limits] ${err}`);
+      res.sendStatus(err.response.status);
+    });
+});
+
 module.exports = router;

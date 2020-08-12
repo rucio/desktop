@@ -11,6 +11,7 @@ const packageJSON = require("../../package.json");
  */
 async function getRSEs(certlocation, server, token) {
   const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
   return axios
     .get(`https://${server.host}/rses/`, {
       httpsAgent,
@@ -31,6 +32,7 @@ async function getRSEs(certlocation, server, token) {
  */
 async function info(certlocation, server, token, rse) {
   const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
   return axios
     .get(`https://${server.host}/rses/${rse}`, {
       httpsAgent,
@@ -51,6 +53,7 @@ async function info(certlocation, server, token, rse) {
  */
 async function attributes(certlocation, server, token, rse) {
   const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
   return axios
     .get(`https://${server.host}/rses/${rse}/attr/`, {
       httpsAgent,
@@ -73,6 +76,7 @@ async function attributes(certlocation, server, token, rse) {
  */
 async function protocols(certlocation, server, token, rse) {
   const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
   return axios
     .get(`https://${server.host}/rses/${rse}/protocols`, {
       httpsAgent,
@@ -95,6 +99,7 @@ async function protocols(certlocation, server, token, rse) {
  */
 async function usage(certlocation, server, token, rse) {
   const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
   return axios
     .get(`https://${server.host}/rses/${rse}/usage`, {
       httpsAgent,
@@ -117,6 +122,7 @@ async function usage(certlocation, server, token, rse) {
  */
 async function limits(certlocation, server, token, rse) {
   const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
   return axios
     .get(`https://${server.host}/rses/${rse}/limits`, {
       httpsAgent,
@@ -130,4 +136,29 @@ async function limits(certlocation, server, token, rse) {
     );
 }
 
-module.exports = { getRSEs, info, attributes, protocols, usage, limits };
+async function accountLimits(certlocation, server, token, rse) {
+  const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+
+  return axios
+    .get(`https://${server.host}//rses/${rse}/accounts/usage`, {
+      httpsAgent,
+      headers: {
+        "User-Agent": `rucio-desktop/${packageJSON.version}`,
+        "X-Rucio-Auth-Token": token,
+      },
+    })
+    .then(
+      console.log(
+        `[INFO] Account Limits retreived for ${rse} from ${server.name}`
+      )
+    );
+}
+module.exports = {
+  getRSEs,
+  info,
+  attributes,
+  protocols,
+  usage,
+  limits,
+  accountLimits,
+};
