@@ -6,6 +6,7 @@ import Explore from "./Explore";
 import { Redirect } from "react-router-dom";
 import Settings from "./Settings";
 import Account from "./Account";
+import Storage from "./Storage";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -43,7 +44,7 @@ function RenderLayout(props) {
       case "Explore":
         return <Explore />;
       case "Storage":
-        return <div />;
+        return <Storage />;
       case "Rules":
         return <div />;
       case "Monitoring":
