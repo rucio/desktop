@@ -15,7 +15,7 @@ v0.1.2
     * [Setup Scripts](#setup-scripts)
     * [Troubleshooting](#troubleshooting)
 * [Component Reference](#component-reference)
-* [API Reference](#api-reference)
+* [API Reference]()
 * [Support](#support)
 * [Extra Notes](#extra-notes)
 <!--te-->
