@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import { makeStyles, IconButton } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import DialogNewSection from "./DialogNewSection";
-import { addConfig } from "../Utils/Config";
+import { addConfig } from "../../Utils/Config";
 import { useDispatch } from "react-redux";
-import AlertSnackbar from "../Utils/Snackbar";
+import AlertSnackbar from "../../Utils/Snackbar";
 
 const useStyles = makeStyles({
   title: {

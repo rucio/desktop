@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-import ServerList from "./ServerList";
+import ServerList from "./ServerConfig/ServerList";
 // import Config from "./Config";
 
 const useStyles = makeStyles({

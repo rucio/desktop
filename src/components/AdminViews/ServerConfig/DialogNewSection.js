@@ -7,7 +7,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { TextField, makeStyles } from "@material-ui/core";
-import LoadingSpinner from "../Utils/LoadingSpinner";
+import LoadingSpinner from "../../Utils/LoadingSpinner";
 import { useSelector } from "react-redux";
 
 const useStyles = makeStyles({

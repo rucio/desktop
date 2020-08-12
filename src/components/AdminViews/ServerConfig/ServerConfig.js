@@ -6,7 +6,7 @@ import ServerConfigEditForm from "./ServerConfigEditForm";
 import ServerConfigTitle from "./ServerConfigTitle";
 import DialogNewSection from "./DialogNewSection";
 import { useDispatch } from "react-redux";
-import { addConfig, delConfig, getConfig } from "../Utils/Config";
+import { addConfig, delConfig, getConfig } from "../../Utils/Config";
 
 const useStyles = makeStyles((theme) => ({
   root: {

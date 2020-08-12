@@ -5,12 +5,12 @@ import {
   AccordionSummary,
   Typography,
 } from "@material-ui/core";
-import { serverStatus } from "../Utils/Servers";
+import { serverStatus } from "../../Utils/Servers";
 import { green, red } from "@material-ui/core/colors";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ServerConfig from "./ServerConfig";
-import { getConfig } from "../Utils/Config";
-import AlertSnackbar from "../Utils/Snackbar";
+import { getConfig } from "../..//Utils/Config";
+import AlertSnackbar from "../../Utils/Snackbar";
 
 const useStyles = makeStyles((theme) => ({
   root: {
