@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import AdminSettings from "../AdminViews/AdminSettings";
+import AdminSettings from "../AdminViews/Settings/AdminSettings";
 import UserSettings from "../UserViews/UserSettings";
 import { makeStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
