@@ -1,7 +1,7 @@
 # Rucio Desktop API Reference
 ## Rucio Storage Elements
 
-The Storage feature of Rucio Desktop heavily relies on Rucio REST APIs for RSEs or Rucio Storage Elements for performing major CRUD operations for RSE Settings, Attribures, and Protocols. The RSE APIs are the wrappers around the Rucio REST APIs and provide simplified `POST` Requests to http://localhost:3004.
+The Storage feature of Rucio Desktop heavily relies on Rucio REST APIs for RSEs or Rucio Storage Elements for performing major CRUD operations for RSE Settings, Attributes, and Protocols. The RSE APIs are the wrappers around the Rucio REST APIs and provide simplified `POST` Requests to http://localhost:3004.
 
 ### Endpoints
 
