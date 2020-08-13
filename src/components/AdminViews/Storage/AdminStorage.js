@@ -1,10 +1,12 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
+import RSECard from "./RSECard";
+import { fetchRSEs } from "../../Utils/Storage";
 
 const useStyles = makeStyles({
   root: {
     minWidth: "40%",
-    maxWidth: "60%",
+    maxWidth: "50%",
     paddingTop: 10,
     paddingBottom: 10,
     fontFamily: "Cern",
@@ -15,6 +17,7 @@ const useStyles = makeStyles({
     color: "#000000",
     opacity: 0.6,
     paddingTop: 20,
+    paddingBottom: 30,
   },
   hint: {
     fontSize: 14,
@@ -28,11 +31,22 @@ const useStyles = makeStyles({
 
 function AdminStorage(props) {
   const classes = useStyles();
+  const [list, setList] = React.useState([]);
+
+  React.useEffect(() => {
+    fetchRSEs("root", "rucio-server-1").then((res) => {
+      setList(res.data);
+    });
+  }, []);
+
   return (
     <div id="admin-storage-root" className={classes.root}>
       <div id="title" className={classes.title}>
         Rucio Storage Elements
       </div>
+      {list.map((details) => (
+        <RSECard key={details.id} details={details} />
+      ))}
     </div>
   );
 }
