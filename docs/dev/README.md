@@ -15,7 +15,7 @@ v0.1.3
     * [Setup Scripts](#setup-scripts)
     * [Troubleshooting](#troubleshooting)
 * [Component Reference](#component-reference)
-* [API Reference]()
+* [API Reference](https://github.com/rucio/desktop/tree/master/docs/dev/API%20Docs)
 * [Support](#support)
 * [Extra Notes](#extra-notes)
 <!--te-->
@@ -23,7 +23,7 @@ v0.1.3
 ## Introduction
 Welcome to Rucio Desktop's Developer Documentation!
 Rucio Desktop (codename: rocinante) is a GUI desktop client for Rucio - Exascale Scientific Data Management Framework. 
-It was built by [@viveknigam3003](https://github.com/viveknigam3003) and has been improved with the help of our open-source [contributors]().
+It was built by [@viveknigam3003](https://github.com/viveknigam3003) and has been improved with the help of our open-source [contributors](https://github.com/rucio/desktop/blob/master/AUTHORS.md).
 
 We __highly recommend__ that before contributing to the project you must get yourself familiar with Rucio itself, since the application highly relies on Rucio for most of its APIs and functionality. Some references are attached below:
 
@@ -50,7 +50,7 @@ The app also avoids the usage of classes hence completely using the functional p
 
 ## Contributing to the project
 
-To read about contribution guidelines refer to our [CONTRIBUTION GUIDE]()
+To read about contribution guidelines refer to our [CONTRIBUTION GUIDE](https://github.com/rucio/desktop/blob/master/CONTRIBUTING.md)
 
 ## Setting Up a Developement Environment
 
@@ -98,7 +98,7 @@ $ npm run setup-dev
 
 This will give you the following output if the script succeeds
 
-```BASH
+```NPM
 
 Compiled successfully!
 [0] 
