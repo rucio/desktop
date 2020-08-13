@@ -12,10 +12,10 @@ You can either test the APIs by command-line methods using cURL or you may use t
 
 <!--ts-->
 
-- [Authentication](#authentication)
-- [Server Config](#server-config)
+- [Authentication](https://github.com/rucio/desktop/blob/master/docs/dev/API%20Docs/API_Auth.md)
+- [Server Config](https://github.com/rucio/desktop/blob/master/docs/dev/API%20Docs/API_Config.md)
 - [FUSE Module](#fuse-module)
 - [DID Metadata](#did-metadata)
-- [Rucio RSEs](#rucio-rses)
+- [Rucio RSEs](https://github.com/rucio/desktop/blob/master/docs/dev/API%20Docs/API_RSEs.md)
 <!--te-->
 
