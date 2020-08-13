@@ -11,7 +11,7 @@ router.post("/rses", async (req, res) => {
     )
     .catch((err) => {
       console.log(`[ERROR: /rses] ${err}`);
-      res.sendStatus(err.status);
+      res.sendStatus(err.response.status);
     });
 });
 
@@ -27,7 +27,7 @@ router.post("/rse/info", async (req, res) => {
     .then((info) => res.send(info.data))
     .catch((err) => {
       console.log(`[ERROR: /rse/info] ${err}`);
-      res.sendStatus(401);
+      res.sendStatus(err.response.status);
     });
 });
 
