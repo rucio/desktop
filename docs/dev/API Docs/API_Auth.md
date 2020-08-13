@@ -2,7 +2,7 @@
 ## Authentication
 
 Rucio Desktop uses Rucio REST API wrappers to retrieve the token from Rucio servers. Currently it supports only two identities: __USERPASS__ and __X509__ certificates.
-Both of these strategies are wrapped into a single endpoint running at https://localhost:3004. The API supports multi-token retreival according to the `authtype` key provided to the request body.
+Both of these strategies are wrapped into a single endpoint running at http://localhost:3004. The API supports multi-token retreival according to the `authtype` key provided to the request body.
 
 
 ### Endpoints

@@ -66,7 +66,7 @@ Refer to the [FUSE-POSIX](https://github.com/rucio/fuse-posix#getting-started) i
 To run the application from source you will need NodeJS (LTS) installed on your system.
 Download the correct binary from the [NPM Official Website](https://nodejs.org/en/). After installing `node` on your system check the version using.
 
-```BASH
+```shell
 $ node -v
 v12.16.2
 
@@ -81,7 +81,7 @@ Make sure that the `node` version > 12.16 (LTS) or is equal to the current relea
 
 Fork the repository and then clone your private repository directly on your system.
 
-```BASH
+```shell
 $ git clone https://github.com/<your-username>/rocinante.git
 $ cd rocinante
 $ git remote add upstream git@github.com:viveknigam3003/rocinante.git 
@@ -92,13 +92,13 @@ $ git fetch --all
 
 After setting up NodeJS and the repository, you will need to go inside the cloned repository to run the setup script. This will install all the dependencies and start the development server which will be available on __http://localhost:3005__
 
-```BASH
+```shell
 $ npm run setup-dev
 ```
 
 This will give you the following output if the script succeeds
 
-```NPM
+```shell
 
 Compiled successfully!
 [0] 
@@ -125,7 +125,7 @@ If you wish to see how the app will behave post production, you will also need t
 To run the desktop app window for the software. 
 Open another terminal window and run:
 
-```BASH
+```shell
 $ npm run electron
 ```
 
@@ -133,7 +133,7 @@ $ npm run electron
 
 * In case of an `code ELIFECYCLE` npm error, run the following script
 
-```BASH
+```shell
 $ npm run reset-env
 ```
 
