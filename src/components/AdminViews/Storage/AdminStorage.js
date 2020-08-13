@@ -32,6 +32,7 @@ const useStyles = makeStyles({
 function AdminStorage(props) {
   const classes = useStyles();
   const [list, setList] = React.useState([]);
+  const [index, setIndex] = React.useState(null);
 
   React.useEffect(() => {
     fetchRSEs("root", "rucio-server-1").then((res) => {
@@ -45,7 +46,12 @@ function AdminStorage(props) {
         Rucio Storage Elements
       </div>
       {list.map((details) => (
-        <RSECard key={details.id} details={details} />
+        <RSECard
+          key={details.id}
+          details={details}
+          selected={index === details.id}
+          setIndex={setIndex}
+        />
       ))}
     </div>
   );
