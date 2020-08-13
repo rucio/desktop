@@ -153,6 +153,17 @@ async function accountLimits(certlocation, server, token, rse) {
       )
     );
 }
+
+function processResponseData(data){
+  const res = []
+  const processedData = data.trim().split("\n")
+  for (let i = 0; i < processedData.length; i++){
+    res.push(JSON.parse(processedData[i]))
+  }
+  
+  return res
+}
+
 module.exports = {
   getRSEs,
   info,
@@ -161,4 +172,5 @@ module.exports = {
   usage,
   limits,
   accountLimits,
+  processResponseData
 };

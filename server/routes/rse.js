@@ -6,7 +6,9 @@ router.post("/rses", async (req, res) => {
   const payload = req.body.payload;
 
   await RSE.getRSEs(payload.certlocation, payload.server, payload.token)
-    .then((rseList) => res.send(rseList.data))
+    .then((rseList) =>
+      res.send(RSE.processResponseData(rseList.data))
+    )
     .catch((err) => {
       console.log(`[ERROR: /rses] ${err}`);
       res.sendStatus(err.status);
