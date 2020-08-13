@@ -6,7 +6,7 @@ import {
   CardContent,
   CardActionArea,
 } from "@material-ui/core";
-import { blue } from "@material-ui/core/colors";
+import StorageRoundedIcon from "@material-ui/icons/StorageRounded";
 
 const useStyles = makeStyles({
   root: {
@@ -14,12 +14,20 @@ const useStyles = makeStyles({
     maxHeight: 250,
     height: 200,
     minWidth: "60%",
-    backgroundColor: (props) => (props.selected ? blue.A400 : "#fffafa"),
+    backgroundColor: (props) => (props.selected ? "#2c3c79" : "#fbfcfe"),
     borderRadius: 16.18,
     margin: 12,
   },
   content: {
     height: "80%",
+    display: "flex",
+    alignItems: "start",
+  },
+  icon: {
+    color: (props) => (props.selected ? "#7285cc" :"#354992"),
+    margin: 20,
+    marginRight: 10,
+    fontSize: 48
   },
   title: {
     display: "flex",
@@ -43,13 +51,14 @@ const useStyles = makeStyles({
   },
   preInfo: {
     fontWeight: 600,
+    color: (props) => (props.selected ? "#b0bbe2" :"#354992")
   },
   info: {
     fontSize: 16,
     color: (props) => (props.selected ? "#ffffff" : "#000000"),
     fontWeight: 500,
     margin: 20,
-    height: 60,
+    height: 50,
     opacity: 0.8,
     display: "flex",
     flexDirection: "column",
@@ -79,24 +88,23 @@ function RSECard(props) {
     <Card elevation={5} className={classes.root}>
       <CardActionArea onClick={() => props.setIndex(props.details.id)}>
         <CardContent className={classes.content}>
-          <div className={classes.title}>{props.details.rse}</div>
-          <div className={classes.id}>ID: {props.details.id}</div>
-          <div id="rse-info" className={classes.info}>
-            <div id="general">
-              <span className={classes.preInfo}>Type: </span>
-              {props.details.deterministic
-                ? "Deterministic"
-                : "Non-Deterministic"}
-              , {props.details.volatile ? "Volatile" : "Non-Volatile"}{" "}
-              {props.details.rse_type}
-            </div>
-            <div id="rse-region">
-              <span className={classes.preInfo}>Region: </span>
-              {processRegion()}
-            </div>
-            <div id="rse-created">
-              <span className={classes.preInfo}>Created: </span>
-              {props.details.created_at}{" "}
+          <StorageRoundedIcon className={classes.icon} />
+          <div id="rse">
+            <div className={classes.title}>{props.details.rse}</div>
+            <div className={classes.id}>ID: {props.details.id}</div>
+            <div id="rse-info" className={classes.info}>
+              <div id="general">
+                <span className={classes.preInfo}>Type: </span>
+                {props.details.deterministic
+                  ? "Deterministic"
+                  : "Non-Deterministic"}
+                , {props.details.volatile ? "Volatile" : "Non-Volatile"}{" "}
+                {props.details.rse_type}
+              </div>
+              <div id="rse-region">
+                <span className={classes.preInfo}>Region: </span>
+                {processRegion()}
+              </div>
             </div>
           </div>
         </CardContent>

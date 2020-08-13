@@ -9,11 +9,11 @@ const useStyles = makeStyles({
   drawer: {
     width: (props) => props.drawerWidth,
     flexShrink: 0,
-    backgroudColor: "#3e55ab",
+    backgroudColor: "#354992",
   },
   drawerPaper: {
     width: (props) => props.drawerWidth,
-    backgroundColor: "#3e55ab",
+    backgroundColor: "#354992",
   },
   drawerContainer: {
     overflow: "auto",

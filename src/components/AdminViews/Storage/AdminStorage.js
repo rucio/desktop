@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
+import { useSpring, animated } from "react-spring";
 import RSECard from "./RSECard";
 import { fetchRSEs } from "../../Utils/Storage";
 
@@ -31,11 +32,17 @@ const useStyles = makeStyles({
 
 function AdminStorage(props) {
   const classes = useStyles();
-  const [list, setList] = React.useState([]);
-  const [index, setIndex] = React.useState(null);
+  const [list, setList] = useState([]);
+  const [index, setIndex] = useState(null);
+  const fade = useSpring({
+    from: {
+      opacity: 0,
+    },
+    opacity: 1,
+  });
 
   React.useEffect(() => {
-    fetchRSEs("root", "rucio-server-1").then((res) => {
+    fetchRSEs("root", "rucio-server-x509").then((res) => {
       setList(res.data);
     });
   }, []);
@@ -45,14 +52,16 @@ function AdminStorage(props) {
       <div id="title" className={classes.title}>
         Rucio Storage Elements
       </div>
-      {list.map((details) => (
-        <RSECard
-          key={details.id}
-          details={details}
-          selected={index === details.id}
-          setIndex={setIndex}
-        />
-      ))}
+      <animated.div style={fade}>
+        {list.map((details) => (
+          <RSECard
+            key={details.id}
+            details={details}
+            selected={index === details.id}
+            setIndex={setIndex}
+          />
+        ))}
+      </animated.div>
     </div>
   );
 }
