@@ -1,20 +1,3 @@
-# Rucio Desktop : Developer Documentation
-
-## API Reference
-
-Rucio Desktop holds a client side node server which serves several easy REST APIs to connect to Rucio instances and also to the FUSE-POSIX interface.
-
-## REST API Endpoints
-
-<!--ts-->
-
-- [Authentication](#authentication)
-- [Server Config](#server-config)
-- [FUSE Module](#fuse-module)
-- [DID Metadata](#did-metadata)
-- [Rucio RSEs](#rucio-rses)
-<!--te-->
-
 ### Rucio RSEs
 
 ```HTTPS
