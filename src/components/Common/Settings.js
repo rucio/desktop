@@ -42,7 +42,7 @@ function Settings() {
   return (
     <div id="settings-root" className={classes.root}>
       <div id="account-name" className={classes.title}>
-        <div className={classes.hint}>Account</div>
+        <div className={classes.hint}>Managing settings as</div>
         <div style={{ paddingTop: 5, paddingBottom: 10 }}>{account}</div>
       </div>
       {view === "admin" ? <AdminSettings /> : <UserSettings />}

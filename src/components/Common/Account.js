@@ -81,12 +81,12 @@ function Account() {
       </div>
       <div id="other-accounts">
         <div className={classes.hint}>
-          <div>Accounts Settings</div>
+          <div>Accounts Configurations</div>
           <a className={classes.link} href="#adduser">
             Add New Account
           </a>
         </div>
-        <div className={classes.hintSub}>Manage user account configurations</div>
+        <div className={classes.hintSub}>Manage client configurations for Rucio</div>
         <AccountConfig />
       </div>
       <div id="logout">
