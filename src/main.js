@@ -9,8 +9,8 @@ app.on("ready", () => {
 
 const createWindow = () => {
   window = new BrowserWindow({
-    width: 1024,
-    height: 768,
+    minWidth: 800,
+    minHeight: 400,
     fullscreenable: true,
     resizable: true,
     transparent: false,

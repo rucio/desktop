@@ -4,6 +4,8 @@
 }
 
 .App {
+  min-width: 800;
+  min-height: 400;
   text-align: center;
   background-color: #fffafa;
   height: 100vh;
