@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     font: "Cern",
     maxHeight: 250,
     height: 200,
-    minWidth: "60%",
+    minWidth: 256,
     backgroundColor: (props) => (props.selected ? "#2c3c79" : "#fbfcfe"),
     borderRadius: 16.18,
     margin: 12,

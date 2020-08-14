@@ -3,22 +3,25 @@ import { makeStyles } from "@material-ui/core";
 import { useSpring, animated } from "react-spring";
 import RSECard from "./RSECard";
 import { fetchRSEs } from "../../Utils/Storage";
+import RSEInfo from "./RSEInfo";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    minWidth: "40%",
-    maxWidth: "50%",
+    width: "100%",
+    minWidth: 512,
     paddingTop: 10,
     paddingBottom: 10,
-    fontFamily: "Cern",
   },
-  title: {
-    fontSize: 16,
-    fontWeight: 500,
-    color: "#000000",
-    opacity: 0.6,
-    paddingTop: 20,
-    paddingBottom: 30,
+  content: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between"
+  },
+  list: {
+    width: "40%",
+    [theme.breakpoints.down("md")]: {
+      width: "100%"
+    },
   },
   hint: {
     fontSize: 14,
@@ -28,7 +31,7 @@ const useStyles = makeStyles({
     paddingTop: 10,
     paddingBottom: 10,
   },
-});
+}));
 
 function AdminStorage(props) {
   const classes = useStyles();
@@ -49,19 +52,19 @@ function AdminStorage(props) {
 
   return (
     <div id="admin-storage-root" className={classes.root}>
-      <div id="title" className={classes.title}>
-        Rucio Storage Elements
+      <div id="content" className={classes.content}>
+        <animated.div className={classes.list} style={fade}>
+          {list.map((details) => (
+            <RSECard
+              key={details.id}
+              details={details}
+              selected={index === details.id}
+              setIndex={setIndex}
+            />
+          ))}
+        </animated.div>
+        <RSEInfo />
       </div>
-      <animated.div style={fade}>
-        {list.map((details) => (
-          <RSECard
-            key={details.id}
-            details={details}
-            selected={index === details.id}
-            setIndex={setIndex}
-          />
-        ))}
-      </animated.div>
     </div>
   );
 }

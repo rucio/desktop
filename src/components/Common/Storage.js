@@ -6,10 +6,10 @@ import { grey } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   root: {
-    width: "inherit",
+    width: "calc(100% - 48px)",
     textAlign: "left",
     fontFamily: "Cern",
-    overflow: "auto",
+    overflow: "auto"
   },
   title: {
     fontSize: 32,
