@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core";
 import { useSpring, animated } from "react-spring";
 import RSECard from "./RSECard";
@@ -25,12 +25,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   hint: {
-    fontSize: 14,
+    fontSize: "1rem",
     fontWeight: 500,
     color: "#000000",
     opacity: 0.4,
-    paddingTop: 10,
-    paddingBottom: 10,
+    padding: 20,
   },
 }));
 
@@ -39,7 +38,7 @@ function AdminStorage(props) {
   const [index, setIndex] = useState(null);
   const [currentRSE, setCurrentRSE] = useState(null);
   const [rseInfo, setRSEInfo] = useState({});
-  const [rseDetails, setRSEDetails] = useState({})
+  const [rseDetails, setRSEDetails] = useState({});
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
   const fade = useSpring({
     from: {
@@ -50,7 +49,6 @@ function AdminStorage(props) {
 
   React.useEffect(() => {
     if (currentRSE !== null) {
-
       fetchRSEInfo(currentAccount, "rucio-server-x509", currentRSE).then(
         (rseInfo) => {
           setRSEInfo(rseInfo.data);
@@ -63,24 +61,29 @@ function AdminStorage(props) {
   return (
     <div id="admin-storage-root" className={classes.root}>
       <animated.div id="anim-rse-list" className={classes.list} style={fade}>
-        {props.list.map((details) => (
-          <RSECard
-            key={details.id}
-            details={details}
-            selected={index === details.id}
-            setIndex={setIndex}
-            setCurrentRSE={setCurrentRSE}
-            setRSEDetails={setRSEDetails}
-          />
-        ))}
+        {props.list.length === 0 ? (
+          <div className={classes.hint}>No RSEs found with name "{props.searchPhrase}"</div>
+        ) : (
+          props.list.map((details) => (
+            <RSECard
+              key={details.id}
+              details={details}
+              selected={index === details.id}
+              setIndex={setIndex}
+              setCurrentRSE={setCurrentRSE}
+              setRSEDetails={setRSEDetails}
+            />
+          ))
+        )}
       </animated.div>
-      <RSEInfo details={rseInfo} moreDetails={rseDetails}/>
+      <RSEInfo details={rseInfo} moreDetails={rseDetails} />
     </div>
   );
 }
 
 AdminStorage.propTypes = {
-  list: PropTypes.array
-}
+  list: PropTypes.array.isRequired,
+  searchPhrase: PropTypes.string
+};
 
 export default AdminStorage;

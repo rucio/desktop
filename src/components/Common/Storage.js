@@ -73,7 +73,7 @@ function Storage() {
         />
       </div>
       {view === "admin" ? (
-        <AdminStorage list={filteredList} />
+        <AdminStorage list={filteredList} searchPhrase={searchTerm}/>
       ) : (
         <UserStorage />
       )}
