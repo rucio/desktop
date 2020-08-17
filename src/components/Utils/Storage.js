@@ -36,3 +36,38 @@ export async function fetchRSEs(account, server) {
     return 500;
   }
 }
+
+export async function fetchRSEInfo(account, server, rse) {
+  const [cfg] = getAccountConfig(account, server);
+  const serverObj = {
+    name: cfg.server_name,
+    host: cfg.rucio_host,
+    auth: cfg.auth_host,
+  };
+
+  const payload = {
+    certlocation: cfg.ca_cert,
+    server: serverObj,
+    token: "",
+    rse: rse
+  };
+
+  try {
+    payload.token = cookies.get(cfg.server_name);
+  } catch (err) {
+    return 401;
+  }
+
+  try {
+    const response = axios.post("/rse/info", {
+      payload,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+  } catch (err) {
+    return 500;
+  }
+}
