@@ -15,6 +15,7 @@ const useStyles = makeStyles({
     backgroundColor: (props) => (props.selected ? "#2c3c79" : "#fbfcfe"),
     borderRadius: 16.18,
     margin: "1em",
+    height: "12em"
   },
   content: {
     display: "flex",
@@ -87,6 +88,7 @@ function RSECard(props) {
         onClick={() => {
           props.setIndex(props.details.id);
           props.setCurrentRSE(props.details.rse);
+          props.setRSEDetails(props.details)
         }}
       >
         <CardContent className={classes.content}>
@@ -120,6 +122,7 @@ RSECard.propTypes = {
   selected: PropTypes.bool,
   setIndex: PropTypes.func,
   setCurrentRSE: PropTypes.func,
+  setRSEDetails: PropTypes.func
 };
 
 export default RSECard;

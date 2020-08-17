@@ -8,6 +8,8 @@ const useStyles = makeStyles({
     justifyContent: "center",
     alignItems: "center",
     font: "Cern",
+    height: "100%",
+    width: "100%"
   },
   h1: {
     fontSize: "1.2rem",
