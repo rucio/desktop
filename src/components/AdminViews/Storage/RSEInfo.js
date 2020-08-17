@@ -155,6 +155,10 @@ function RSEInfo(props) {
             <span className={classes.preInfo}>Region: </span>
             {processRegion()}
           </div>
+          <div id="lfn2pfn" className={classes.info}>
+            <span className={classes.preInfo}>LFN2PFN Algorithm: </span>
+            {props.details.lfn2pfn_algorithm}
+          </div>
           <div id="deterministic" className={classes.info}>
             <span className={classes.preInfo}>Deterministic: </span>
             {props.details.deterministic.toString()}
