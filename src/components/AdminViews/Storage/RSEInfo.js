@@ -1,7 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Card, makeStyles, Box, AppBar, Tabs, Tab } from "@material-ui/core";
+import { Card, makeStyles, AppBar, Tabs, Tab } from "@material-ui/core";
 import NoRSEView from "./NoRSEView";
+import TabPanel from "./RSETabPanel";
+import TabGeneral from "./TabGeneral";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,51 +56,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Cern",
     fontWeight: 500,
   },
-  panel: {
-    display: "flex",
-    flex: 1,
-    height: "inherit",
-    padding: 10,
-    margin: 20,
-    fontSize: "1rem",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  preInfo: {
-    fontWeight: 600,
-    color: "#354992",
-    marginRight: 10,
-  },
-  info: {
-    color: "#000000",
-    fontWeight: 400,
-    opacity: 0.8,
-    display: "flex",
-    alignItems: "start",
-    marginBottom: "0.8rem",
-  },
 }));
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-  const classes = useStyles();
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3} className={classes.panel}>
-          <div>{children}</div>
-        </Box>
-      )}
-    </div>
-  );
-}
 
 function a11yProps(index) {
   return {
@@ -113,22 +71,6 @@ function RSEInfo(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const processRegion = () => {
-    const city = props.moreDetails.city ? props.moreDetails.city : "";
-    const country = props.moreDetails.country_name
-      ? props.moreDetails.country_name
-      : "";
-    const continent = props.moreDetails.continent
-      ? props.moreDetails.continent
-      : "";
-    const regionCode = props.moreDetails.region_code
-      ? `(${props.moreDetails.region_code})`
-      : "";
-    const regionStr = `${city} ${country} ${continent} ${regionCode}`;
-
-    return regionStr.length > 3 ? regionStr : "Unknown";
   };
 
   function SimpleTabs() {
@@ -146,28 +88,11 @@ function RSEInfo(props) {
             <Tab className={classes.tab} label="Usage" {...a11yProps(3)} />
           </Tabs>
         </AppBar>
-        <TabPanel value={value} index={0}>
-          <div id="type" className={classes.info}>
-            <span className={classes.preInfo}>Type: </span>
-            {props.details.rse_type}
-          </div>
-          <div id="volatile" className={classes.info}>
-            <span className={classes.preInfo}>Region: </span>
-            {processRegion()}
-          </div>
-          <div id="lfn2pfn" className={classes.info}>
-            <span className={classes.preInfo}>LFN2PFN Algorithm: </span>
-            {props.details.lfn2pfn_algorithm}
-          </div>
-          <div id="deterministic" className={classes.info}>
-            <span className={classes.preInfo}>Deterministic: </span>
-            {props.details.deterministic.toString()}
-          </div>
-          <div id="volatile" className={classes.info}>
-            <span className={classes.preInfo}>Volatile: </span>
-            {props.details.volatile.toString()}
-          </div>
-        </TabPanel>
+        <TabGeneral
+          details={props.details}
+          value={value}
+          moreDetails={props.moreDetails}
+        />
         <TabPanel value={value} index={1}>
           Protocols
         </TabPanel>
@@ -215,12 +140,6 @@ function RSEInfo(props) {
 RSEInfo.propTypes = {
   details: PropTypes.object,
   moreDetails: PropTypes.object,
-};
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
 };
 
 export default RSEInfo;
