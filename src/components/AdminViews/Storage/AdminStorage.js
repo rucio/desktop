@@ -62,7 +62,7 @@ function AdminStorage(props) {
     <div id="admin-storage-root" className={classes.root}>
       <animated.div id="anim-rse-list" className={classes.list} style={fade}>
         {props.list.length === 0 ? (
-          <div className={classes.hint}>No RSEs found with name "{props.searchPhrase}"</div>
+          <div className={classes.hint}>No RSEs found with name &quot;{props.searchPhrase}&quot;</div>
         ) : (
           props.list.map((details) => (
             <RSECard
