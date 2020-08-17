@@ -9,7 +9,6 @@ const useStyles = makeStyles({
     width: "calc(100% - 48px)",
     textAlign: "left",
     fontFamily: "Cern",
-    overflow: "auto"
   },
   title: {
     fontSize: 32,

@@ -11,23 +11,20 @@ import StorageRoundedIcon from "@material-ui/icons/StorageRounded";
 const useStyles = makeStyles({
   root: {
     font: "Cern",
-    maxHeight: 250,
-    height: 200,
-    minWidth: 256,
+    flex: "1 0 256px",
     backgroundColor: (props) => (props.selected ? "#2c3c79" : "#fbfcfe"),
     borderRadius: 16.18,
-    margin: 12,
+    margin: "1em",
   },
   content: {
-    height: "80%",
     display: "flex",
     alignItems: "start",
   },
   icon: {
-    color: (props) => (props.selected ? "#7285cc" :"#354992"),
+    color: (props) => (props.selected ? "#7285cc" : "#354992"),
     margin: 20,
     marginRight: 10,
-    fontSize: 48
+    fontSize: 48,
   },
   title: {
     display: "flex",
@@ -51,7 +48,7 @@ const useStyles = makeStyles({
   },
   preInfo: {
     fontWeight: 600,
-    color: (props) => (props.selected ? "#b0bbe2" :"#354992")
+    color: (props) => (props.selected ? "#b0bbe2" : "#354992"),
   },
   info: {
     fontSize: 16,
@@ -85,8 +82,13 @@ function RSECard(props) {
   };
 
   return (
-    <Card elevation={5} className={classes.root}>
-      <CardActionArea onClick={() => props.setIndex(props.details.id)}>
+    <Card elevation={3} className={classes.root}>
+      <CardActionArea
+        onClick={() => {
+          props.setIndex(props.details.id);
+          props.setCurrentRSE(props.details.rse);
+        }}
+      >
         <CardContent className={classes.content}>
           <StorageRoundedIcon className={classes.icon} />
           <div id="rse">
@@ -117,6 +119,7 @@ RSECard.propTypes = {
   details: PropTypes.object,
   selected: PropTypes.bool,
   setIndex: PropTypes.func,
+  setCurrentRSE: PropTypes.func,
 };
 
 export default RSECard;
