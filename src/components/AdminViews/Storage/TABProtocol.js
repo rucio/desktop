@@ -1,7 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TabPanel from "./RSETabPanel";
-import { TextField, makeStyles, InputLabel } from "@material-ui/core";
+import {
+  TextField,
+  makeStyles,
+  InputLabel,
+  FormGroup,
+} from "@material-ui/core";
 import ColoredLine from "../../Utils/ColoredLine";
 
 const useStyles = makeStyles({
@@ -10,33 +15,21 @@ const useStyles = makeStyles({
     color: "#354992",
   },
   host: {
-    width: "60%"
+    width: "60%",
   },
   textfield: {
     width: "50%",
     marginBottom: 20,
   },
+  smallTextField: {
+    width: "15%",
+    margin: 10
+  }
 });
 
 function TABProtocol(props) {
   const classes = useStyles();
-  // const [values, setValues] = React.useState({
-  //   extended_attributes: props.protocols.extended_attributes,
-  //     hostname: props.protocols.hostname,
-  //     prefix: props.protocols.prefix,
-  //     domains: props.protocols.domains,
-  //     scheme: props.protocols.scheme,
-  //     port: props.protocols.port,
-  //     impl: props.protocols.impl,
-  // });
 
-  // const handleChange = (event) => {
-  //   setValues({
-  //     ...values,
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
-  
   return (
     <TabPanel value={props.value} index={1}>
       {props.protocols.map((item) => (
@@ -80,15 +73,29 @@ function TABProtocol(props) {
             className={classes.textfield}
             defaultValue={item.scheme}
           />
-           <InputLabel className={classes.inputLabel}>Protocol</InputLabel>
-           <TextField
+          <InputLabel className={classes.inputLabel}>Protocol</InputLabel>
+          <TextField
             variant="outlined"
             size="small"
             name="impl"
             className={classes.textfield}
             defaultValue={item.impl}
           />
-          <ColoredLine color="#000000" opacity={0.2}/>
+          <InputLabel className={classes.inputLabel}>Domains</InputLabel>
+          <InputLabel className={classes.inputLabel}>WAN</InputLabel>
+          <FormGroup row style={{ paddingBottom: 12 }}>
+            <TextField className={classes.smallTextField} size="small" variant="outlined" type="number" label="Read" value={item.domains.lan.read}/>
+            <TextField className={classes.smallTextField} size="small" variant="outlined" type="number" label="Write" value={item.domains.lan.write}/>
+            <TextField className={classes.smallTextField} size="small" variant="outlined" type="number" label="Delete" value={item.domains.lan.delete}/>
+          </FormGroup>
+          <InputLabel className={classes.inputLabel}>LAN</InputLabel>
+          <FormGroup row style={{ paddingBottom: 12 }}>
+            <TextField className={classes.smallTextField} size="small" variant="outlined" type="number" label="Read" value={item.domains.wan.read}/>
+            <TextField className={classes.smallTextField} size="small" variant="outlined" type="number" label="Write" value={item.domains.wan.write}/>
+            <TextField className={classes.smallTextField} size="small" variant="outlined" type="number" label="Delete" value={item.domains.wan.delete}/>
+            <TextField className={classes.smallTextField} size="small" variant="outlined" type="number" label="Third Party Copy" value={item.domains.wan.third_party_copy}/>
+          </FormGroup>
+          <ColoredLine color="#000000" opacity={0.2} />
         </div>
       ))}
     </TabPanel>

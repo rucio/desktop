@@ -139,7 +139,7 @@ function TabGeneral(props) {
       </InputLabel>
       <FormGroup row style={{ paddingBottom: 16 }}>
         <FormControlLabel
-        style={{paddingRight: 10}}
+          style={{ paddingRight: 10 }}
           control={
             <Checkbox
               checked={props.details.availability_read}
@@ -150,7 +150,7 @@ function TabGeneral(props) {
           label="Read"
         />
         <FormControlLabel
-        style={{paddingRight: 10}}
+          style={{ paddingRight: 10 }}
           control={
             <Checkbox
               checked={props.details.availability_write}
@@ -161,7 +161,7 @@ function TabGeneral(props) {
           label="Write"
         />
         <FormControlLabel
-        style={{paddingRight: 10}}
+          style={{ paddingRight: 10 }}
           control={
             <Checkbox
               checked={props.details.availability_delete}
