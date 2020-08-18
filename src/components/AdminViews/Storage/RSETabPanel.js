@@ -4,9 +4,12 @@ import { makeStyles, Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
+    height: "70%",
+    overflow: "auto"
+  },
+  box: {
     display: "flex",
     flex: 1,
-    height: "inherit",
     padding: 10,
     margin: 20,
     fontSize: "1rem",
@@ -26,9 +29,10 @@ function TabPanel(props) {
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
       {...other}
+      className={classes.root}
     >
       {value === index && (
-        <Box p={3} className={classes.root}>
+        <Box p={3} className={classes.box}>
           <div>{children}</div>
         </Box>
       )}

@@ -4,6 +4,7 @@ import { Card, makeStyles, AppBar, Tabs, Tab } from "@material-ui/core";
 import NoRSEView from "./NoRSEView";
 import TabPanel from "./RSETabPanel";
 import TabGeneral from "./TabGeneral";
+import TABProtocol from "./TABProtocol";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   content: {
-    height: "100%",
+    height: "inherit",
     display: "flex",
     flexDirection: "column",
     fontFamily: "Cern",
@@ -51,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     marginLeft: 20,
+    height: "inherit"
   },
   tab: {
     fontFamily: "Cern",
@@ -75,8 +77,8 @@ function RSEInfo(props) {
 
   function SimpleTabs() {
     return (
-      <div className={classes.tabs}>
-        <AppBar color="inherit" elevation={0} position="static">
+      <div id="simple-rse-tabs" className={classes.tabs}>
+        <AppBar color="inherit" id="app-bar" elevation={0} position="static">
           <Tabs
             value={value}
             onChange={handleChange}
@@ -93,9 +95,7 @@ function RSEInfo(props) {
           value={value}
           moreDetails={props.moreDetails}
         />
-        <TabPanel value={value} index={1}>
-          Protocols
-        </TabPanel>
+        <TABProtocol protocols={props.details.protocols} value={value} />
         <TabPanel value={value} index={2}>
           Attributes
         </TabPanel>
