@@ -30,8 +30,13 @@
   font-style: normal;
 }
 
+html{
+  font-size: 16px; 
+ }
+
 body {
   margin: 0;
+  width: 100%;
   font-family: "Cern", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
