@@ -33,7 +33,9 @@ function ServerConfigEditForm(props) {
       <TextField
         size="small"
         id="option-value"
+        name={props.option}
         defaultValue={props.optionValue}
+        onChange={props.handleChange}
       />
       <IconButton onClick={() => setOpen(true)}>
         <DeleteIcon fontSize="small" color="secondary" />
@@ -56,7 +58,8 @@ ServerConfigEditForm.propTypes = {
   onClick: PropTypes.func,
   server: PropTypes.string,
   section: PropTypes.string,
-  handleDelete: PropTypes.func
+  handleDelete: PropTypes.func,
+  handleChange: PropTypes.func
 };
 
 export default ServerConfigEditForm;

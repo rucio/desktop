@@ -49,11 +49,23 @@ function ServerConfig(props) {
   const [section, setSection] = useState("");
   const [option, setOption] = useState("");
   const [value, setValue] = useState();
+  const [optionPayload, setOptionPayload] = useState({});
   const dispatch = useDispatch();
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleOptionsUpdate = (event) => {
+    setOptionPayload({
+      ...optionPayload,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  React.useEffect(() => {
+    console.log(props.server, section);
+  }, [props.server, section]);
 
   const handleNewSectionDialog = (section) => {
     setSection(section);
@@ -83,6 +95,18 @@ function ServerConfig(props) {
       .then(dispatch({ type: "LOADING_FALSE" }))
       .then(setOpen(false))
       .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
+  };
+
+  const handleBulkOptionUpdate = (section) => {
+    dispatch({ type: "LOADING_TRUE" });
+    Object.keys(optionPayload).map(async (option) => {
+      console.log(section, option, optionPayload[option]);
+      await addConfig(props.server, {
+        section: section,
+        option: option,
+        value: optionPayload[option],
+      });
+    });
   };
 
   function validateInput() {
@@ -118,8 +142,11 @@ function ServerConfig(props) {
               {index === editSection ? (
                 <EditButtons
                   editMode={true}
-                  cancelEdit={() => setEditSection(null)}
-                  confirmEdit={() => console.log("Saved")}
+                  cancelEdit={() => {
+                    setEditSection(null);
+                    setOptionPayload({});
+                  }}
+                  confirmEdit={() => handleBulkOptionUpdate(section)}
                   newOption={() => handleNewSectionDialog(section)}
                 />
               ) : (
@@ -140,6 +167,7 @@ function ServerConfig(props) {
                     handleDelete={() =>
                       handleDelete(props.server, section, option)
                     }
+                    handleChange={handleOptionsUpdate}
                   />
                 ) : (
                   <React.Fragment>
