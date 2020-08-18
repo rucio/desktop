@@ -9,6 +9,7 @@ import {
   FormGroup,
   FormControlLabel,
   Radio,
+  Button,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -36,7 +37,7 @@ const useStyles = makeStyles({
 });
 
 function TabGeneral(props) {
-  const [values, setValues] = React.useState({});
+  const [values, setValues] = React.useState(null);
 
   function isPresent(x) {
     return x || "";
@@ -172,6 +173,9 @@ function TabGeneral(props) {
           label="Delete"
         />
       </FormGroup>
+      <Button variant="contained" color="primary" disabled={values === null}>
+        Update Settings
+      </Button>
     </TabPanel>
   );
 }
