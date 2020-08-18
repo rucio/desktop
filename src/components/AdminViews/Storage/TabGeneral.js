@@ -1,7 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import TabPanel from "./RSETabPanel";
-import { makeStyles, Checkbox, InputLabel, TextField } from "@material-ui/core";
+import {
+  makeStyles,
+  Checkbox,
+  InputLabel,
+  TextField,
+  FormGroup,
+  FormControlLabel,
+  Radio,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   preInfo: {
@@ -102,19 +110,68 @@ function TabGeneral(props) {
         value={isPresent(props.details.lfn2pfn_algorithm)}
         onChange={handleChange}
       />
-      <div id="deterministic" className={classes.info}>
-        <InputLabel className={classes.inputLabel}>Deterministic</InputLabel>
-        <Checkbox
-          checked={props.details.deterministic}
-          name="deterministic"
-          color="primary"
-          onChange={(e) => handleChange(e)}
+      <FormGroup row style={{ paddingBottom: 12 }}>
+        <FormControlLabel
+          control={<Radio checked={props.details.volatile} color="primary" />}
+          label="Volatile"
         />
-      </div>
-      <div id="volatile" className={classes.info}>
-        <span className={classes.preInfo}>Volatile: </span>
-        {props.details.volatile.toString()}
-      </div>
+        <FormControlLabel
+          control={<Radio checked={!props.details.volatile} color="primary" />}
+          label="Non-Volatile"
+        />
+      </FormGroup>
+      <FormGroup row style={{ paddingBottom: 12 }}>
+        <FormControlLabel
+          control={
+            <Radio checked={props.details.deterministic} color="primary" />
+          }
+          label="Deterministic"
+        />
+        <FormControlLabel
+          control={
+            <Radio checked={!props.details.deterministic} color="primary" />
+          }
+          label="Non-Deterministic"
+        />
+      </FormGroup>
+      <InputLabel className={classes.inputLabel}>
+        Availability Attributes
+      </InputLabel>
+      <FormGroup row style={{ paddingBottom: 16 }}>
+        <FormControlLabel
+        style={{paddingRight: 10}}
+          control={
+            <Checkbox
+              checked={props.details.availability_read}
+              name="availability_read"
+              color="primary"
+            />
+          }
+          label="Read"
+        />
+        <FormControlLabel
+        style={{paddingRight: 10}}
+          control={
+            <Checkbox
+              checked={props.details.availability_write}
+              name="availability_write"
+              color="primary"
+            />
+          }
+          label="Write"
+        />
+        <FormControlLabel
+        style={{paddingRight: 10}}
+          control={
+            <Checkbox
+              checked={props.details.availability_delete}
+              name="availability_delete"
+              color="primary"
+            />
+          }
+          label="Delete"
+        />
+      </FormGroup>
     </TabPanel>
   );
 }

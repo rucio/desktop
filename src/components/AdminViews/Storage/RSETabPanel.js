@@ -5,9 +5,8 @@ import { makeStyles, Box } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
     minHeight: "18rem",
-    maxHeight: "34rem",
+    maxHeight: "30rem",
     overflow: "auto",
-
   },
   box: {
     display: "flex",
