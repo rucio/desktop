@@ -4,8 +4,10 @@ import { makeStyles, Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    height: "70%",
-    overflow: "auto"
+    minHeight: "18rem",
+    maxHeight: "34rem",
+    overflow: "auto",
+
   },
   box: {
     display: "flex",

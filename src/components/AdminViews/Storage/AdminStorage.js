@@ -52,7 +52,6 @@ function AdminStorage(props) {
       fetchRSEInfo(currentAccount, "rucio-server-x509", currentRSE).then(
         (rseInfo) => {
           setRSEInfo(rseInfo.data);
-          console.log(rseInfo.data);
         }
       );
     }
@@ -62,7 +61,9 @@ function AdminStorage(props) {
     <div id="admin-storage-root" className={classes.root}>
       <animated.div id="anim-rse-list" className={classes.list} style={fade}>
         {props.list.length === 0 ? (
-          <div className={classes.hint}>No RSEs found with name &quot;{props.searchPhrase}&quot;</div>
+          <div className={classes.hint}>
+            No RSEs found with name &quot;{props.searchPhrase}&quot;
+          </div>
         ) : (
           props.list.map((details) => (
             <RSECard
@@ -83,7 +84,7 @@ function AdminStorage(props) {
 
 AdminStorage.propTypes = {
   list: PropTypes.array.isRequired,
-  searchPhrase: PropTypes.string
+  searchPhrase: PropTypes.string,
 };
 
 export default AdminStorage;

@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     position: "static",
     right: 20,
     display: "flex",
-    flex: "1 1 60%",
+    flex: "1 1 56%",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   content: {
-    height: "inherit",
     display: "flex",
     flexDirection: "column",
     fontFamily: "Cern",
