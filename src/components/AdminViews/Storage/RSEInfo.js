@@ -87,6 +87,7 @@ function RSEInfo(props) {
             <Tab className={classes.tab} label="Protocols" {...a11yProps(1)} />
             <Tab className={classes.tab} label="Attributes" {...a11yProps(2)} />
             <Tab className={classes.tab} label="Usage" {...a11yProps(3)} />
+            <Tab className={classes.tab} label="History" {...a11yProps(4)} />
           </Tabs>
         </AppBar>
         <TabGeneral
@@ -100,6 +101,9 @@ function RSEInfo(props) {
         </TabPanel>
         <TabPanel value={value} index={3}>
           Usage
+        </TabPanel>
+        <TabPanel value={value} index={4}>
+          History
         </TabPanel>
       </div>
     );
