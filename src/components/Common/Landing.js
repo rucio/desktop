@@ -21,6 +21,7 @@ const useStyles = makeStyles({
 function Landing(props) {
   const classes = useStyles();
   const page = props.page;
+  const drawerWidth = 240
 
   return (
     <React.Fragment>
@@ -30,10 +31,10 @@ function Landing(props) {
         </Toolbar>
       </AppBar>
       <Sidebar
-        width={240}
+        width={drawerWidth}
         values={["Explore", "Storage", "Rules", "Monitoring"]}
       />
-      <RenderLayout drawerWidth={240} page={page} />
+      <RenderLayout drawerWidth={drawerWidth} page={page} />
     </React.Fragment>
   );
 }

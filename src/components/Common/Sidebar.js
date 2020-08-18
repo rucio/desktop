@@ -65,10 +65,11 @@ function Sidebar(props) {
           </Toolbar>
         </React.Fragment>
         <List>
-          {props.values.map((text) => (
+          {props.values.map((text, index) => (
             <ListItem
               className={classes.listItem}
               button
+              disabled={index > 1}
               key={text}
               component={AdapterLink}
               to={`/app/${text.toLowerCase()}`}
