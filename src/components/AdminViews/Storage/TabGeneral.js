@@ -53,7 +53,6 @@ function TabGeneral(props) {
   }, [props]);
 
   const handleChange = (event) => {
-    console.log(event.target.type);
     setNextProps({
       ...nextProps,
       details: {

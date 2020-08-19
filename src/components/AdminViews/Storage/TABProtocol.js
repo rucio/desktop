@@ -30,18 +30,44 @@ const useStyles = makeStyles({
 
 function TABProtocol(props) {
   const classes = useStyles();
+  // eslint-disable-next-line no-unused-vars
+  const initialProtocols = props.protocols;
+  const [currentIndex, setCurrentIndex] = React.useState(null);
   const [values, setValues] = React.useState(null);
+  const [nextProps, setNextProps] = React.useState(props);
 
-  const handleChange = (event) => {
+  React.useEffect(() => {
+    setNextProps({});
+    setNextProps(props);
+    setValues(null);
+    setCurrentIndex(null);
+  }, [props]);
+
+  React.useEffect(() => {
+    console.log(values)
+  }, [values])
+
+  const handleChange = (event, index) => {
+    setNextProps({
+      protocols: [
+        ...nextProps.protocols.slice(0, index),
+        {
+          ...nextProps.protocols[index],
+          [event.target.name]: event.target.value,
+        },
+        ...nextProps.protocols.slice(index+1),
+      ],
+    });
+    setCurrentIndex(index)
     setValues({
-      ...values,
+      ...nextProps.protocols[index],
       [event.target.name]: event.target.value,
     });
   };
 
   return (
     <TabPanel value={props.value} index={1}>
-      {props.protocols.map((item) => (
+      {nextProps.protocols.map((item, index) => (
         <div key={`${item.hostname}:${item.port}`}>
           <div style={{ display: "flex", width: "100%" }}>
             <div>
@@ -51,8 +77,8 @@ function TABProtocol(props) {
                 size="small"
                 fullWidth
                 name="hostname"
-                defaultValue={item.hostname}
-                onChange={handleChange}
+                value={item.hostname}
+                onChange={(e) => handleChange(e, index)}
               />
             </div>
             <div>
@@ -63,8 +89,8 @@ function TABProtocol(props) {
                 type="number"
                 name="port"
                 className={classes.textfield}
-                defaultValue={item.port}
-                onChange={handleChange}
+                value={item.port}
+                onChange={(e) => handleChange(e, index)}
               />
             </div>
           </div>
@@ -72,10 +98,10 @@ function TABProtocol(props) {
           <TextField
             variant="outlined"
             size="small"
-            name="item"
+            name="prefix"
             className={classes.textfield}
-            defaultValue={item.prefix}
-            onChange={handleChange}
+            value={item.prefix}
+            onChange={(e) => handleChange(e, index)}
           />
           <InputLabel className={classes.inputLabel}>Scheme</InputLabel>
           <TextField
@@ -83,8 +109,8 @@ function TABProtocol(props) {
             size="small"
             name="scheme"
             className={classes.textfield}
-            defaultValue={item.scheme}
-            onChange={handleChange}
+            value={item.scheme}
+            onChange={(e) => handleChange(e, index)}
           />
           <InputLabel className={classes.inputLabel}>Protocol</InputLabel>
           <TextField
@@ -92,11 +118,11 @@ function TABProtocol(props) {
             size="small"
             name="impl"
             className={classes.textfield}
-            defaultValue={item.impl}
-            onChange={handleChange}
+            value={item.impl}
+            onChange={(e) => handleChange(e, index)}
           />
           <InputLabel className={classes.inputLabel}>Domains</InputLabel>
-          <InputLabel className={classes.inputLabel}>WAN</InputLabel>
+          <InputLabel className={classes.inputLabel}>LAN</InputLabel>
           <FormGroup row style={{ paddingBottom: "1rem" }}>
             <TextField
               className={classes.smallTextField}
@@ -123,7 +149,7 @@ function TABProtocol(props) {
               value={item.domains.lan.delete}
             />
           </FormGroup>
-          <InputLabel className={classes.inputLabel}>LAN</InputLabel>
+          <InputLabel className={classes.inputLabel}>WAN</InputLabel>
           <FormGroup row style={{ paddingBottom: "1rem" }}>
             <TextField
               className={classes.smallTextField}
@@ -161,7 +187,7 @@ function TABProtocol(props) {
           <Button
             variant="contained"
             color="primary"
-            disabled={values === null}
+            disabled={index !== currentIndex}
           >
             Update Protocol
           </Button>
