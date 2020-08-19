@@ -6,9 +6,7 @@ router.post("/rses", async (req, res) => {
   const payload = req.body.payload;
 
   await RSE.getRSEs(payload.certlocation, payload.server, payload.token)
-    .then((rseList) =>
-      res.send(RSE.processResponseData(rseList.data))
-    )
+    .then((rseList) => res.send(RSE.processResponseData(rseList.data)))
     .catch((err) => {
       console.log(`[ERROR: /rses] ${err}`);
       res.sendStatus(err.response.status);
@@ -108,6 +106,82 @@ router.post("/rse/account/limits", async (req, res) => {
     .catch((err) => {
       console.log(`[ERROR: /rse/account/limits] ${err}`);
       res.sendStatus(err.response.status);
+    });
+});
+
+router.post("/rse/protocol/update", async (req, res) => {
+  const payload = req.body.payload;
+
+  await RSE.deleteProtocol(
+    payload.certlocation,
+    payload.server,
+    payload.token,
+    payload.rse,
+    payload.scheme,
+    payload.hostname,
+    payload.port
+  )
+    .then(async () => {
+      await RSE.addProtocol(
+        payload.certlocation,
+        payload.server,
+        payload.token,
+        payload.rse,
+        payload.scheme,
+        payload.protocolObj
+      )
+        .then(() => {
+          console.log("[INFO] RSE Protocol Updated.");
+          res.sendStatus(200);
+        })
+        .catch((err) => {
+          console.log(`[ERROR: /rse/protocol/update | add] ${err}`);
+          res.sendStatus(500);
+        });
+    })
+    .catch((err) => {
+      console.log(`[ERROR: /rse/protocol/update | delete] ${err}`);
+      res.sendStatus(500);
+    });
+});
+
+router.post("/rse/protocol/delete", async (req, res) => {
+  const payload = req.body.payload;
+
+  await RSE.deleteProtocol(
+    payload.certlocation,
+    payload.server,
+    payload.token,
+    payload.rse,
+    payload.scheme,
+    payload.hostname,
+    payload.port
+  )
+    .then((info) => {
+      console.log(info);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(`[ERROR: /rse/protocol/delete] ${err}`);
+      res.sendStatus(500);
+    });
+});
+
+router.post("/rse/protocol/add", async (req, res) => {
+  const payload = req.body.payload;
+
+  await RSE.addProtocol(
+    payload.certlocation,
+    payload.server,
+    payload.token,
+    payload.rse,
+    payload.scheme,
+    payload.protocolObj
+  )
+    .then(() => res.sendStatus(200))
+    .catch((err) => {
+      console.log(`[ERROR: /rse/protocol/update | add] ${err}`);
+      res.sendStatus(500);
     });
 });
 

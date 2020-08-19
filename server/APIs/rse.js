@@ -1,6 +1,7 @@
 const axios = require("axios");
 const https = require("https");
 const fs = require("fs");
+const superagent = require("superagent");
 const packageJSON = require("../../package.json");
 
 /**
@@ -154,14 +155,92 @@ async function accountLimits(certlocation, server, token, rse) {
     );
 }
 
-function processResponseData(data){
-  const res = []
-  const processedData = data.trim().split("\n")
-  for (let i = 0; i < processedData.length; i++){
-    res.push(JSON.parse(processedData[i]))
+/**
+ * Converts the String type response recieved from Rucio Server to parsable JSON.
+ * @param {String} data
+ */
+function processResponseData(data) {
+  const res = [];
+  const processedData = data.trim().split("\n");
+  for (let i = 0; i < processedData.length; i++) {
+    res.push(JSON.parse(processedData[i]));
   }
-  
-  return res
+
+  return res;
+}
+
+/**
+ *  Attempts to DELETE a protocol for an RSE.
+ * @param {String} certlocation
+ * @param {{name: String, host: String, auth: String}} server
+ * @param {String} token
+ * @param {String} rse RSE Name
+ * @param {String} scheme RSE Protocol Scheme
+ * @param {String} hostname RSE Protocol Hostname
+ * @param {String} port RSE Protocol PORT
+ */
+async function deleteProtocol(
+  certlocation,
+  server,
+  token,
+  rse,
+  scheme,
+  hostname,
+  port
+) {
+  const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
+  console.log(rse, scheme, hostname, port);
+  return axios
+    .delete(
+      `https://${server.host}/rses/${rse}/protocols/${scheme}/${hostname}/${port}`,
+      {
+        headers: {
+          "User-Agent": `rucio-desktop/${packageJSON.version}`,
+          "X-Rucio-Auth-Token": token,
+        },
+        httpsAgent,
+      }
+    )
+    .then(() => {
+      console.log(
+        `[INFO] Deleted Protocol ${scheme}-${hostname}:${port} for ${rse}`
+      );
+    });
+}
+
+/**
+ * Attempts to add a new protocol with `scheme` for given `rse`.
+ * @param {String} certlocation
+ * @param {{name: String, host: String, auth: String}} server
+ * @param {String} token
+ * @param {String} rse RSE name
+ * @param {String} scheme RSE Protocol Scheme
+ * @param {Object} protocolObj RSE Protocol Parameters
+ */
+async function addProtocol(
+  certlocation,
+  server,
+  token,
+  rse,
+  scheme,
+  protocolObj
+) {
+  return superagent
+    .post(`https://${server.host}/rses/${rse}/protocols/${scheme}`)
+    .set("X-Rucio-Auth-Token", token)
+    .set("User-Agent", `rucio-desktop/${packageJSON.version}`)
+    .ca(fs.readFileSync(certlocation))
+    .send(protocolObj)
+    .ok((res) => {
+      console.log(`[INFO] Added new protocol with scheme=${scheme} for ${rse}`);
+      return res.status === 201;
+    })
+    .on("error", (res) => {
+      console.log(res);
+      res.status === 401
+        ? console.log("[ERROR] Invalid Credentials")
+        : console.log("[ERROR] Internal Server Error");
+    });
 }
 
 module.exports = {
@@ -172,5 +251,7 @@ module.exports = {
   usage,
   limits,
   accountLimits,
-  processResponseData
+  processResponseData,
+  deleteProtocol,
+  addProtocol,
 };
