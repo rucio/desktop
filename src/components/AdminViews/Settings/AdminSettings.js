@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     maxWidth: "60%",
     paddingTop: 10,
     paddingBottom: 10,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
   },
   title: {
     fontSize: 16,

@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     width: "100%",
     textAlign: "left",
     padding: 12,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
     color: grey[600],
   },
@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
   title: {
     width: "100%",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
     fontSize: 24,
     padding: 5,

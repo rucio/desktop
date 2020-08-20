@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
   title: {
     color: grey[800],
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 18,
   },
 });

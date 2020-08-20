@@ -10,7 +10,7 @@ import { addConfig, delConfig, getConfig } from "../../Utils/Config";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: theme.typography.pxToRem(15),
     minWidth: "100%",
   },

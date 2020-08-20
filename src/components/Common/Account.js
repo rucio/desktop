@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   root: {
     width: "inherit",
     textAlign: "left",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     overflow: "auto",
   },
   title: {
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   },
   logoutBtn: {
     marginTop: 10,
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     color: red[500],
   },
   hintSub:{

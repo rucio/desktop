@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     display: "flex",
     flexDirection: "column",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     padding: 20,
     flex: "1 0 60%",
   },
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     height: "inherit"
   },
   tab: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
   },
 }));

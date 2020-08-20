@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    font: "Cern",
+    fontFamily: "Inter",
     height: "100%",
     width: "100%"
   },

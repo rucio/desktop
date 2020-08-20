@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   root: {
     width: "calc(100% - 48px)",
     textAlign: "left",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
   },
   title: {
     fontSize: 32,

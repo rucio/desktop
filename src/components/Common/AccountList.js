@@ -10,7 +10,7 @@ import AccountDetails from "./AccountDetails";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     paddingTop: 10,
     paddingBottom: 30,
     fontSize: 16,

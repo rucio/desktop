@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   root: {
     width: "inherit",
     textAlign: "left",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     overflow: "auto",
   },
   title: {

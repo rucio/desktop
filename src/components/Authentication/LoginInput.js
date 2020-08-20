@@ -10,7 +10,7 @@ import VpnKeyIcon from "@material-ui/icons/VpnKey";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     marginTop: theme.spacing(5),
     display: "flex",
     flexDirection: "column",

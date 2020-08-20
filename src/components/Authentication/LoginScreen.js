@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
   },
   title: {
     fontSize: 28,
@@ -30,13 +30,13 @@ const useStyles = makeStyles({
     justifyContent: "space-around",
   },
   text: {
-    font: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     opacity: 0.6,
     marginTop: 50,
   },
   buttonPrimary: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 12,
     fontWeight: 600,
     padding: 5,

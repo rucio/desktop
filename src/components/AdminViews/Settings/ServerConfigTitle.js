@@ -9,7 +9,7 @@ import AlertSnackbar from "../../Utils/Snackbar";
 
 const useStyles = makeStyles({
   title: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
     fontSize: 14,
     color: "#000000",

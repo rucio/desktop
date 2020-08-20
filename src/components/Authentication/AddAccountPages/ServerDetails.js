@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
   },
   title: {
     fontSize: 28,
@@ -41,12 +41,12 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(3, 0, 2),
   },
   buttonPrimary: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     fontWeight: 600,
   },
   buttonSecondary: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontSize: 14,
     fontWeight: 400,
     marginLeft: 5,

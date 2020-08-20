@@ -5,7 +5,7 @@ import { serverStatus } from "../Utils/Servers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     paddingTop: 10,
     paddingBottom: 10,
     fontSize: 20,

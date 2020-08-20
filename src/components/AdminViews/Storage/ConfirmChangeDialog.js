@@ -14,10 +14,10 @@ import { green, red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   root: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
   },
   title: {
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     margin: "0.6rem",
   },
   message: {

@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     padding: "12px 36px",
     lineHeight: 1.5,
     letterSpacing: "0.001em",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
     fontWeight: 500,
     color: "#fffafa",
     fontSize: 16,

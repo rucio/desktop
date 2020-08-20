@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
   },
   pageTitle: {
     textAlign: "left",

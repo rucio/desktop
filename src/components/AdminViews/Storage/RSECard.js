@@ -10,7 +10,7 @@ import StorageRoundedIcon from "@material-ui/icons/StorageRounded";
 
 const useStyles = makeStyles({
   root: {
-    font: "Cern",
+    fontFamily: "Inter",
     flex: "1 0 256px",
     backgroundColor: (props) => (props.selected ? "#2c3c79" : "#fbfcfe"),
     borderRadius: 16.18,

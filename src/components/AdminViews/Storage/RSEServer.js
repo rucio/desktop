@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
   },
   text: {
-    font: "Cern",
+    fontFamily: "Inter",
     fontSize: 18,
     fontWeight: 500,
     color: "#000000",

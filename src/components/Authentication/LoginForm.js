@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-around",
-    fontFamily: "Cern",
+    fontFamily: "Inter",
   },
   header: {
     display: "flex",
