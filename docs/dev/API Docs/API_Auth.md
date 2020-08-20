@@ -5,11 +5,13 @@ Rucio Desktop uses Rucio REST API wrappers to retrieve the token from Rucio serv
 Both of these strategies are wrapped into a single endpoint running at http://localhost:3004. The API supports multi-token retreival according to the `authtype` key provided to the request body.
 
 
-### Endpoints
+| Endpoints | Short Description |
+| --------- | ----------------- |
+| [/login](#post-login) | Get `X-Rucio-Auth-Token` from Rucio Servers |
 
-```HTTP
-POST /login
-```
+---
+
+### `POST /login`
 
 * **Request Body**: JS Object with following keys
 
