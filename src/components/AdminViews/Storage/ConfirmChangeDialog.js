@@ -90,7 +90,7 @@ function ConfirmChangeDialog(props) {
         >
           Cancel
         </Button>
-        <Button color="primary">Confirm Changes</Button>
+        <Button color="primary" onClick={props.handleConfirm}>Confirm Changes</Button>
       </DialogActions>
     </Dialog>
   );
@@ -99,6 +99,7 @@ function ConfirmChangeDialog(props) {
 ConfirmChangeDialog.propTypes = {
   open: PropTypes.bool,
   handleClose: PropTypes.func,
+  handleConfirm: PropTypes.func,
   changes: PropTypes.object,
   initialValues: PropTypes.array,
   currentIndex: PropTypes.number,

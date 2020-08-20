@@ -4,8 +4,8 @@ import { CircularProgress, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    padding: 10,
-    margin: 5,
+    padding: "0.8rem",
+    margin: "0.5rem",
     fontFamily: "Inter",
     display: "flex",
     flexDirection: "column",
@@ -13,11 +13,11 @@ const useStyles = makeStyles({
     justifyContent: "center"
   },
   spinner: {
-    margin: 20,
+    margin: "1.5rem",
     color: "#3e55ab",
   },
   message: {
-    fontSize: 14,
+    fontSize: "1rem",
     fontWeight: 500,
     color: "#000000",
     opacity: 0.8

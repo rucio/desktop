@@ -95,7 +95,7 @@ function RSEInfo(props) {
           value={value}
           moreDetails={props.moreDetails}
         />
-        <TabProtocol protocols={props.details.protocols} value={value} />
+        <TabProtocol protocols={props.details.protocols} rse={props.details.rse} value={value} />
         <TabPanel value={value} index={2}>
           Attributes
         </TabPanel>

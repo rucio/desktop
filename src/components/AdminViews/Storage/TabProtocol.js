@@ -10,6 +10,9 @@ import {
 } from "@material-ui/core";
 import ColoredLine from "../../Utils/ColoredLine";
 import ConfirmChangeDialog from "./ConfirmChangeDialog";
+import { updateProtocol } from "../../Utils/Storage";
+import { useDispatch } from "react-redux";
+import AlertSnackbar from "../../Utils/Snackbar";
 
 const useStyles = makeStyles({
   inputLabel: {
@@ -38,14 +41,69 @@ function TabProtocol(props) {
   const [changes, setChanges] = React.useState({});
   const [nextProps, setNextProps] = React.useState(props);
   const [open, setOpen] = React.useState(false);
+  const [status, setStatus] = React.useState(0);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     setNextProps({});
     setNextProps(props);
     setValues(null);
     setCurrentIndex(null);
-    setChanges({})
+    setChanges({});
   }, [props]);
+
+  function handleAlertBar(status) {
+    switch (status) {
+      case 200:
+        return (
+          <AlertSnackbar
+            severity="success"
+            message={`RSE Settings Updated!`}
+            onExited={() => setStatus(0)}
+          />
+        );
+      case 401:
+        return (
+          <AlertSnackbar
+            severity="warning"
+            message={`Cannot Authenticate`}
+            onExited={() => setStatus(0)}
+          />
+        );
+      case 500:
+        return (
+          <AlertSnackbar
+            severity="error"
+            message={`Error updating values!`}
+            onExited={() => setStatus(0)}
+          />
+        );
+      default:
+        return <div />;
+    }
+  }
+
+  const handleUpdate = async () => {
+    dispatch({ type: "LOADING_TRUE" });
+    const scheme = initialProtocols[currentIndex].scheme;
+    const hostname = initialProtocols[currentIndex].hostname;
+    const port = initialProtocols[currentIndex].port;
+    const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+    
+    await updateProtocol(
+      currentAccount,
+      "rucio-server-x509",
+      props.rse,
+      scheme,
+      hostname,
+      port,
+      values
+    )
+      .then((res) => setStatus(res.status))
+      .then(dispatch({ type: "LOADING_FALSE" }))
+      .then(setOpen(false))
+      .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
+  };
 
   const handleChange = (event, index) => {
     setNextProps({
@@ -206,8 +264,10 @@ function TabProtocol(props) {
         initialValues={initialProtocols}
         currentIndex={currentIndex !== null ? currentIndex : 0}
         changes={changes}
+        handleConfirm={() => handleUpdate()}
         handleClose={() => setOpen(false)}
       />
+      {handleAlertBar(status)}
     </React.Fragment>
   );
 }
@@ -215,6 +275,7 @@ function TabProtocol(props) {
 TabProtocol.propTypes = {
   value: PropTypes.any.isRequired,
   protocols: PropTypes.array,
+  rse: PropTypes.string,
 };
 
 export default TabProtocol;
