@@ -6,13 +6,13 @@ The Storage feature of Rucio Desktop heavily relies on Rucio REST APIs for RSEs 
 | Endpoints | Short Description |
 | --------- | ----------------- |
 | [/rses](#post-rses) | Get All RSEs |
-| [/rse/info](#post-rse-info) |  Get Info for Particular RSE |
-| [/rse/attr](#post-rse-attr) |  Get RSE Attributes |
-| [/rse/protocols](#post-rse-protocols) | Get Protocols for an RSE |
-| [/rse/usage](#post-rse-usage) | Get Usage Info for an RSE |
-| [/rse/protocol/add](#post-rse-protocol-add) | Add a new Protocol for RSE |
-| [/rse/protocol/delete](#post-rse-protocol-delete) | Delete Protocol for an RSE |
-| [/rse/protocol/update](#post-rse-protocol-update) | Update a protocol with given parameters.
+| [/rse/info](#post-rseinfo) |  Get Info for Particular RSE |
+| [/rse/attr](#post-rseattr) |  Get RSE Attributes |
+| [/rse/protocols](#post-rseprotocols) | Get Protocols for an RSE |
+| [/rse/usage](#post-rseusage) | Get Usage Info for an RSE |
+| [/rse/protocol/add](#post-rseprotocoladd) | Add a new Protocol for RSE |
+| [/rse/protocol/delete](#post-rseprotocoldelete) | Delete Protocol for an RSE |
+| [/rse/protocol/update](#post-rseprotocolupdate) | Update a protocol with given parameters.
 
 
 ---
