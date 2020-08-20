@@ -1,37 +1,37 @@
 @font-face {
-  font-family: "Inter";
-  font: "Inter Light";
-  src: url("./fonts/Inter-Light.woff") format("woff"),
-    /* Modern Browsers */ url("./fonts/Inter-Light.woff2") format("woff2"); /* Modern Browsers */
-  font-weight: 200;
-  font-style: normal;
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("./fonts/Inter-Light.woff2?v=3.14") format("woff2"),
+       url("./fonts/Inter-Light.woff?v=3.14") format("woff");
 }
 
 @font-face {
-  font-family: "Inter";
-  font: "Inter Regular";
-  src: url("./fonts/Inter-Regular.woff") format("woff"),
-    /* Modern Browsers */ url("./fonts/Inter-Regular.woff2") format("woff2"); /* Modern Browsers */
+  font-family: 'Inter';
+  font-style:  normal;
   font-weight: 400;
-  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/Inter-Regular.woff2?v=3.14") format("woff2"),
+       url("./fonts/Inter-Regular.woff?v=3.14") format("woff");
 }
 
 @font-face {
-  font-family: "Inter";
-  font: "Inter Medium";
-  src: url("./fonts/Inter-Medium.woff") format("woff"),
-    /* Modern Browsers */ url("./fonts/Inter-Medium.woff2") format("woff2"); /* Modern Browsers */
+  font-family: 'Inter';
+  font-style:  normal;
   font-weight: 500;
-  font-style: normal;
+  font-display: swap;
+  src: url("./fonts/Inter-Medium.woff2?v=3.14") format("woff2"),
+       url("./fonts/Inter-Medium.woff?v=3.14") format("woff");
 }
 
 @font-face {
-  font-family: "Inter";
-  font: "Inter Bold";
-  src: url("./fonts/Inter-Bold.woff") format("woff"),
-    /* Modern Browsers */ url("./fonts/Inter-Bold.woff2") format("woff2"); /* Modern Browsers */
-  font-weight: 600;
-  font-style: normal;
+  font-family: 'Inter';
+  font-style:  normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("./fonts/Inter-Bold.woff2?v=3.14") format("woff2"),
+       url("./fonts/Inter-Bold.woff?v=3.14") format("woff");
 }
 
 html {
@@ -41,7 +41,7 @@ html {
 body {
   margin: 0;
   width: 100%;
-  font-family: "Cern", sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
