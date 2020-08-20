@@ -97,7 +97,8 @@ function TabProtocol(props) {
       scheme,
       hostname,
       port,
-      values
+      values,
+      initialProtocols[currentIndex]
     )
       .then((res) => setStatus(res.status))
       .then(dispatch({ type: "LOADING_FALSE" }))

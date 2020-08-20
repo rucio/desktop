@@ -149,10 +149,11 @@ export async function updateProtocol(
   scheme,
   hostname,
   port,
-  protocolObj
+  protocolObj,
+  initialValues,
 ) {
   const [cfg] = getAccountConfig(account, server);
-    
+
   const serverObj = {
     name: cfg.server_name,
     host: cfg.rucio_host,
@@ -168,6 +169,7 @@ export async function updateProtocol(
     hostname: hostname,
     port: port,
     protocolObj: protocolObj,
+    initialValues: initialValues
   };
 
   try {
