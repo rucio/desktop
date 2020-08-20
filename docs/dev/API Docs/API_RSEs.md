@@ -359,7 +359,7 @@ Other Response Codes:
 
 ---
 
-### `POST /rse/protocols/add`
+### `POST /rse/protocol/add`
 
 * **Usage** : Adds a new Protocol for a given `rse`
 
@@ -407,7 +407,7 @@ const payload = {
 
 ---
 
-### `POST /rse/protocols/delete`
+### `POST /rse/protocol/delete`
 
 * **Usage** : Deletes an existing Protocol for a given `rse`
 
@@ -458,7 +458,7 @@ const payload = {
 
 ---
 
-### `POST /rse/protocols/update`
+### `POST /rse/protocol/update`
 
 * **Usage** : Updates values of an existing Protocol for a given `rse`
 
