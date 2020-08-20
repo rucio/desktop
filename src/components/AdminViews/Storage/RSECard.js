@@ -48,7 +48,7 @@ const useStyles = makeStyles({
     paddingBottom: 10,
   },
   preInfo: {
-    fontWeight: 600,
+    fontWeight: 700,
     color: (props) => (props.selected ? "#b0bbe2" : "#354992"),
   },
   info: {

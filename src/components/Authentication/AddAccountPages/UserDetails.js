@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 28,
-    fontWeight: 200,
+    fontWeight: 300,
     padding: 20,
     margin: 50,
     marginBottom: 0,
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   buttonPrimary: {
     fontFamily: "Inter",
     fontSize: 14,
-    fontWeight: 600,
+    fontWeight: 700,
   },
   buttonSecondary: {
     fontFamily: "Inter",

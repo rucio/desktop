@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   },
   pageTitle: {
     textAlign: "left",
-    fontWeight: 200,
+    fontWeight: 300,
     fontSize: 48,
     opacity: 0.85,
     width: "inherit",

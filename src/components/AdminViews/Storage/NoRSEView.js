@@ -13,7 +13,7 @@ const useStyles = makeStyles({
   },
   h1: {
     fontSize: "1.2rem",
-    fontWeight: 600,
+    fontWeight: 700,
     color: "#000000",
     opacity: 0.6,
   },

@@ -14,7 +14,7 @@ import {
 
 const useStyles = makeStyles({
   preInfo: {
-    fontWeight: 600,
+    fontWeight: 700,
     color: "#354992",
     marginRight: 10,
   },
@@ -27,12 +27,18 @@ const useStyles = makeStyles({
     marginBottom: "1rem",
   },
   textfield: {
+    font: "Inter",
     width: "50%",
     marginBottom: 20,
   },
   inputLabel: {
+    fontFamily: "Inter",
     marginBottom: 10,
     color: "#354992",
+  },
+  label: {
+    paddingRight: 10,
+    fontFamily: "Inter",
   },
 });
 
@@ -149,6 +155,7 @@ function TabGeneral(props) {
               onChange={handleChange}
             />
           }
+          className={classes.label}
           label="Volatile"
         />
         <FormControlLabel
@@ -162,6 +169,7 @@ function TabGeneral(props) {
               onChange={handleChange}
             />
           }
+          className={classes.label}
           label="Non-Volatile"
         />
       </FormGroup>
@@ -177,6 +185,7 @@ function TabGeneral(props) {
               onChange={handleChange}
             />
           }
+          className={classes.label}
           label="Deterministic"
         />
         <FormControlLabel
@@ -190,6 +199,7 @@ function TabGeneral(props) {
               onChange={handleChange}
             />
           }
+          className={classes.label}
           label="Non-Deterministic"
         />
       </FormGroup>
@@ -198,7 +208,7 @@ function TabGeneral(props) {
       </InputLabel>
       <FormGroup row style={{ paddingBottom: 16 }}>
         <FormControlLabel
-          style={{ paddingRight: 10 }}
+          className={classes.label}
           control={
             <Checkbox
               checked={JSON.parse(nextProps.details.availability_read)}
@@ -212,7 +222,7 @@ function TabGeneral(props) {
           label="Read"
         />
         <FormControlLabel
-          style={{ paddingRight: 10 }}
+          className={classes.label}
           control={
             <Checkbox
               checked={JSON.parse(nextProps.details.availability_write)}
@@ -226,7 +236,7 @@ function TabGeneral(props) {
           label="Write"
         />
         <FormControlLabel
-          style={{ paddingRight: 10 }}
+          className={classes.label}
           control={
             <Checkbox
               checked={JSON.parse(nextProps.details.availability_delete)}
@@ -240,7 +250,12 @@ function TabGeneral(props) {
           label="Delete"
         />
       </FormGroup>
-      <Button variant="contained" color="primary" disabled={values === null} onClick={() => console.log("Trigger Bulk Update")}>
+      <Button
+        variant="contained"
+        color="primary"
+        disabled={values === null}
+        onClick={() => console.log("Trigger Bulk Update")}
+      >
         Update Settings
       </Button>
     </TabPanel>

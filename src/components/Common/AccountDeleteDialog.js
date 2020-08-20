@@ -20,8 +20,8 @@ function AccountDeleteDialog(props) {
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Are you sure you want to delete account{" "}
-            <span style={{ fontWeight: 600 }}>{props.account}</span> for{" "}
-            <span style={{ fontWeight: 600 }}>{props.server}</span> ?
+            <span style={{ fontWeight: 700 }}>{props.account}</span> for{" "}
+            <span style={{ fontWeight: 700 }}>{props.server}</span> ?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

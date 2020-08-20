@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   h1: {
     fontSize: "1.5rem",
-    fontWeight: 600,
+    fontWeight: 700,
     color: "#000000",
     opacity: 0.8,
     marginBottom: 10,
