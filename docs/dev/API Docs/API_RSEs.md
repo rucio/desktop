@@ -4,10 +4,11 @@
 The Storage feature of Rucio Desktop heavily relies on Rucio REST APIs for RSEs or Rucio Storage Elements for performing major CRUD operations for RSE Settings, Attributes, and Protocols. The RSE APIs are the wrappers around the Rucio REST APIs and provide simplified `POST` Requests to http://localhost:3004.
 
 ### Endpoints
+<!--ts-->
+[/rses](#post-/rses)
+<!--te-->
 
-```HTTP
-POST /rses
-```
+#### `POST /rses`
 
 * **Usage** : Retrieves an array of Rucio Storage Elements for a Rucio `server`.
 
@@ -354,5 +355,164 @@ Other Response Codes:
 * **200**: SUCCESS
 * **401**: Invalid Credentials
 * **500**: Internal Server Error (or Application Error)
+
+---
+
+```HTTP
+POST /rse/protocols/add
+```
+
+* **Usage** : Adds a new Protocol for a given `rse`
+
+* **Request Body**: JS Object with following keys
+
+```JS
+
+const payload = {
+  certlocation: String,
+  server: {
+    name: String,
+    host: String,
+  },
+  token: String,
+  rse: String,
+  scheme: String,
+  protocolObj: Object,
+};
+
+```
+
+`certlocation` (Type: String) : Location of the CA_Cert issued by Rucio. Used to make HTTPS requests.
+
+`server` (Type: Object) : Server Details `{name, host}`. 
+
+* `name` key should be the name specified in `server_name` key of Account Configurations at the time of adding a new account.
+
+* `host` should be of String type, containing the Server Hostname.
+
+`token` (Type: String) : Holds the value for `X-Rucio-Auth-Token` received for the `server` at time of login.
+
+`rse` (Type: String) : Rucio Storage Element (RSE) name to get Protocols.
+
+`scheme` (Type: String) : Protocol Scheme. Should be one of the schemes mentioned [here](https://github.com/rucio/rucio/blob/master/lib/rucio/common/constants.py#L28)
+
+`protocolObj` (Type: Object) : The Object containing protocol keys like `hostname`, `scheme`, `port` and other values.
+
+* **Response**: 
+
+**200**: SUCCESS
+
+**401**: Invalid Credentials
+
+**500**: Internal Server Error (or Application Error)
+
+---
+
+```HTTP
+POST /rse/protocols/delete
+```
+
+* **Usage** : Deletes an existing Protocol for a given `rse`
+
+* **Request Body**: JS Object with following keys
+
+```JS
+
+const payload = {
+  certlocation: String,
+  server: {
+    name: String,
+    host: String,
+  },
+  token: String,
+  rse: String,
+  scheme: String,
+  hostname: String,
+  port: String
+};
+
+```
+
+`certlocation` (Type: String) : Location of the CA_Cert issued by Rucio. Used to make HTTPS requests.
+
+`server` (Type: Object) : Server Details `{name, host}`. 
+
+* `name` key should be the name specified in `server_name` key of Account Configurations at the time of adding a new account.
+
+* `host` should be of String type, containing the Server Hostname.
+
+`token` (Type: String) : Holds the value for `X-Rucio-Auth-Token` received for the `server` at time of login.
+
+`rse` (Type: String) : Rucio Storage Element (RSE) name to get Protocols.
+
+`scheme` (Type: String) : Protocol Scheme. Should be one of the schemes mentioned [here](https://github.com/rucio/rucio/blob/master/lib/rucio/common/constants.py#L28)
+
+`hostname` (Type: String) : Protocol hostname value
+
+`port` (Type: String or number) : Protocol port value
+
+* **Response**: 
+
+**200**: SUCCESS
+
+**401**: Invalid Credentials
+
+**500**: Internal Server Error (or Application Error)
+
+---
+
+```HTTP
+POST /rse/protocols/update
+```
+
+* **Usage** : Updates values of an existing Protocol for a given `rse`
+
+* **Request Body**: JS Object with following keys
+
+```JS
+
+const payload = {
+  certlocation: String,
+  server: {
+    name: String,
+    host: String,
+  },
+  token: String,
+  rse: String,
+  scheme: String,
+  hostname: String,
+  port: String,
+  protocolObj: Object
+};
+
+```
+
+`certlocation` (Type: String) : Location of the CA_Cert issued by Rucio. Used to make HTTPS requests.
+
+`server` (Type: Object) : Server Details `{name, host}`. 
+
+* `name` key should be the name specified in `server_name` key of Account Configurations at the time of adding a new account.
+
+* `host` should be of String type, containing the Server Hostname.
+
+`token` (Type: String) : Holds the value for `X-Rucio-Auth-Token` received for the `server` at time of login.
+
+`rse` (Type: String) : Rucio Storage Element (RSE) name to get Protocols.
+
+`scheme` (Type: String) : Protocol Scheme. Should be one of the schemes mentioned [here](https://github.com/rucio/rucio/blob/master/lib/rucio/common/constants.py#L28)
+
+`hostname` (Type: String) : Protocol hostname value
+
+`port` (Type: String or number) : Protocol port value
+
+`protocolObj` (Type: Object) : The Object containing new protocol keys and values like `hostname`, `scheme`, `port` and other values.
+
+* **Response**: 
+
+**200**: SUCCESS
+
+**401**: Invalid Credentials
+
+**500**: Internal Server Error (or Application Error)
 
 ---
