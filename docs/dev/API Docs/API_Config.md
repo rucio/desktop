@@ -112,3 +112,47 @@ const payload = {
 **401** Unauthorized – Invalid Auth Token.
 
 **500** Internal Server Error – Internal Error.
+
+---
+
+### `POST /delconfig`
+
+* **Usage** : Deletes a config `{section, option}` for a `server`.
+
+* **Request Body**: JS Object with following keys
+
+```JS
+
+const payload = {
+  certlocation: String,
+  server: {
+    name: String,
+    host: String,
+  },
+  token: String,
+  values: {
+    section: String,
+    option: String,
+  },
+};
+
+```
+#### Payload Keys
+
+`certlocation` (Type: String) : Location of the CA_Cert issued by Rucio. Used to make HTTPS requests.
+
+`server` (Type: Object) : Server Details `{name, host}`. 
+
+* `name` key should be the name specified in `server_name` key of Account Configurations at the time of adding a new account.
+
+* `host` should be of String type, containing the Server Hostname.
+
+`values` (Type: Object) : Values to delete from the server config.
+
+* **Response**: 
+
+**200** OK – Config Added.
+
+**401** Unauthorized – Invalid Auth Token.
+
+**500** Internal Server Error – Internal Error.
