@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 });
 
-function TABProtocol(props) {
+function TabProtocol(props) {
   const classes = useStyles();
   const initialProtocols = props.protocols;
   const [currentIndex, setCurrentIndex] = React.useState(null);
@@ -212,9 +212,9 @@ function TABProtocol(props) {
   );
 }
 
-TABProtocol.propTypes = {
+TabProtocol.propTypes = {
   value: PropTypes.any.isRequired,
   protocols: PropTypes.array,
 };
 
-export default TABProtocol;
+export default TabProtocol;

@@ -4,7 +4,7 @@ import { Card, makeStyles, AppBar, Tabs, Tab } from "@material-ui/core";
 import NoRSEView from "./NoRSEView";
 import TabPanel from "./RSETabPanel";
 import TabGeneral from "./TabGeneral";
-import TABProtocol from "./TABProtocol";
+import TabProtocol from "./TabProtocol";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -95,7 +95,7 @@ function RSEInfo(props) {
           value={value}
           moreDetails={props.moreDetails}
         />
-        <TABProtocol protocols={props.details.protocols} value={value} />
+        <TabProtocol protocols={props.details.protocols} value={value} />
         <TabPanel value={value} index={2}>
           Attributes
         </TabPanel>
