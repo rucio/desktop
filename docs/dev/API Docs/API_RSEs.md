@@ -3,12 +3,21 @@
 
 The Storage feature of Rucio Desktop heavily relies on Rucio REST APIs for RSEs or Rucio Storage Elements for performing major CRUD operations for RSE Settings, Attributes, and Protocols. The RSE APIs are the wrappers around the Rucio REST APIs and provide simplified `POST` Requests to http://localhost:3004.
 
-### Endpoints
-<!--ts-->
-[/rses](#post-/rses)
-<!--te-->
+| Endpoints | Short Description |
+| --------- | ----------------- |
+| [/rses](#post-rses) | Get All RSEs |
+| [/rse/info](#post-rse-info) |  Get Info for Particular RSE |
+| [/rse/attr](#post-rse-attr) |  Get RSE Attributes |
+| [/rse/protocols](#post-rse-protocols) | Get Protocols for an RSE |
+| [/rse/usage](#post-rse-usage) | Get Usage Info for an RSE |
+| [/rse/protocol/add](#post-rse-protocol-add) | Add a new Protocol for RSE |
+| [/rse/protocol/delete](#post-rse-protocol-delete) | Delete Protocol for an RSE |
+| [/rse/protocol/update](#post-rse-protocol-update) | Update a protocol with given parameters.
 
-#### `POST /rses`
+
+---
+
+### `POST /rses`
 
 * **Usage** : Retrieves an array of Rucio Storage Elements for a Rucio `server`.
 
@@ -94,9 +103,7 @@ All response codes can be found in Rucio's `GET /rses` Documentation [here](http
 
 ---
 
-```HTTP
-POST /rse/info
-```
+### `POST /rse/info`
 
 * **Usage** : Retrieves an object containing Settings and Protocols for a given `rse`
 
@@ -180,9 +187,7 @@ Other Response Codes:
 
 ---
 
-```HTTP
-POST /rse/attr
-```
+### `POST /rse/attr`
 
 * **Usage** : Retrieves an object containing Attributes for a given `rse`
 
@@ -232,9 +237,7 @@ Other Response Codes:
 
 ---
 
-```HTTP
-POST /rse/protocols
-```
+### `POST /rse/protocols`
 
 * **Usage** : Retrieves an object containing Protocols for a given `rse`
 
@@ -297,9 +300,7 @@ Other Response Codes:
 
 ---
 
-```HTTP
-POST /rse/usage
-```
+### `POST /rse/usage`
 
 * **Usage** : Retrieves an object containing Usage info for a given `rse`
 
@@ -358,9 +359,7 @@ Other Response Codes:
 
 ---
 
-```HTTP
-POST /rse/protocols/add
-```
+### `POST /rse/protocols/add`
 
 * **Usage** : Adds a new Protocol for a given `rse`
 
@@ -408,9 +407,7 @@ const payload = {
 
 ---
 
-```HTTP
-POST /rse/protocols/delete
-```
+### `POST /rse/protocols/delete`
 
 * **Usage** : Deletes an existing Protocol for a given `rse`
 
@@ -461,9 +458,7 @@ const payload = {
 
 ---
 
-```HTTP
-POST /rse/protocols/update
-```
+### `POST /rse/protocols/update`
 
 * **Usage** : Updates values of an existing Protocol for a given `rse`
 
