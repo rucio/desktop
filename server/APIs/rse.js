@@ -189,7 +189,7 @@ async function deleteProtocol(
   port
 ) {
   const httpsAgent = new https.Agent({ ca: fs.readFileSync(certlocation) });
-  console.log(rse, scheme, hostname, port);
+
   return axios
     .delete(
       `https://${server.host}/rses/${rse}/protocols/${scheme}/${hostname}/${port}`,

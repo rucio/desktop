@@ -1,5 +1,6 @@
 const express = require("express");
 const RSE = require("../APIs/rse");
+const changelog = require("../utils/rse-versions");
 const router = express.Router();
 
 router.post("/rses", async (req, res) => {
@@ -132,6 +133,7 @@ router.post("/rse/protocol/update", async (req, res) => {
       )
         .then(() => {
           console.log("[INFO] RSE Protocol Updated.");
+          changelog.updateChangelog(req.body.payload, "protocol");
           res.sendStatus(200);
         })
         .catch((err) => {
