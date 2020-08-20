@@ -82,9 +82,9 @@ Make sure that the `node` version > 12.16 (LTS) or is equal to the current relea
 Fork the repository and then clone your private repository directly on your system.
 
 ```shell
-$ git clone https://github.com/<your-username>/rocinante.git
+$ git clone https://github.com/<your-username>/desktop.git
 $ cd rocinante
-$ git remote add upstream git@github.com:viveknigam3003/rocinante.git 
+$ git remote add upstream https://github.com/rucio/desktop.git
 $ git fetch --all
 ```
 
