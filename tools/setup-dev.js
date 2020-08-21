@@ -5,9 +5,12 @@ const packageJSON = require("../package.json");
 console.log(`\n***** Rucio Desktop v${packageJSON.version} Development Setup *****\n`);
 console.log(`-> Installing critical dependencies...`);
 
-execSync("npm i --save listr execa", (err) => {
-  if (err) console.log(err);
-  else console.log("-> Completed pre-setup tasks!");
+execSync("npm i --save listr execa", (err, stdout, stderr) => {
+  if (err) console.log(err) 
+  else {
+    console.log(stdout);
+    console.log(stderr);
+    console.log("\n-> Completed pre-setup tasks!");}
 });
 
 const runTasks = () => {
