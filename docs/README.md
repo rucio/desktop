@@ -17,7 +17,7 @@ v0.1.2
     * [Storage](#storage)
     * [Settings](#settings)
     * [Accounts](#accounts)
-* [Developer Documentation]()
+* [Developer Documentation](https://github.com/rucio/desktop/tree/master/docs/dev)
 * [Support](#support)
 * [Extra Notes](#extra-notes)
 
