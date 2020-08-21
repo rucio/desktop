@@ -101,7 +101,6 @@ function TabGeneral(props) {
     dispatch({ type: "LOADING_TRUE" });
     const currentAccount = localStorage.getItem("CURR_ACCOUNT");
 
-    console.log(values, initialValues);
     await updateRSESettings(
       currentAccount,
       "rucio-server-x509",

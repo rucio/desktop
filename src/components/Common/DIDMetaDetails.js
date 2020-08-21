@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   details: {
     display: "flex",
     flexDirection: "column",
@@ -21,13 +21,17 @@ const useStyles = makeStyles(theme => ({
     fontSize: theme.typography.pxToRem(14),
   },
   itemLeft: {
+    fontFamily: "Inter",
+    fontSize: theme.typography.pxToRem(18),
     marginRight: theme.typography.pxToRem(8),
     color: "#3e55ab",
     fontWeight: 500,
   },
   itemRight: {
-      color: grey[800]
-  }
+    fontFamily: "Inter",
+    fontSize: theme.typography.pxToRem(18),
+    color: grey[800],
+  },
 }));
 
 function DIDMetaDetails(props) {
@@ -57,7 +61,7 @@ function DIDMetaDetails(props) {
       case "is_open":
         return "Open";
       case "length":
-        return "Length"
+        return "Length";
       default:
         return attr;
     }

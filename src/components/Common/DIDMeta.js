@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     fontFamily: "Inter",
     fontWeight: 500,
-    fontSize: theme.typography.pxToRem(24),
+    fontSize: theme.typography.pxToRem(32),
     padding: theme.typography.pxToRem(5),
     marginLeft: theme.typography.pxToRem(18),
     color: grey[800],

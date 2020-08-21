@@ -6,7 +6,7 @@ import { lightBlue } from "@material-ui/core/colors";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    fontSize: theme.typography.pxToRem(24),
+    fontSize: theme.typography.pxToRem(32),
     color: lightBlue[400],
     padding: theme.typography.pxToRem(5)
   },

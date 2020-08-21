@@ -9,6 +9,9 @@ const useStyles = makeStyles(theme => ({
   Breadcrumbs: {
     paddingTop: theme.typography.pxToRem(10),
     paddingBottom: theme.typography.pxToRem(20),
+    fontFamily: "Inter",
+    fontWeight: 500,
+    fontSize: theme.typography.pxToRem(16)
   },
   content: {
     width: `calc(100% - 3rem)`,

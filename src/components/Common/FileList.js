@@ -14,7 +14,7 @@ import FileIcons from "./FileIcons";
 import { useSelector, useDispatch } from "react-redux";
 import { getFileMetadata } from "../Utils/Metadata";
 
-const useStyles = makeStyles(theme =>({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: "80%",
     width: "100%",
@@ -92,7 +92,14 @@ function FileList() {
                         align={column.align}
                         onClick={() => renderFileList(row.name)}
                       >
-                        <div style={{ display: "flex", alignItems: "center" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "1rem",
+                            fontFamily: "Inter",
+                          }}
+                        >
                           <FileIcons type={row.type} rowValue={value} />
                           {value}
                         </div>

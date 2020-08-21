@@ -72,7 +72,7 @@ function RenderLayout(props) {
 
 RenderLayout.propTypes = {
   page: PropTypes.string,
-  drawerWidth: PropTypes.number,
+  drawerWidth: PropTypes.string,
 };
 
 export default RenderLayout;
