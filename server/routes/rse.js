@@ -187,4 +187,24 @@ router.post("/rse/protocol/add", async (req, res) => {
     });
 });
 
+router.post("/rse/setting/update", async (req, res) => {
+  const payload = req.body.payload;
+
+  await RSE.updateSettings(
+    payload.certlocation,
+    payload.server,
+    payload.token,
+    payload.rse,
+    payload.params
+  )
+    .then(() => {
+      changelog.updateChangelog(req.body.payload, "settings");
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(`[ERROR: /rse/settings/update] ${err}`);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;
