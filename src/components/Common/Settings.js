@@ -6,7 +6,7 @@ import { makeStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 import packageJSON from "../../../package.json";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     width: "inherit",
     textAlign: "left",
@@ -14,26 +14,27 @@ const useStyles = makeStyles({
     overflow: "auto",
   },
   title: {
-    fontSize: 32,
+    fontSize: theme.typography.pxToRem(32),
     fontWeight: 500,
     color: grey[800],
-    paddingTop: 20,
+    paddingTop: theme.typography.pxToRem(20),
   },
   hint: {
-    fontSize: 16,
+    fontSize: theme.typography.pxToRem(16),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.5,
-    paddingTop: 20
+    paddingTop: theme.typography.pxToRem(20)
   },
   info: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     color: "#000000",
     opacity: 0.8,
-    paddingRight: 10,
-    paddingTop: 10,
+    paddingRight: theme.typography.pxToRem(10),
+    paddingTop: theme.typography.pxToRem(10),
   },
-});
+}));
+
 function Settings() {
   const classes = useStyles();
   const view = localStorage.getItem("viewContext");
@@ -43,7 +44,7 @@ function Settings() {
     <div id="settings-root" className={classes.root}>
       <div id="account-name" className={classes.title}>
         <div className={classes.hint}>Managing settings as</div>
-        <div style={{ paddingTop: 5, paddingBottom: 10 }}>{account}</div>
+        <div style={{ paddingTop: "0.3125rem", paddingBottom: "0.625rem" }}>{account}</div>
       </div>
       {view === "admin" ? <AdminSettings /> : <UserSettings />}
       <div className={classes.hint}>

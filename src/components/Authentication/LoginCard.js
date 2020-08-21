@@ -10,34 +10,34 @@ import SupervisorAccountOutlinedIcon from "@material-ui/icons/SupervisorAccountO
 import { makeStyles } from "@material-ui/core";
 import "../../styles/shadow.css"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   card: {
-    height: 150,
-    width: 200,
-    margin: 20,
-    borderRadius: 8
+    height: theme.typography.pxToRem(150),
+    width: theme.typography.pxToRem(200),
+    margin: theme.typography.pxToRem(20),
+    borderRadius: theme.typography.pxToRem(8)
   },
   cardContent: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    height: 150,
-    width: 200,
-    padding: 20,
-    fontSize: 18,
+    height: theme.typography.pxToRem(150),
+    width: theme.typography.pxToRem(200),
+    padding: theme.typography.pxToRem(20),
+    fontSize: theme.typography.pxToRem(18),
     color: "inherit",
     textDecoration: "none",
   },
   cardIconEnter: {
-    padding: 20,
+    padding: theme.typography.pxToRem(20),
     color: "#3e55ab",
   },
   cardIcon: {
-    padding: 20,
+    padding: theme.typography.pxToRem(20),
     color: "#000000",
   },
-});
+}));
 
 function LoginCard(props) {
   const classes = useStyles();

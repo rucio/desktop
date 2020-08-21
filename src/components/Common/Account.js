@@ -9,7 +9,7 @@ import { purgeAllTokens } from "../Utils/Tokens";
 import { Redirect } from "react-router-dom";
 import { useAuth } from "../Authentication/AuthContext";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: "inherit",
     textAlign: "left",
@@ -17,21 +17,21 @@ const useStyles = makeStyles({
     overflow: "auto",
   },
   title: {
-    fontSize: 32,
+    fontSize: theme.typography.pxToRem(32),
     fontWeight: 500,
     color: grey[800],
-    paddingTop: 30,
-    paddingBottom: 20,
+    paddingTop: theme.typography.pxToRem(30),
+    paddingBottom: theme.typography.pxToRem(20),
   },
   hint: {
-    fontSize: 16,
+    fontSize: theme.typography.pxToRem(16),
     fontWeight: 500,
     color: "#808080",
     display: "flex",
     maxWidth: "50%",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingTop: 10
+    paddingTop: theme.typography.pxToRem(10),
   },
   link: {
     outline: "none",
@@ -40,25 +40,26 @@ const useStyles = makeStyles({
     textDecoration: "none",
   },
   info: {
-    fontSize: 18,
+    fontSize: theme.typography.pxToRem(18),
     color: "#000000",
     opacity: 0.8,
-    paddingRight: 10,
+    paddingRight: theme.typography.pxToRem(10),
   },
   logoutBtn: {
-    marginTop: 10,
+    marginTop: theme.typography.pxToRem(10),
     fontFamily: "Inter",
     color: red[500],
   },
-  hintSub:{
-    fontSize: 14,
+  hintSub: {
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.4,
-    paddingTop: 10,
-    paddingBottom: 10
-  }
-});
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(10),
+  },
+}));
+
 function Account() {
   const classes = useStyles();
   const account = localStorage.getItem("CURR_ACCOUNT");
@@ -86,12 +87,16 @@ function Account() {
             Add New Account
           </a>
         </div>
-        <div className={classes.hintSub}>Manage client configurations for Rucio</div>
+        <div className={classes.hintSub}>
+          Manage client configurations for Rucio
+        </div>
         <AccountConfig />
       </div>
       <div id="logout">
         <div className={classes.hint}>Back to Login page</div>
-        <div className={classes.hintSub}>This will log you out from all Rucio servers</div>
+        <div className={classes.hintSub}>
+          This will log you out from all Rucio servers
+        </div>
         <Button
           className={classes.logoutBtn}
           color="inherit"

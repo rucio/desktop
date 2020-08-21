@@ -12,7 +12,7 @@ import {
 import LoadingSpinner from "../../Utils/LoadingSpinner";
 import { green, red } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "Inter",
   },
@@ -21,12 +21,12 @@ const useStyles = makeStyles({
     margin: "0.6rem",
   },
   message: {
-    fontSize: "1rem",
+    fontSize: theme.typography.pxToRem(16),
     fontWeight: 500,
     opacity: 0.8,
     paddingTop: 0,
     padding: "0.6rem",
-    lineHeight: 1.5,
+    lineHeight: theme.typography.pxToRem(1.5),
   },
   changelog: {
     color: "#000000",
@@ -44,7 +44,7 @@ const useStyles = makeStyles({
     padding: "0.4rem",
     marginBottom: "0.8rem",
   },
-});
+}));
 
 function ConfirmChangeDialog(props) {
   const classes = useStyles();

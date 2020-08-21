@@ -9,15 +9,15 @@ import RSEInfo from "./RSEInfo";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(10),
     display: "flex",
     justifyContent: "space-between",
   },
   list: {
     width: "40%",
-    flex: "1 1 512px",
-    height: `calc(100vh - 256px)`,
+    flex: "1 1 32rem",
+    height: `calc(100vh - 16rem)`,
     overflow: "auto",
     position: "relative",
     [theme.breakpoints.down("md")]: {
@@ -25,11 +25,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   hint: {
-    fontSize: "1rem",
+    fontSize: theme.typography.pxToRem(16),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.4,
-    padding: 20,
+    padding: theme.typography.pxToRem(20),
   },
 }));
 

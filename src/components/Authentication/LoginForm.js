@@ -11,7 +11,7 @@ import { authTokensPresent, saveCurrentUser } from "../Utils/User";
 import { Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -25,21 +25,21 @@ const useStyles = makeStyles({
     justifyContent: "center",
   },
   title: {
-    fontSize: 28,
+    fontSize: theme.typography.pxToRem(28),
     fontWeight: 300,
-    padding: 20,
-    margin: 50,
-    marginBottom: 0,
-    marginTop: 10,
+    padding: theme.typography.pxToRem(20),
+    margin: theme.typography.pxToRem(50),
+    marginBottom: theme.typography.pxToRem(0),
+    marginTop: theme.typography.pxToRem(10),
   },
   logo: {
-    marginTop: 60,
-    height: 50,
+    marginTop: theme.typography.pxToRem(60),
+    height: theme.typography.pxToRem(50),
   },
   icon: {
-    marginTop: 8,
+    marginTop: theme.typography.pxToRem(8),
   },
-});
+}));
 
 function LoginForm(props) {
   const classes = useStyles();

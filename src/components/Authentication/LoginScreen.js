@@ -3,7 +3,7 @@ import { makeStyles, Typography, Button } from "@material-ui/core";
 import LogoDark from "../../layout/LogoDark";
 import LoginCard from "./LoginCard";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -12,18 +12,18 @@ const useStyles = makeStyles({
     fontFamily: "Inter",
   },
   title: {
-    fontSize: 28,
+    fontSize: theme.typography.pxToRem(28),
     fontWeight: 300,
-    padding: 20,
-    margin: 50,
+    padding: theme.typography.pxToRem(20),
+    margin: theme.typography.pxToRem(50),
     marginBottom: 0,
-    marginTop: 10,
+    marginTop: theme.typography.pxToRem(10),
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     opacity: 0.6,
     marginTop: 0,
-    margin: 50,
+    margin: theme.typography.pxToRem(50),
   },
   loginOptions: {
     display: "flex",
@@ -31,21 +31,21 @@ const useStyles = makeStyles({
   },
   text: {
     fontFamily: "Inter",
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     opacity: 0.6,
-    marginTop: 50,
+    marginTop: theme.typography.pxToRem(50),
   },
   buttonPrimary: {
     fontFamily: "Inter",
-    fontSize: 12,
+    fontSize: theme.typography.pxToRem(12),
     fontWeight: 700,
-    padding: 5,
+    padding: theme.typography.pxToRem(5),
   },
   logo: {
-    marginTop: 60,
-    height: 50,
+    marginTop: theme.typography.pxToRem(60),
+    height: theme.typography.pxToRem(50),
   },
-});
+}));
 
 function LoginScreen() {
   const classes = useStyles();

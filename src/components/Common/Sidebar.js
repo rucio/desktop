@@ -5,7 +5,7 @@ import Logo from "../../layout/Logo";
 import { Link } from "react-router-dom";
 import SidebarIcons from "./SidebarIcons";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   drawer: {
     width: (props) => props.drawerWidth,
     flexShrink: 0,
@@ -19,23 +19,23 @@ const useStyles = makeStyles({
     overflow: "auto",
   },
   logo: {
-    height: 36,
-    margin: 12,
+    height: theme.typography.pxToRem(48),
+    margin: theme.typography.pxToRem(24),
     display: "block",
   },
   listItem: {
     display: "flex",
     justifyContent: "start",
     alignItems: "center",
-    padding: "12px 36px",
-    lineHeight: 1.5,
+    padding: "0.75rem 2.25rem",
+    lineHeight: theme.typography.pxToRem(1.5),
     letterSpacing: "0.001em",
     fontFamily: "Inter",
     fontWeight: 500,
     color: "#fffafa",
-    fontSize: 16,
+    fontSize: theme.typography.pxToRem(18),
   },
-});
+}));
 
 /**
  * Renders a Sidebar in the app.

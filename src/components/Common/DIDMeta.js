@@ -7,11 +7,11 @@ import DIDMetaDetails from "./DIDMetaDetails";
 import { useSelector } from "react-redux";
 import LoadingSpinner from "../Utils/LoadingSpinner";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   rootTitle: {
     width: "100%",
     textAlign: "left",
-    padding: 12,
+    padding: theme.typography.pxToRem(12),
     fontFamily: "Inter",
     fontWeight: 500,
     color: grey[600],
@@ -21,8 +21,8 @@ const useStyles = makeStyles({
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    margin: 12,
-    padding: 12,
+    margin: theme.typography.pxToRem(12),
+    padding: theme.typography.pxToRem(12),
     float: "right",
     minWidth: "20%",
     maxHeight: "80%",
@@ -31,13 +31,13 @@ const useStyles = makeStyles({
     width: "100%",
     fontFamily: "Inter",
     fontWeight: 500,
-    fontSize: 24,
-    padding: 5,
-    marginLeft: 18,
+    fontSize: theme.typography.pxToRem(24),
+    padding: theme.typography.pxToRem(5),
+    marginLeft: theme.typography.pxToRem(18),
     color: grey[800],
     textAlign: "left",
   },
-});
+}));
 
 function DIDMeta(props) {
   const classes = useStyles();
@@ -64,7 +64,7 @@ function DIDMeta(props) {
 DIDMeta.propTypes = {
   icon: PropTypes.string,
   did: PropTypes.string,
-  meta: PropTypes.object
-}
+  meta: PropTypes.object,
+};
 
 export default DIDMeta;

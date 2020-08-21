@@ -7,7 +7,7 @@ import AccountEditButtons from "./AccountEditButtons";
 import { useDispatch } from "react-redux";
 import AccountDeleteDialog from "./AccountDeleteDialog";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     display: "flex",
     justifyContent: "space-between",
     overflowWrap: "break-word",
-    padding: 10,
+    padding: theme.typography.pxToRem(10),
   },
   option: {
     minWidth: "30%",
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     width: "70%",
     textAlign: "left",
   },
-});
+}));
 
 function AccountDetails(props) {
   const classes = useStyles();

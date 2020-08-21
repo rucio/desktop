@@ -17,18 +17,18 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Inter",
   },
   title: {
-    fontSize: 28,
+    fontSize: theme.typography.pxToRem(28),
     fontWeight: 300,
-    padding: 20,
-    margin: 50,
+    padding: theme.typography.pxToRem(20),
+    margin: theme.typography.pxToRem(50),
     marginBottom: 0,
-    marginTop: 10,
+    marginTop: theme.typography.pxToRem(10),
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     opacity: 0.6,
     marginTop: 0,
-    marginBottom: 10,
+    marginBottom: theme.typography.pxToRem(10),
   },
   form: {
     width: "100%",
@@ -42,18 +42,18 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonPrimary: {
     fontFamily: "Inter",
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 700,
   },
   buttonSecondary: {
     fontFamily: "Inter",
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 400,
-    marginLeft: 5,
+    marginLeft: theme.typography.pxToRem(5),
   },
   logo: {
-    marginTop: 60,
-    height: 50,
+    marginTop: theme.typography.pxToRem(60),
+    height: theme.typography.pxToRem(50),
   }
 }));
 

@@ -16,11 +16,11 @@ import { useDispatch } from "react-redux";
 import ConfirmChangeDialog from "./ConfirmChangeDialog";
 import { updateRSESettings } from "../../Utils/Storage";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   preInfo: {
     fontWeight: 700,
     color: "#354992",
-    marginRight: 10,
+    marginRight: theme.typography.pxToRem(10),
   },
   info: {
     color: "#000000",
@@ -33,18 +33,18 @@ const useStyles = makeStyles({
   textfield: {
     font: "Inter",
     width: "50%",
-    marginBottom: 20,
+    marginBottom: theme.typography.pxToRem(20),
   },
   inputLabel: {
     fontFamily: "Inter",
-    marginBottom: 10,
+    marginBottom: theme.typography.pxToRem(10),
     color: "#354992",
   },
   label: {
-    paddingRight: 10,
+    paddingRight: theme.typography.pxToRem(10),
     fontFamily: "Inter",
   },
-});
+}));
 
 function TabGeneral(props) {
   const [values, setValues] = React.useState(null);
@@ -215,7 +215,7 @@ function TabGeneral(props) {
           value={isPresent(nextProps.details.lfn2pfn_algorithm)}
           onChange={handleChange}
         />
-        <FormGroup row style={{ paddingBottom: 12 }}>
+        <FormGroup row style={{ paddingBottom: "0.75rem" }}>
           <FormControlLabel
             control={
               <Radio
@@ -245,7 +245,7 @@ function TabGeneral(props) {
             label="Non-Volatile"
           />
         </FormGroup>
-        <FormGroup row style={{ paddingBottom: 12 }}>
+        <FormGroup row style={{ paddingBottom: "0.75rem" }}>
           <FormControlLabel
             control={
               <Radio
@@ -278,7 +278,7 @@ function TabGeneral(props) {
         <InputLabel className={classes.inputLabel}>
           Availability Attributes
         </InputLabel>
-        <FormGroup row style={{ paddingBottom: 16 }}>
+        <FormGroup row style={{ paddingBottom: "1rem" }}>
           <FormControlLabel
             className={classes.label}
             control={

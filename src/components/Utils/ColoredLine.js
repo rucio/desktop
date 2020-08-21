@@ -8,12 +8,12 @@ export default function ColoredLine(props) {
         color: props.color,
         backgroundColor: props.color,
         width: "100%",
-        height: 1,
+        height: "0.0625rem",
         opacity: props.opacity || 1,
         borderStyle: "inset",
         borderWidth: 0,
         overflow: "hidden",
-        margin: 20,
+        margin: "1.25rem",
       }}
     />
   );

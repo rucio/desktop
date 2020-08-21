@@ -7,18 +7,18 @@ import { addConfig } from "../../Utils/Config";
 import { useDispatch } from "react-redux";
 import AlertSnackbar from "../../Utils/Snackbar";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   title: {
     fontFamily: "Inter",
     fontWeight: 500,
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     color: "#000000",
     width: "60%",
     display: "flex",
     alignItems: "center",
     justifyContent: "space-between",
   },
-});
+}));
 
 function ServerConfigTitle(props) {
   const classes = useStyles();

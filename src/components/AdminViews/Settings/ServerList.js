@@ -15,9 +15,9 @@ import AlertSnackbar from "../../Utils/Snackbar";
 const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "Inter",
-    paddingTop: 10,
-    paddingBottom: 10,
-    fontSize: 20,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(10),
+    fontSize: theme.typography.pxToRem(20),
     width: "100%",
   },
   listItem: {
@@ -29,22 +29,22 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(16),
     flexBasis: "33.33%",
     flexShrink: 0,
-    padding: 5,
-    paddingLeft: 5
+    padding: theme.typography.pxToRem(5),
+    paddingLeft: theme.typography.pxToRem(5)
   },
   statusC: {
     fontSize: theme.typography.pxToRem(16),
     color: green[600],
     fontWeight: 500,
     opacity: 1,
-    padding: 5
+    padding: theme.typography.pxToRem(5)
   },
   statusD: {
     fontSize: theme.typography.pxToRem(15),
     color: red[600],
     fontWeight: 500,
     opacity: 1,
-    padding: 5
+    padding: theme.typography.pxToRem(5)
   },
 }));
 

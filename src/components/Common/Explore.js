@@ -5,21 +5,21 @@ import DIDMeta from "./DIDMeta";
 import { cdToArray } from "../Utils/Files";
 import { useSelector } from "react-redux";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   Breadcrumbs: {
-    paddingTop: 10,
-    paddingBottom: 20,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(20),
   },
   content: {
-    width: `calc(100% - 48px)`,
+    width: `calc(100% - 3rem)`,
     height: "100%",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "stretch",
-    padding: 2,
-    margin: 1,
+    padding: theme.typography.pxToRem(2),
+    margin: theme.typography.pxToRem(1),
   },
-});
+}));
 
 function Explore() {
   const classes = useStyles();
@@ -31,8 +31,6 @@ function Explore() {
   // Add Empty Mountpoint Screen
   // Add No Metadata View
   // Show Container/Dataset Metadata on Click, Second Click opens folder.
-  // Add cache status for files.
-  // EXTRA: Add Recent Files
 
   // FIXME:
   // Clear File Metadata when changing directory

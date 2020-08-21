@@ -6,13 +6,13 @@ import { serverStatus } from "../Utils/Servers";
 const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "Inter",
-    paddingTop: 10,
-    paddingBottom: 10,
-    fontSize: 20,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(10),
+    fontSize: theme.typography.pxToRem(20),
     width: "50%",
   },
   title: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.5,
@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: theme.typography.pxToRem(16),
     flexBasis: "33.33%",
     flexShrink: 0,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(10),
   },
   statusC: {
     fontSize: theme.typography.pxToRem(16),

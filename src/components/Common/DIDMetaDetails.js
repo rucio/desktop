@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import { grey } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   details: {
     display: "flex",
     flexDirection: "column",
@@ -10,25 +10,25 @@ const useStyles = makeStyles({
     alignItems: "flex-start",
     height: "100%",
     width: "100%",
-    padding: 5,
-    margin: 10,
+    padding: theme.typography.pxToRem(5),
+    margin: theme.typography.pxToRem(10),
   },
   detailItems: {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: 8,
-    fontSize: 14,
+    padding: theme.typography.pxToRem(8),
+    fontSize: theme.typography.pxToRem(14),
   },
   itemLeft: {
-    marginRight: 8,
+    marginRight: theme.typography.pxToRem(8),
     color: "#3e55ab",
     fontWeight: 500,
   },
   itemRight: {
       color: grey[800]
   }
-});
+}));
 
 function DIDMetaDetails(props) {
   const classes = useStyles();

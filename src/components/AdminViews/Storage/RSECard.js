@@ -8,13 +8,13 @@ import {
 } from "@material-ui/core";
 import StorageRoundedIcon from "@material-ui/icons/StorageRounded";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "Inter",
-    flex: "1 0 256px",
+    flex: "1 0 16rem",
     backgroundColor: (props) => (props.selected ? "#2c3c79" : "#fbfcfe"),
-    borderRadius: 16.18,
-    margin: "1em",
+    borderRadius: theme.typography.pxToRem(16.18),
+    margin: "1rem",
     height: "12em"
   },
   content: {
@@ -23,47 +23,47 @@ const useStyles = makeStyles({
   },
   icon: {
     color: (props) => (props.selected ? "#7285cc" : "#354992"),
-    margin: 20,
-    marginRight: 10,
-    fontSize: 48,
+    margin: theme.typography.pxToRem(20),
+    marginRight: theme.typography.pxToRem(10),
+    fontSize: theme.typography.pxToRem(48),
   },
   title: {
     display: "flex",
     alignItems: "center",
     justifyContent: "start",
     fontWeight: (props) => (props.selected ? 600 : 500),
-    letterSpacing: 1,
-    padding: 20,
-    paddingBottom: 10,
-    fontSize: 20,
+    letterSpacing: theme.typography.pxToRem(1),
+    padding: theme.typography.pxToRem(20),
+    paddingBottom: theme.typography.pxToRem(10),
+    fontSize: theme.typography.pxToRem(20),
     opacity: (props) => (props.selected ? 1 : 0.8),
     color: (props) => (props.selected ? "#ffffff" : "#000000"),
   },
   id: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     opacity: (props) => (props.selected ? 0.8 : 0.6),
     color: (props) => (props.selected ? "#ffffff" : "#000000"),
     fontWeight: 500,
-    paddingLeft: 20,
-    paddingBottom: 10,
+    paddingLeft: theme.typography.pxToRem(20),
+    paddingBottom: theme.typography.pxToRem(10),
   },
   preInfo: {
     fontWeight: 700,
     color: (props) => (props.selected ? "#b0bbe2" : "#354992"),
   },
   info: {
-    fontSize: 16,
+    fontSize: theme.typography.pxToRem(16),
     color: (props) => (props.selected ? "#ffffff" : "#000000"),
     fontWeight: 500,
-    margin: 20,
-    height: 50,
+    margin: theme.typography.pxToRem(20),
+    height: theme.typography.pxToRem(50),
     opacity: 0.8,
     display: "flex",
     flexDirection: "column",
     alignItems: "start",
     justifyContent: "space-between",
   },
-});
+}));
 
 function RSECard(props) {
   const classes = useStyles({ selected: props.selected });
