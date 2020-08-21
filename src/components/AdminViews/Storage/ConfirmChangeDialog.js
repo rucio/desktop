@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     opacity: 0.8,
     paddingTop: 0,
     padding: "0.6rem",
-    lineHeight: theme.typography.pxToRem(1.5),
+    lineHeight: 1.5,
   },
   changelog: {
     color: "#000000",

@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "start",
     alignItems: "center",
     padding: "0.75rem 2.25rem",
-    lineHeight: theme.typography.pxToRem(1.5),
+    lineHeight: 1.5,
     letterSpacing: "0.001em",
     fontFamily: "Inter",
     fontWeight: 500,
