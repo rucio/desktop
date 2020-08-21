@@ -4,9 +4,16 @@ var path = require("path");
 function updateChangelog(requestPayload = {}, component) {
   const lockfilePath = path.join(__dirname, "..", "settings-lock.json");
 
-  const lockfile = fs.readFileSync(lockfilePath, "utf-8");
+  let lockfile;
+  try {
+    lockfile = fs.readFileSync(lockfilePath, "utf-8");
+  } catch (e) {
+    fs.writeFileSync(lockfilePath, JSON.stringify([]), "utf-8");
+    lockfile = fs.readFileSync(lockfilePath, "utf-8");
+  }
+
   const changelog = JSON.parse(lockfile);
-  
+
   const version =
     changelog.length === 0
       ? 1
