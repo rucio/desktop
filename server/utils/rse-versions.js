@@ -29,7 +29,7 @@ function updateChangelog(requestPayload = {}, component) {
     hostname: requestPayload.hostname,
     port: requestPayload.port,
     initial: requestPayload.initialValues,
-    changed: requestPayload.protocolObj,
+    changed: requestPayload.protocolObj || requestPayload.params,
     component: component,
   };
 
