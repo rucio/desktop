@@ -1,5 +1,5 @@
 # Rucio Desktop : User Documentation
-v0.1.0
+v0.1.2
 
 # Table of Contents
 
@@ -17,6 +17,7 @@ v0.1.0
     * [Storage](#storage)
     * [Settings](#settings)
     * [Accounts](#accounts)
+* [Developer Documentation]()
 * [Support](#support)
 * [Extra Notes](#extra-notes)
 
