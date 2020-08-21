@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
+    [theme.breakpoints.down("lg")]: {
+      height: `calc(100vh - 20rem)`,
+    },
   },
   hint: {
     fontSize: theme.typography.pxToRem(16),

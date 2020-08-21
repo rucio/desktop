@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
     [theme.breakpoints.down("lg")]: {
-      height: "65vh",
+      height: "68vh",
       flex: "1 1 58%",
     },
   },

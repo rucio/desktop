@@ -25,7 +25,7 @@ function LoginButton(props) {
   return (
     <Button className={classes.buttonStyle} {...rest}>
       {children}
-      {loading && <CircularProgress className={classes.styles} size="15rem" />}
+      {loading && <CircularProgress className={classes.styles} size="1rem" />}
     </Button>
   );
 }
