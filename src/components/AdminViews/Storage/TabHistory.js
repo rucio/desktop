@@ -49,7 +49,7 @@ function TabHistory(props) {
 
   React.useEffect(() => {
     setCurrentLog(null);
-  }, [props]);
+  }, [props.id]);
 
   React.useEffect(() => {
     getRSEChangelog(props.id)
@@ -68,7 +68,8 @@ function TabHistory(props) {
     <React.Fragment>
       <TabPanel value={props.value} index={4}>
         <div className={classes.text}>
-          Select a version to review changes made. Undo to revert to changes.{" "}
+          Select an item to see update history. Review before rolling back
+          changes{" "}
         </div>
         <TableContainer>
           <Table stickyHeader aria-label="sticky table">
@@ -115,6 +116,7 @@ function TabHistory(props) {
       </TabPanel>
       {currentLog !== null ? (
         <RevertChangeDialog
+          key={currentLog.version}
           changelog={currentLog}
           open={open}
           handleClose={() => setOpen(false)}

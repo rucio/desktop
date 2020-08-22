@@ -93,7 +93,7 @@ function RevertChangeDialog(props) {
   }, [props.changelog]);
 
   return (
-    <Dialog open={props.open} onClose={props.handleClose}>
+    <Dialog open={props.open} onClose={props.handleClose} key={props.key}>
       <DialogTitle className={classes.title} id="confirm-title">
         {"Rollback Changes"}
       </DialogTitle>
@@ -112,16 +112,16 @@ function RevertChangeDialog(props) {
             <div id="changelog" className={classes.changelog}>
               <div className={classes.message1}>From:</div>
               {Object.keys(changelog.changed).map((key) => (
-                <div key={key} id="existing" className={classes.incoming}>
+                <div key={key} id="existing" className={classes.existing}>
                   {" "}
-                  + {key} : {value2str(changelog.changed[key])}{" "}
+                  - {key} : {value2str(changelog.changed[key])}
                 </div>
               ))}
               <div className={classes.message1}>To:</div>
               {Object.keys(changelog.initial).map((key) => (
-                <div key={key} id="existing" className={classes.existing}>
+                <div key={key} id="existing" className={classes.incoming}>
                   {" "}
-                  - {key} : {value2str(changelog.initial[key])}{" "}
+                  + {key} : {value2str(changelog.initial[key])}
                 </div>
               ))}
             </div>
@@ -145,6 +145,7 @@ function RevertChangeDialog(props) {
 }
 
 RevertChangeDialog.propTypes = {
+  key: PropTypes.any,
   open: PropTypes.bool,
   handleClose: PropTypes.func,
   handleConfirm: PropTypes.func,
