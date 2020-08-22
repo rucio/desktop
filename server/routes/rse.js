@@ -1,6 +1,6 @@
 const express = require("express");
 const RSE = require("../APIs/rse");
-const changelog = require("../utils/rse-versions");
+const changelog = require("../APIs/rse-versions");
 const router = express.Router();
 
 router.post("/rses", async (req, res) => {
@@ -204,6 +204,25 @@ router.post("/rse/setting/update", async (req, res) => {
     .catch((err) => {
       console.log(`[ERROR: /rse/settings/update] ${err}`);
       res.sendStatus(500);
+    });
+});
+
+router.post("/rse/changelog", async (req, res) => {
+  const payload = req.body.payload;
+
+  await changelog
+    .getChangelog(payload.rse_id)
+    .then((results) => {
+      console.log(
+        results.length !== 0
+          ? `[INFO] Filtered results for ${payload.rse_id}`
+          : `[INFO] No Update history for ${payload.rse_id}`
+      );
+      res.json(results);
+    })
+    .catch((err) => {
+      console.log(`[ERROR]: ${err}`);
+      res.sendStatus(404);
     });
 });
 

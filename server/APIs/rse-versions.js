@@ -1,6 +1,11 @@
 const fs = require("fs");
 var path = require("path");
 
+/**
+ * Updates the Settings-lock file with `requestPayload`
+ * @param {Object} requestPayload
+ * @param {String} component Component Changed
+ */
 function updateChangelog(requestPayload = {}, component) {
   const lockfilePath = path.join(__dirname, "..", "settings-lock.json");
 
@@ -17,23 +22,20 @@ function updateChangelog(requestPayload = {}, component) {
   const version =
     changelog.length === 0
       ? 1
-      : parseInt(changelog[changelog.length - 1].version) + 1;
+      : parseInt(changelog[0].version) + 1;
 
   const date = new Date();
   const changeObj = {
     version: version.toString(),
     timestamp: date.toUTCString(),
-    server: requestPayload.server,
     rse: requestPayload.rse,
-    scheme: requestPayload.scheme,
-    hostname: requestPayload.hostname,
-    port: requestPayload.port,
+    rse_id: requestPayload.rse_id,
     initial: requestPayload.initialValues,
     changed: requestPayload.protocolObj || requestPayload.params,
     component: component,
   };
 
-  changelog.push(changeObj);
+  changelog.unshift(changeObj);
   const toWrite = JSON.stringify(changelog);
 
   fs.writeFileSync(lockfilePath, toWrite, "utf-8");
@@ -42,4 +44,23 @@ function updateChangelog(requestPayload = {}, component) {
   );
 }
 
-module.exports = { updateChangelog };
+async function getChangelog(rseId) {
+  const lockfilePath = path.join(__dirname, "..", "settings-lock.json");
+
+  let lockfile;
+  try {
+    lockfile = fs.readFileSync(lockfilePath, "utf-8");
+  } catch (e) {
+    return false;
+  }
+
+  const changelog = JSON.parse(lockfile);
+
+  const newList = changelog.filter((item) =>
+    item.rse_id.toLowerCase().includes(rseId.toLowerCase())
+  );
+
+  return newList;
+}
+
+module.exports = { updateChangelog, getChangelog };
