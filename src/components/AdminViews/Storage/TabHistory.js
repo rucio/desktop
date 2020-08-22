@@ -7,9 +7,11 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Table,
 } from "@material-ui/core";
 import TabPanel from "./RSETabPanel";
 import { getRSEChangelog } from "../../Utils/Storage";
+import RevertChangeDialog from "./RevertChangeDialog";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -41,7 +43,13 @@ const columns = [
 
 function TabHistory(props) {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+  const [currentLog, setCurrentLog] = useState(null);
   const [changelog, setChangelog] = useState([]);
+
+  React.useEffect(() => {
+    setCurrentLog(null);
+  }, [props]);
 
   React.useEffect(() => {
     getRSEChangelog(props.id)
@@ -51,48 +59,68 @@ function TabHistory(props) {
       .catch((err) => console.log(err));
   }, [props.id]);
 
+  const handleClick = (index) => {
+    setOpen(true);
+    setCurrentLog(changelog[index]);
+  };
+
   return (
-    <TabPanel value={props.value} index={4}>
-      <div className={classes.text}>
-        Select a version to review changes made. Undo to revert to changes.{" "}
-      </div>
-      <TableContainer>
-        <TableHead>
-          <TableRow>
-            {columns.map((column) => (
-              <TableCell
-                key={column.id}
-                align={column.align}
-                className={classes.column}
-              >
-                {column.label}
-              </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {changelog.map((row) => {
-            return (
-              <TableRow
-                hover
-                role="checkbox"
-                tabIndex={-1}
-                key={changelog.version}
-              >
-                {columns.map((column) => {
-                  const value = row[column.id];
-                  return (
-                    <TableCell key={column.id} align={column.align}>
-                      <div className={classes.cell}>{value}</div>
-                    </TableCell>
-                  );
-                })}
+    <React.Fragment>
+      <TabPanel value={props.value} index={4}>
+        <div className={classes.text}>
+          Select a version to review changes made. Undo to revert to changes.{" "}
+        </div>
+        <TableContainer>
+          <Table stickyHeader aria-label="sticky table">
+            <TableHead>
+              <TableRow>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    align={column.align}
+                    className={classes.column}
+                  >
+                    {column.label}
+                  </TableCell>
+                ))}
               </TableRow>
-            );
-          })}
-        </TableBody>
-      </TableContainer>
-    </TabPanel>
+            </TableHead>
+            <TableBody>
+              {changelog.map((row, index) => {
+                return (
+                  <TableRow
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.version}
+                  >
+                    {columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          onClick={() => handleClick(index)}
+                        >
+                          <div className={classes.cell}>{value}</div>
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </TabPanel>
+      {currentLog !== null ? (
+        <RevertChangeDialog
+          changelog={currentLog}
+          open={open}
+          handleClose={() => setOpen(false)}
+        />
+      ) : null}
+    </React.Fragment>
   );
 }
 
