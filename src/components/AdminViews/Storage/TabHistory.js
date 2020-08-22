@@ -10,7 +10,11 @@ import {
   Table,
 } from "@material-ui/core";
 import TabPanel from "./RSETabPanel";
-import { getRSEChangelog, updateRSESettings } from "../../Utils/Storage";
+import {
+  getRSEChangelog,
+  updateRSESettings,
+  updateProtocol,
+} from "../../Utils/Storage";
 import RevertChangeDialog from "./RevertChangeDialog";
 import { useDispatch } from "react-redux";
 import AlertSnackbar from "../../Utils/Snackbar";
@@ -86,6 +90,24 @@ function TabHistory(props) {
           .then(dispatch({ type: "LOADING_FALSE" }))
           .then(setOpen(false))
           .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
+        break;
+      case "protocol":
+        await updateProtocol(
+          currentAccount,
+          "rucio-server-x509",
+          currentLog.rse,
+          props.id,
+          currentLog.changed.scheme,
+          currentLog.changed.hostname,
+          currentLog.changed.port,
+          currentLog.initial,
+          currentLog.changed
+        )
+          .then((res) => setStatus(res.status))
+          .then(dispatch({ type: "LOADING_FALSE" }))
+          .then(setOpen(false))
+          .then(() => dispatch({ type: "SHOW_SNACKBAR" }))
+          .catch((err) => console.log(err));
         break;
       default:
         console.log("No Such Component");
