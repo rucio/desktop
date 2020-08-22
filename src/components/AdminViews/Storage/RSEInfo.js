@@ -5,6 +5,7 @@ import NoRSEView from "./NoRSEView";
 import TabPanel from "./RSETabPanel";
 import TabGeneral from "./TabGeneral";
 import TabProtocol from "./TabProtocol";
+import TabHistory from "./TabHistory";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     marginLeft: theme.typography.pxToRem(20),
-    height: "inherit"
+    height: "inherit",
   },
   tab: {
     fontFamily: "Inter",
@@ -95,16 +96,19 @@ function RSEInfo(props) {
           value={value}
           moreDetails={props.moreDetails}
         />
-        <TabProtocol protocols={props.details.protocols} rse={props.details.rse} value={value} />
+        <TabProtocol
+          protocols={props.details.protocols}
+          rse={props.details.rse}
+          id={props.details.id}
+          value={value}
+        />
         <TabPanel value={value} index={2}>
           Attributes
         </TabPanel>
         <TabPanel value={value} index={3}>
           Usage
         </TabPanel>
-        <TabPanel value={value} index={4}>
-          History
-        </TabPanel>
+        <TabHistory value={value} id={props.details.id} />
       </div>
     );
   }

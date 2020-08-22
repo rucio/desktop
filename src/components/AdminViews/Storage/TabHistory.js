@@ -1,0 +1,104 @@
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import {
+  makeStyles,
+  TableContainer,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from "@material-ui/core";
+import TabPanel from "./RSETabPanel";
+import { getRSEChangelog } from "../../Utils/Storage";
+
+const useStyles = makeStyles((theme) => ({
+  text: {
+    fontFamily: "Inter",
+    fontSize: theme.typography.pxToRem(16),
+    opacity: 0.5,
+    fontWeight: 500,
+  },
+  column: {
+    minWidth: theme.typography.pxToRem(192),
+    fontFamily: "Inter",
+    fontSize: theme.typography.pxToRem(16),
+    opacity: 0.8,
+  },
+  cell: {
+    display: "flex",
+    alignItems: "center",
+    fontSize: "1rem",
+    fontFamily: "Inter",
+  },
+}));
+
+// Add Objects to this array to add columns to FileList.
+const columns = [
+  { id: "timestamp", label: "Time" },
+  { id: "version", label: "Update ID" },
+  { id: "component", label: "Component" },
+];
+
+function TabHistory(props) {
+  const classes = useStyles();
+  const [changelog, setChangelog] = useState([]);
+
+  React.useEffect(() => {
+    getRSEChangelog(props.id)
+      .then((logs) => {
+        setChangelog(logs.data);
+      })
+      .catch((err) => console.log(err));
+  }, [props.id]);
+
+  return (
+    <TabPanel value={props.value} index={4}>
+      <div className={classes.text}>
+        Select a version to review changes made. Undo to revert to changes.{" "}
+      </div>
+      <TableContainer>
+        <TableHead>
+          <TableRow>
+            {columns.map((column) => (
+              <TableCell
+                key={column.id}
+                align={column.align}
+                className={classes.column}
+              >
+                {column.label}
+              </TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {changelog.map((row) => {
+            return (
+              <TableRow
+                hover
+                role="checkbox"
+                tabIndex={-1}
+                key={changelog.version}
+              >
+                {columns.map((column) => {
+                  const value = row[column.id];
+                  return (
+                    <TableCell key={column.id} align={column.align}>
+                      <div className={classes.cell}>{value}</div>
+                    </TableCell>
+                  );
+                })}
+              </TableRow>
+            );
+          })}
+        </TableBody>
+      </TableContainer>
+    </TabPanel>
+  );
+}
+
+TabHistory.propTypes = {
+  value: PropTypes.number.isRequired,
+  id: PropTypes.string,
+};
+
+export default TabHistory;
