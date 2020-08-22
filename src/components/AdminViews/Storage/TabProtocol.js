@@ -94,6 +94,7 @@ function TabProtocol(props) {
       currentAccount,
       "rucio-server-x509",
       props.rse,
+      props.id,
       scheme,
       hostname,
       port,
@@ -277,6 +278,7 @@ TabProtocol.propTypes = {
   value: PropTypes.any.isRequired,
   protocols: PropTypes.array,
   rse: PropTypes.string,
+  id: PropTypes.string
 };
 
 export default TabProtocol;

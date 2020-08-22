@@ -146,6 +146,7 @@ export async function updateProtocol(
   account,
   server,
   rse,
+  rseId,
   scheme,
   hostname,
   port,
@@ -165,6 +166,7 @@ export async function updateProtocol(
     server: serverObj,
     token: "",
     rse: rse,
+    rse_id: rseId,
     scheme: scheme,
     hostname: hostname,
     port: port,
@@ -196,6 +198,7 @@ export function updateRSESettings(
   account,
   server,
   rse,
+  rseId,
   params,
   initialValues
 ) {
@@ -212,6 +215,7 @@ export function updateRSESettings(
     server: serverObj,
     token: "",
     rse: rse,
+    rse_id: rseId,
     params: params,
     initialValues: initialValues,
   };
@@ -224,6 +228,25 @@ export function updateRSESettings(
 
   try {
     const response = axios.post("/rse/setting/update", {
+      payload,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+  } catch (err) {
+    return 500;
+  }
+}
+
+export function getRSEChangelog(rseId) {
+  const payload = {
+    rse_id: rseId,
+  };
+
+  try {
+    const response = axios.post("/rse/changelog", {
       payload,
       headers: {
         "Content-Type": "application/json",

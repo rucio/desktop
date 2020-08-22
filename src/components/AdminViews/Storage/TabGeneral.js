@@ -105,6 +105,7 @@ function TabGeneral(props) {
       currentAccount,
       "rucio-server-x509",
       allDetails.rse,
+      allDetails.id,
       values,
       initialValues
     )
