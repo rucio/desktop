@@ -10,8 +10,10 @@ import {
   Table,
 } from "@material-ui/core";
 import TabPanel from "./RSETabPanel";
-import { getRSEChangelog } from "../../Utils/Storage";
+import { getRSEChangelog, updateRSESettings } from "../../Utils/Storage";
 import RevertChangeDialog from "./RevertChangeDialog";
+import { useDispatch } from "react-redux";
+import AlertSnackbar from "../../Utils/Snackbar";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -46,6 +48,8 @@ function TabHistory(props) {
   const [open, setOpen] = useState(false);
   const [currentLog, setCurrentLog] = useState(null);
   const [changelog, setChangelog] = useState([]);
+  const [status, setStatus] = React.useState(0);
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
     setCurrentLog(null);
@@ -63,6 +67,61 @@ function TabHistory(props) {
     setOpen(true);
     setCurrentLog(changelog[index]);
   };
+
+  const handleRollback = async () => {
+    dispatch({ type: "LOADING_TRUE" });
+    const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+
+    switch (currentLog.component) {
+      case "settings":
+        await updateRSESettings(
+          currentAccount,
+          "rucio-server-x509",
+          currentLog.rse,
+          props.id,
+          currentLog.initial,
+          currentLog.changed
+        )
+          .then((res) => setStatus(res.status))
+          .then(dispatch({ type: "LOADING_FALSE" }))
+          .then(setOpen(false))
+          .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
+        break;
+      default:
+        console.log("No Such Component");
+    }
+  };
+
+  function handleAlertBar(status) {
+    switch (status) {
+      case 200:
+        return (
+          <AlertSnackbar
+            severity="success"
+            message={`RSE Settings Updated!`}
+            onExited={() => setStatus(0)}
+          />
+        );
+      case 401:
+        return (
+          <AlertSnackbar
+            severity="warning"
+            message={`Cannot Authenticate`}
+            onExited={() => setStatus(0)}
+          />
+        );
+      case 500:
+        return (
+          <AlertSnackbar
+            severity="error"
+            message={`Error updating values!`}
+            onExited={() => setStatus(0)}
+          />
+        );
+      default:
+        return <div />;
+    }
+  }
 
   return (
     <React.Fragment>
@@ -119,9 +178,11 @@ function TabHistory(props) {
           key={currentLog.version}
           changelog={currentLog}
           open={open}
+          handleConfirm={() => handleRollback()}
           handleClose={() => setOpen(false)}
         />
       ) : null}
+      {handleAlertBar(status)}
     </React.Fragment>
   );
 }

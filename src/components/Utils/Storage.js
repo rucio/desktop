@@ -219,7 +219,7 @@ export function updateRSESettings(
     params: params,
     initialValues: initialValues,
   };
-
+  
   try {
     payload.token = cookies.get(cfg.server_name);
   } catch (err) {
