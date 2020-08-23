@@ -8,8 +8,6 @@
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/react?style=flat-square)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/dev/electron?style=flat-square)
 
-**A Desktop GUI Client for [Rucio](https://github.com/rucio/rucio).**
-
 ## Description
 
 Rucio Desktop is a new and easier way to use Rucio with a modern graphical user interface.
