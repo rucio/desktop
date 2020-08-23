@@ -1,8 +1,3 @@
-<p align="center">
-    <a href="https://rucionotifier.imfast.io/" />
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90972588-07cc9a00-e538-11ea-954d-a523a7a47e75.png" width=100% />
-</p>
-
 # Rucio Desktop
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/desktop?style=flat-square)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/react?style=flat-square)
