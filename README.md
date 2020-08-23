@@ -38,9 +38,9 @@ For Detailed Instructions refer to our Usage Guide [here](https://github.com/viv
 
 ## Documentation
 
-* [User Documentation](https://github.com/viveknigam3003/rocinante/tree/master/docs) - includes client setup and usage guide.
+* [User Documentation](https://github.com/rucio/desktop/tree/master/docs) - includes client setup and usage guide.
 
-* [Developer Documentation](https://github.com/viveknigam3003/rocinante/tree/master/docs/dev) - Includes instructions for setting up dev environment, Component and API references.
+* [Developer Documentation](https://github.com/rucio/desktop/tree/master/docs/dev) - Includes instructions for setting up dev environment, Component and API references.
 
 ## Extra Notes
 
