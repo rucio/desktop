@@ -1,3 +1,7 @@
+<p align="center">
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90972832-ee2c5200-e539-11ea-8951-d1103dc2583d.png" width=100% />
+</p>
+
 # Rucio Desktop : Developer Documentation
 v0.1.5
 
