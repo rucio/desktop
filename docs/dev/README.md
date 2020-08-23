@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90972832-ee2c5200-e539-11ea-8951-d1103dc2583d.png" width=100% />
+    <img alt="desktop_dev_docs" src="https://user-images.githubusercontent.com/30192068/90972850-10be6b00-e53a-11ea-9c7c-54e0cc0698c4.png" width=100% />
 </p>
 
 # Rucio Desktop : Developer Documentation
