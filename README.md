@@ -1,3 +1,7 @@
+<div align="center">
+    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90972709-254e3380-e539-11ea-9f81-8fc13e3055f5.png" width=100% />
+</div>
+
 # Rucio Desktop
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/desktop?style=flat-square)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/react?style=flat-square)
