@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import ConfirmChangeDialog from "./ConfirmChangeDialog";
 import { updateRSESettings } from "../../Utils/Storage";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   preInfo: {
     fontWeight: 700,
     color: "#354992",
@@ -112,7 +112,8 @@ function TabGeneral(props) {
       .then((res) => setStatus(res.status))
       .then(dispatch({ type: "LOADING_FALSE" }))
       .then(setOpen(false))
-      .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
+      .then(() => dispatch({ type: "SHOW_SNACKBAR" }))
+      .then(() => dispatch({ type: "TRIGGER_FETCH" }));
   };
 
   const str2bool = (value) => {

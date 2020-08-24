@@ -5,6 +5,7 @@ import { useSpring, animated } from "react-spring";
 import RSECard from "./RSECard";
 import { fetchRSEInfo } from "../../Utils/Storage";
 import RSEInfo from "./RSEInfo";
+import { useSelector, useDispatch } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,8 @@ function AdminStorage(props) {
   const [rseInfo, setRSEInfo] = useState({});
   const [rseDetails, setRSEDetails] = useState({});
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const fetch = useSelector((state) => state.fetch);
+  const dispatch = useDispatch();
   const fade = useSpring({
     from: {
       opacity: 0,
@@ -59,6 +62,19 @@ function AdminStorage(props) {
       );
     }
   }, [currentAccount, currentRSE]);
+
+  React.useEffect(() => {
+    if (fetch === 1) {
+      console.log("Fetching Again...");
+      fetchRSEInfo(currentAccount, "rucio-server-x509", currentRSE).then(
+        (rseInfo) => {
+          setRSEInfo(rseInfo.data);
+        }
+      );
+    }
+
+    return () => dispatch({type: "CANCEL_FETCH"})
+  }, [dispatch, currentAccount, currentRSE, fetch]);
 
   return (
     <div id="admin-storage-root" className={classes.root}>
