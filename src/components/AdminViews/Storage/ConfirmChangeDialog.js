@@ -111,7 +111,7 @@ ConfirmChangeDialog.propTypes = {
   handleConfirm: PropTypes.func,
   changes: PropTypes.object,
   initialValues: PropTypes.any,
-  currentIndex: PropTypes.number,
+  currentIndex: PropTypes.number.isRequired,
 };
 
 export default ConfirmChangeDialog;
