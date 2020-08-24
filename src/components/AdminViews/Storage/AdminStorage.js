@@ -6,6 +6,7 @@ import RSECard from "./RSECard";
 import { fetchRSEInfo } from "../../Utils/Storage";
 import RSEInfo from "./RSEInfo";
 import { useSelector, useDispatch } from "react-redux";
+import { getCurrentServer } from "../../Utils/Servers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,6 +45,7 @@ function AdminStorage(props) {
   const [rseInfo, setRSEInfo] = useState({});
   const [rseDetails, setRSEDetails] = useState({});
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const currentServer = getCurrentServer();
   const fetch = useSelector((state) => state.fetch);
   const dispatch = useDispatch();
   const fade = useSpring({
@@ -55,18 +57,18 @@ function AdminStorage(props) {
 
   React.useEffect(() => {
     if (currentRSE !== null) {
-      fetchRSEInfo(currentAccount, "rucio-server-x509", currentRSE).then(
+      fetchRSEInfo(currentAccount, currentServer, currentRSE).then(
         (rseInfo) => {
           setRSEInfo(rseInfo.data);
         }
       );
     }
-  }, [currentAccount, currentRSE]);
+  }, [currentAccount, currentServer, currentRSE]);
 
   React.useEffect(() => {
     if (fetch === 1) {
       console.log("Fetching Again...");
-      fetchRSEInfo(currentAccount, "rucio-server-x509", currentRSE).then(
+      fetchRSEInfo(currentAccount, currentServer, currentRSE).then(
         (rseInfo) => {
           setRSEInfo(rseInfo.data);
         }
@@ -74,7 +76,7 @@ function AdminStorage(props) {
     }
 
     return () => dispatch({type: "CANCEL_FETCH"})
-  }, [dispatch, currentAccount, currentRSE, fetch]);
+  }, [dispatch, currentAccount, currentServer, currentRSE, fetch]);
 
   return (
     <div id="admin-storage-root" className={classes.root}>

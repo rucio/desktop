@@ -13,6 +13,7 @@ import ConfirmChangeDialog from "./ConfirmChangeDialog";
 import { updateProtocol } from "../../Utils/Storage";
 import { useDispatch } from "react-redux";
 import AlertSnackbar from "../../Utils/Snackbar";
+import { getCurrentServer } from "../../Utils/Servers";
 
 const useStyles = makeStyles({
   inputLabel: {
@@ -89,10 +90,11 @@ function TabProtocol(props) {
     const hostname = initialProtocols[currentIndex].hostname;
     const port = initialProtocols[currentIndex].port;
     const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+    const currentServer = getCurrentServer();
 
     await updateProtocol(
       currentAccount,
-      "rucio-server-x509",
+      currentServer,
       props.rse,
       props.id,
       scheme,

@@ -27,6 +27,7 @@ export function purgeCurrentUser() {
   localStorage.removeItem("CURR_ACCOUNT");
   localStorage.removeItem("CURR_USERNAME");
   localStorage.removeItem("CURR_PASSWORD");
+  localStorage.removeItem("authtype");
 }
 
 /**

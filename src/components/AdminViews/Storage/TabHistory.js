@@ -18,6 +18,7 @@ import {
 import RevertChangeDialog from "./RevertChangeDialog";
 import { useDispatch } from "react-redux";
 import AlertSnackbar from "../../Utils/Snackbar";
+import { getCurrentServer } from "../../Utils/Servers";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -53,6 +54,8 @@ function TabHistory(props) {
   const [currentLog, setCurrentLog] = useState(null);
   const [changelog, setChangelog] = useState([]);
   const [status, setStatus] = React.useState(0);
+  const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const currentServer = getCurrentServer();
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -74,13 +77,13 @@ function TabHistory(props) {
 
   const handleRollback = async () => {
     dispatch({ type: "LOADING_TRUE" });
-    const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+    
 
     switch (currentLog.component) {
       case "settings":
         await updateRSESettings(
           currentAccount,
-          "rucio-server-x509",
+          currentServer,
           currentLog.rse,
           props.id,
           currentLog.initial,
@@ -94,7 +97,7 @@ function TabHistory(props) {
       case "protocol":
         await updateProtocol(
           currentAccount,
-          "rucio-server-x509",
+          currentServer,
           currentLog.rse,
           props.id,
           currentLog.changed.scheme,

@@ -4,6 +4,7 @@ import AdminStorage from "../AdminViews/Storage/AdminStorage";
 import UserStorage from "../UserViews/Storage/UserStorage";
 import { grey } from "@material-ui/core/colors";
 import { fetchRSEs } from "../Utils/Storage";
+import { getCurrentServer } from "../Utils/Servers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,12 +46,13 @@ function Storage() {
   const [filteredList, setFilteredList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const currentServer = getCurrentServer();
 
   React.useEffect(() => {
-    fetchRSEs(currentAccount, "rucio-server-x509").then((res) => {
+    fetchRSEs(currentAccount, currentServer).then((res) => {
       setList(res.data);
     });
-  }, [currentAccount]);
+  }, [currentAccount, currentServer]);
 
   React.useEffect(() => {
     const newList = list.filter((item) =>

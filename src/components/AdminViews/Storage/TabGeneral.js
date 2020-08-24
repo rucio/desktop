@@ -15,6 +15,7 @@ import AlertSnackbar from "../../Utils/Snackbar";
 import { useDispatch } from "react-redux";
 import ConfirmChangeDialog from "./ConfirmChangeDialog";
 import { updateRSESettings } from "../../Utils/Storage";
+import { getCurrentServer } from "../../Utils/Servers";
 
 const useStyles = makeStyles((theme) => ({
   preInfo: {
@@ -53,6 +54,8 @@ function TabGeneral(props) {
   const [nextProps, setNextProps] = React.useState(props);
   const [status, setStatus] = React.useState(0);
   const [open, setOpen] = React.useState(false);
+  const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const currentServer = getCurrentServer();
   const dispatch = useDispatch();
 
   function isPresent(x) {
@@ -99,11 +102,11 @@ function TabGeneral(props) {
 
   const handleUpdate = async () => {
     dispatch({ type: "LOADING_TRUE" });
-    const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+    
 
     await updateRSESettings(
       currentAccount,
-      "rucio-server-x509",
+      currentServer,
       allDetails.rse,
       allDetails.id,
       values,
