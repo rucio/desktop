@@ -5,6 +5,7 @@ import UserStorage from "../UserViews/Storage/UserStorage";
 import { grey } from "@material-ui/core/colors";
 import { fetchRSEs } from "../Utils/Storage";
 import { getCurrentServer } from "../Utils/Servers";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,12 +48,24 @@ function Storage() {
   const [searchTerm, setSearchTerm] = useState("");
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
   const currentServer = getCurrentServer();
+  const dispatch = useDispatch();
+  const fetch = useSelector((state) => state.fetch);
 
   React.useEffect(() => {
     fetchRSEs(currentAccount, currentServer).then((res) => {
       setList(res.data);
     });
   }, [currentAccount, currentServer]);
+
+  React.useEffect(() => {
+    if (fetch === 1) {
+      fetchRSEs(currentAccount, currentServer).then((res) => {
+        setList(res.data);
+      });
+    }
+
+    return () => dispatch({type: "CANCEL_FETCH"})
+  }, [dispatch, currentAccount, currentServer, fetch]);
 
   React.useEffect(() => {
     const newList = list.filter((item) =>
