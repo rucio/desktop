@@ -27,7 +27,7 @@ function updateChangelog(requestPayload = {}, component) {
   const date = new Date();
   const changeObj = {
     version: version.toString(),
-    timestamp: date.toUTCString(),
+    timestamp: date.toString(),
     rse: requestPayload.rse,
     rse_id: requestPayload.rse_id,
     initial: requestPayload.initialValues,
