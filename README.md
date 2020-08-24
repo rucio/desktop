@@ -14,6 +14,7 @@ Rucio Desktop is a new and easier way to use Rucio with a modern graphical user 
 ### Key Features
 * **Multi-Account Setup**: Add all your accounts associated with Rucio in the app and manage them in a really efficient way, right from your desktop in a few clicks.
 * **Explorer**: Browse the Rucio namespace for all your connected servers using the [FUSE-POSIX](https://github.com/rucio/fuse-posix) interface.
+* **Storage**: Manage RSE Configurations & Protocols for your connected Rucio Instance. Rollback settings to previous versions in a click.
 * **Admin and User Panel**: Login to the app as a Rucio Admin or a Rucio User and manage all your account settings right from the app.
 * **Server Configuration**: (For Rucio-Admin Accounts) Manage server configurations with ease.
 Create, add, update, and delete `config` sections and options.
