@@ -10,7 +10,7 @@ import TabHistory from "./TabHistory";
 const useStyles = makeStyles((theme) => ({
   root: {
     borderRadius: theme.typography.pxToRem(16.18),
-    minHeight: theme.typography.pxToRem(672),
+    height: "72vh",
     margin: theme.typography.pxToRem(10),
     position: "static",
     right: theme.typography.pxToRem(20),
