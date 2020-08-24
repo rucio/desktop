@@ -1,3 +1,7 @@
+<div align="center">
+    <img alt="Desktop_Docs" src="https://user-images.githubusercontent.com/30192068/90972858-2895ef00-e53a-11ea-8811-7d76b1eacc25.png" width=100% />
+</div>
+
 # Rucio Desktop : User Documentation
 v0.1.2
 
