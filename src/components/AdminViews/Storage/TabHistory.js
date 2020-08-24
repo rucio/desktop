@@ -16,7 +16,7 @@ import {
   updateProtocol,
 } from "../../Utils/Storage";
 import RevertChangeDialog from "./RevertChangeDialog";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import AlertSnackbar from "../../Utils/Snackbar";
 import { getCurrentServer } from "../../Utils/Servers";
 
@@ -57,6 +57,7 @@ function TabHistory(props) {
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
   const currentServer = getCurrentServer();
   const dispatch = useDispatch();
+  const fetch = useSelector((state) => state.fetch);
 
   React.useEffect(() => {
     setCurrentLog(null);
@@ -70,6 +71,18 @@ function TabHistory(props) {
       .catch((err) => console.log(err));
   }, [props.id]);
 
+  React.useEffect(() => {
+    if (fetch) {
+      getRSEChangelog(props.id)
+        .then((logs) => {
+          setChangelog(logs.data);
+        })
+        .catch((err) => console.log(err));
+    }
+
+    return () => dispatch({ type: "CANCEL_FETCH" });
+  }, [dispatch, props.id, fetch]);
+
   const handleClick = (index) => {
     setOpen(true);
     setCurrentLog(changelog[index]);
@@ -77,7 +90,6 @@ function TabHistory(props) {
 
   const handleRollback = async () => {
     dispatch({ type: "LOADING_TRUE" });
-    
 
     switch (currentLog.component) {
       case "settings":
@@ -92,7 +104,8 @@ function TabHistory(props) {
           .then((res) => setStatus(res.status))
           .then(dispatch({ type: "LOADING_FALSE" }))
           .then(setOpen(false))
-          .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
+          .then(() => dispatch({ type: "SHOW_SNACKBAR" }))
+          .then(() => dispatch({ type: "TRIGGER_FETCH" }));
         break;
       case "protocol":
         await updateProtocol(
@@ -110,6 +123,7 @@ function TabHistory(props) {
           .then(dispatch({ type: "LOADING_FALSE" }))
           .then(setOpen(false))
           .then(() => dispatch({ type: "SHOW_SNACKBAR" }))
+          .then(() => dispatch({ type: "TRIGGER_FETCH" }))
           .catch((err) => console.log(err));
         break;
       default:
