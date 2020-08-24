@@ -53,7 +53,7 @@ function ConfirmChangeDialog(props) {
 
   const value2str = (value) => {
     return typeof value === "boolean" ? value.toString() : value;
-  }
+  };
 
   return (
     <Dialog open={props.open} onClose={props.handleClose}>
@@ -75,9 +75,9 @@ function ConfirmChangeDialog(props) {
                   <div id="existing" className={classes.existing}>
                     {" "}
                     - {key}:{" "}
-                    {typeof props.initialValues === "object"
+                    {props.currentIndex === null
                       ? value2str(props.initialValues[key])
-                      : props.initialValues[props.currentIndex][key]}
+                      : value2str(props.initialValues[props.currentIndex][key])}
                   </div>
                   <div id="incoming" className={classes.incoming}>
                     {" "}

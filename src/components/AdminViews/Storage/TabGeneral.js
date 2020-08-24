@@ -338,6 +338,7 @@ function TabGeneral(props) {
         changes={values || {}}
         handleConfirm={() => handleUpdate()}
         handleClose={() => setOpen(false)}
+        currentIndex={null}
       />
       {handleAlertBar(status)}
     </React.Fragment>
