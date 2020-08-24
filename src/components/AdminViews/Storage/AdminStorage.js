@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   list: {
     width: "40%",
     flex: "1 1 32rem",
-    height: `calc(100vh - 16rem)`,
+    minHeight: theme.typography.pxToRem(672),
     overflow: "auto",
     position: "relative",
     [theme.breakpoints.down("md")]: {
