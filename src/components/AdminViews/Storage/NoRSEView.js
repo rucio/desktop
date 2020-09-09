@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   noSelected: {
     display: "flex",
     flexDirection: "column",
@@ -22,9 +22,9 @@ const useStyles = makeStyles({
     fontWeight: 500,
     color: "#000000",
     opacity: 0.5,
-    padding: 10,
+    padding: theme.typography.pxToRem(10),
   },
-});
+}));
 
 function NoRSEView() {
   const classes = useStyles();

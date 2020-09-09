@@ -1,5 +1,9 @@
+<p align="center">
+    <img alt="desktop_dev_docs" src="https://user-images.githubusercontent.com/30192068/90972850-10be6b00-e53a-11ea-9c7c-54e0cc0698c4.png" width=100% />
+</p>
+
 # Rucio Desktop : Developer Documentation
-v0.1.4
+v0.1.5
 
 # Table of Contents
 
@@ -77,23 +81,21 @@ $ npm -v
 Make sure that the `node` version > 12.16 (LTS) or is equal to the current release.
 
 
-### Setting up the repository
+### Setting up the repository and dependencies
 
 Fork the repository and then clone your private repository directly on your system.
 
 ```shell
 $ git clone https://github.com/<your-username>/desktop.git
-$ cd rocinante
-$ git remote add upstream https://github.com/rucio/desktop.git
-$ git fetch --all
+$ ./tools/setup-dev.js
 ```
 
-### Setup Scripts
+### Starting a dev environment
 
-After setting up NodeJS and the repository, you will need to go inside the cloned repository to run the setup script. This will install all the dependencies and start the development server which will be available on __http://localhost:3005__
+The following helper script will start the development server which will be available on __http://localhost:3005__
 
 ```shell
-$ npm run setup-dev
+$ npm run dev
 ```
 
 This will give you the following output if the script succeeds
@@ -131,13 +133,15 @@ $ npm run electron
 
 ### Troubleshooting
 
-* In case of an `code ELIFECYCLE` npm error, run the following script
-
-```shell
-$ npm run reset-env
-```
+* Use `ctrl +` / `ctrl -` to Zoom in or Zoom out of the the application if the resolution seems off.
 
 * Use `ctrl + R` or `cmd + R` (on MacOS) to refresh/reset the app if app freezes or crashes.
+
+* To __Reset the development environment__ use the following helper tool
+
+```shell
+$ ./tools/reset-env.js
+```
 
 ## Support
 If you are looking for support, join us on our Slack [#support](https://rucio.slack.com/messages/#support) channel, or send an email to our public mailing list [rucio-users@googlegroups.com](mailto:rucio-users@googlegroups.com).

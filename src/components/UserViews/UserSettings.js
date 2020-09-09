@@ -2,21 +2,21 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 import ServerList from "./ServerList";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minWidth: "40%",
     maxWidth: "60%",
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(10),
     fontFamily: "Inter",
   },
   title: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.5,
   },
-});
+}));
 
 function UserSettings() {
   const classes = useStyles();

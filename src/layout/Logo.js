@@ -2,17 +2,17 @@ import React from "react";
 import logoImage from "./ruciosq.png";
 import { makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   logo: {
     position: "relative",
-    padding: 5,
-    height: 50,
+    padding: theme.typography.pxToRem(5),
+    height: theme.typography.pxToRem(50),
     width: "auto",
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
   },
-});
+}));
 
 function Logo(props) {
   const classes = useStyles();

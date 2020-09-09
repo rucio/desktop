@@ -17,18 +17,18 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 500,
     color: "#808080",
   },
   btnGrp: {
-    marginTop: 10,
+    marginTop: theme.typography.pxToRem(10),
   },
   hint: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: 500,
     color: "#808080",
-    marginTop: 30,
+    marginTop: theme.typography.pxToRem(30),
   },
 }));
 
@@ -128,7 +128,7 @@ function LoginInput(props) {
             variant="outlined"
             size="large"
           >
-            <CardMembershipIcon fontSize="small" style={{ margin: 10 }} />
+            <CardMembershipIcon fontSize="small" style={{ margin: "0.625rem" }} />
             X509 Certificate
           </Button>
           <Button
@@ -137,7 +137,7 @@ function LoginInput(props) {
             variant="outlined"
             size="large"
           >
-            <VpnKeyIcon fontSize="small" style={{ margin: 10 }} />
+            <VpnKeyIcon fontSize="small" style={{ margin: "0.625rem" }} />
             USERPASS
           </Button>
         </ButtonGroup>

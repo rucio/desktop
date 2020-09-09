@@ -10,9 +10,9 @@ import Storage from "./Storage";
 
 const useStyles = makeStyles((theme) => ({
   content: {
-    width: (props) => `calc(100% - ${props.drawerWidth}px)`,
+    width: (props) => `calc(100% - ${props.drawerWidth})`,
     marginLeft: (props) => props.drawerWidth,
-    height: `calc(100% - 96px)`,
+    height: `calc(100% - 6rem)`,
     flexGrow: 1,
     padding: theme.spacing(3),
     display: "flex",
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   pageTitle: {
     textAlign: "left",
     fontWeight: 300,
-    fontSize: 48,
+    fontSize: theme.typography.pxToRem(48),
     opacity: 0.85,
     width: "inherit",
     color: "#3e55ab",
@@ -72,7 +72,7 @@ function RenderLayout(props) {
 
 RenderLayout.propTypes = {
   page: PropTypes.string,
-  drawerWidth: PropTypes.number,
+  drawerWidth: PropTypes.string,
 };
 
 export default RenderLayout;

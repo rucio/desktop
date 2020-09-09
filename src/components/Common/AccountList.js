@@ -11,17 +11,17 @@ import AccountDetails from "./AccountDetails";
 const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "Inter",
-    paddingTop: 10,
-    paddingBottom: 30,
-    fontSize: 16,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(30),
+    fontSize: theme.typography.pxToRem(16),
     width: "50%",
   },
   listItem: {
     color: "#000000",
     opacity: 0.8,
     fontSize: theme.typography.pxToRem(16),
-    padding: 5,
-    paddingLeft: 5,
+    padding: theme.typography.pxToRem(5),
+    paddingLeft: theme.typography.pxToRem(5),
     fontWeight: 500
   },
 }));

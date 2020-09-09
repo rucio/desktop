@@ -146,11 +146,12 @@ export async function updateProtocol(
   account,
   server,
   rse,
+  rseId,
   scheme,
   hostname,
   port,
   protocolObj,
-  initialValues,
+  initialValues
 ) {
   const [cfg] = getAccountConfig(account, server);
 
@@ -165,11 +166,12 @@ export async function updateProtocol(
     server: serverObj,
     token: "",
     rse: rse,
+    rse_id: rseId,
     scheme: scheme,
     hostname: hostname,
     port: port,
     protocolObj: protocolObj,
-    initialValues: initialValues
+    initialValues: initialValues,
   };
 
   try {
@@ -180,6 +182,71 @@ export async function updateProtocol(
 
   try {
     const response = axios.post("/rse/protocol/update", {
+      payload,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+  } catch (err) {
+    return 500;
+  }
+}
+
+export function updateRSESettings(
+  account,
+  server,
+  rse,
+  rseId,
+  params,
+  initialValues
+) {
+  const [cfg] = getAccountConfig(account, server);
+
+  const serverObj = {
+    name: cfg.server_name,
+    host: cfg.rucio_host,
+    auth: cfg.auth_host,
+  };
+
+  const payload = {
+    certlocation: cfg.ca_cert,
+    server: serverObj,
+    token: "",
+    rse: rse,
+    rse_id: rseId,
+    params: params,
+    initialValues: initialValues,
+  };
+  
+  try {
+    payload.token = cookies.get(cfg.server_name);
+  } catch (err) {
+    return 401;
+  }
+
+  try {
+    const response = axios.post("/rse/setting/update", {
+      payload,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    return response;
+  } catch (err) {
+    return 500;
+  }
+}
+
+export function getRSEChangelog(rseId) {
+  const payload = {
+    rse_id: rseId,
+  };
+
+  try {
+    const response = axios.post("/rse/changelog", {
       payload,
       headers: {
         "Content-Type": "application/json",

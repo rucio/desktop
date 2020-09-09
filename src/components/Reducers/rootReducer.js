@@ -5,6 +5,7 @@ import loginReducer from "./loginReducer";
 import statusReducer from "./statusReducer";
 import { snackbarReducer } from "./snackbarReducer";
 import { loadingReducer } from "./loadingReducer";
+import { fetchReducer } from "./fetchReducer";
 
 const rootReducer = combineReducers({
   directory: directoryReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   login: loginReducer,
   status: statusReducer,
   snackbar: snackbarReducer,
-  loading: loadingReducer
+  loading: loadingReducer,
+  fetch: fetchReducer
 });
 
 export default rootReducer;

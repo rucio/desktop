@@ -4,14 +4,14 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import { makeStyles } from "@material-ui/core";
 import { lightBlue } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    height: 80,
+    height: theme.typography.pxToRem(80),
     width: "auto",
-    padding: 20,
+    padding: theme.typography.pxToRem(20),
     color: lightBlue[400],
   },
-});
+}));
 
 function MetaIcons(props) {
   const classes = useStyles();
@@ -24,7 +24,7 @@ function MetaIcons(props) {
     case "DATASET":
       return <FolderIcon className={classes.root} />;
     default:
-      return <div/>;
+      return <div />;
   }
 }
 

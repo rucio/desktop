@@ -12,7 +12,7 @@ import {
 import LoadingSpinner from "../../Utils/LoadingSpinner";
 import { green, red } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     fontFamily: "Inter",
   },
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     margin: "0.6rem",
   },
   message: {
-    fontSize: "1rem",
+    fontSize: theme.typography.pxToRem(16),
     fontWeight: 500,
     opacity: 0.8,
     paddingTop: 0,
@@ -33,7 +33,7 @@ const useStyles = makeStyles({
     opacity: 0.8,
     padding: "0.6rem",
     maxHeight: "16rem",
-    overflow: "auto"
+    overflow: "auto",
   },
   existing: {
     backgroundColor: red[50],
@@ -44,12 +44,16 @@ const useStyles = makeStyles({
     padding: "0.4rem",
     marginBottom: "0.8rem",
   },
-});
+}));
 
 function ConfirmChangeDialog(props) {
   const classes = useStyles();
   const changes = props.changes;
   const loading = useSelector((state) => state.loading);
+
+  const value2str = (value) => {
+    return typeof value === "boolean" ? value.toString() : value;
+  };
 
   return (
     <Dialog open={props.open} onClose={props.handleClose}>
@@ -70,11 +74,14 @@ function ConfirmChangeDialog(props) {
                 <React.Fragment key={key}>
                   <div id="existing" className={classes.existing}>
                     {" "}
-                    - {key}: {props.initialValues[props.currentIndex][key]}
+                    - {key}:{" "}
+                    {props.currentIndex === null
+                      ? value2str(props.initialValues[key])
+                      : value2str(props.initialValues[props.currentIndex][key])}
                   </div>
                   <div id="incoming" className={classes.incoming}>
                     {" "}
-                    + {key}: {changes[key]}
+                    + {key}: {value2str(changes[key])}
                   </div>
                 </React.Fragment>
               ))}
@@ -90,7 +97,9 @@ function ConfirmChangeDialog(props) {
         >
           Cancel
         </Button>
-        <Button color="primary" onClick={props.handleConfirm}>Confirm Changes</Button>
+        <Button color="primary" onClick={props.handleConfirm}>
+          Confirm Changes
+        </Button>
       </DialogActions>
     </Dialog>
   );
@@ -101,8 +110,8 @@ ConfirmChangeDialog.propTypes = {
   handleClose: PropTypes.func,
   handleConfirm: PropTypes.func,
   changes: PropTypes.object,
-  initialValues: PropTypes.array,
-  currentIndex: PropTypes.number,
+  initialValues: PropTypes.any,
+  currentIndex: PropTypes.number.isRequired,
 };
 
 export default ConfirmChangeDialog;

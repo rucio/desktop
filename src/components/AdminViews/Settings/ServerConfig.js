@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "100%",
   },
   section: {
-    padding: 2,
+    padding: theme.typography.pxToRem(2),
   },
   sectionTitle: {
     color: "#3e55ab",
@@ -33,11 +33,11 @@ const useStyles = makeStyles((theme) => ({
   },
   optionName: {
     overflowWrap: "break-word",
-    padding: 10,
+    padding: theme.typography.pxToRem(10),
   },
   optionValue: {
     overflowWrap: "break-word",
-    padding: 10,
+    padding: theme.typography.pxToRem(10),
   },
 }));
 

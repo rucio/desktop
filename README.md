@@ -1,17 +1,23 @@
+<div align="center">
+    <img alt="Rucio Desktop" src="https://user-images.githubusercontent.com/30192068/90972709-254e3380-e539-11ea-9f81-8fc13e3055f5.png" width=100% />
+</div>
+
 # Rucio Desktop
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/desktop?style=flat-square)
 ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/react?style=flat-square)
 ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/dev/electron?style=flat-square)
 
-**A Desktop GUI Client for [Rucio](https://github.com/rucio/rucio).**
-
 ## Description
 
 Rucio Desktop is a new and easier way to use Rucio with a modern graphical user interface.
+<div align="center">
+    <img alt="Desktop" src="https://user-images.githubusercontent.com/30192068/91706755-73e47900-eb9c-11ea-818f-92dc91a51766.png" width=100% />
+</div>
 
 ### Key Features
 * **Multi-Account Setup**: Add all your accounts associated with Rucio in the app and manage them in a really efficient way, right from your desktop in a few clicks.
 * **Explorer**: Browse the Rucio namespace for all your connected servers using the [FUSE-POSIX](https://github.com/rucio/fuse-posix) interface.
+* **Storage**: Manage RSE Configurations & Protocols for your connected Rucio Instance. Rollback settings to previous versions in a click.
 * **Admin and User Panel**: Login to the app as a Rucio Admin or a Rucio User and manage all your account settings right from the app.
 * **Server Configuration**: (For Rucio-Admin Accounts) Manage server configurations with ease.
 Create, add, update, and delete `config` sections and options.
@@ -36,9 +42,9 @@ For Detailed Instructions refer to our Usage Guide [here](https://github.com/viv
 
 ## Documentation
 
-* [User Documentation](https://github.com/viveknigam3003/rocinante/tree/master/docs) - includes client setup and usage guide.
+* [User Documentation](https://github.com/rucio/desktop/tree/master/docs) - includes client setup and usage guide.
 
-* [Developer Documentation](https://github.com/viveknigam3003/rocinante/tree/master/docs/dev) - Includes instructions for setting up dev environment, Component and API references.
+* [Developer Documentation](https://github.com/rucio/desktop/tree/master/docs/dev) - Includes instructions for setting up dev environment, Component and API references.
 
 ## Extra Notes
 

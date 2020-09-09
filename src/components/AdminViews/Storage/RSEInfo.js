@@ -5,21 +5,22 @@ import NoRSEView from "./NoRSEView";
 import TabPanel from "./RSETabPanel";
 import TabGeneral from "./TabGeneral";
 import TabProtocol from "./TabProtocol";
+import TabHistory from "./TabHistory";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    borderRadius: 16.18,
+    borderRadius: theme.typography.pxToRem(16.18),
     height: "72vh",
-    margin: 10,
+    margin: theme.typography.pxToRem(10),
     position: "static",
-    right: 20,
+    right: theme.typography.pxToRem(20),
     display: "flex",
     flex: "1 1 56%",
     [theme.breakpoints.down("md")]: {
       display: "none",
     },
     [theme.breakpoints.down("lg")]: {
-      height: "65vh",
+      height: "68vh",
       flex: "1 1 58%",
     },
   },
@@ -27,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     fontFamily: "Inter",
-    padding: 20,
+    padding: theme.typography.pxToRem(20),
     flex: "1 0 60%",
   },
   header: {
-    padding: 40,
+    padding: theme.typography.pxToRem(40),
     width: "100%",
   },
   h1: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 700,
     color: "#000000",
     opacity: 0.8,
-    marginBottom: 10,
+    marginBottom: theme.typography.pxToRem(10),
   },
   h2: {
     fontSize: "1.0rem",
@@ -50,8 +51,8 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    marginLeft: 20,
-    height: "inherit"
+    marginLeft: theme.typography.pxToRem(20),
+    height: "inherit",
   },
   tab: {
     fontFamily: "Inter",
@@ -95,16 +96,19 @@ function RSEInfo(props) {
           value={value}
           moreDetails={props.moreDetails}
         />
-        <TabProtocol protocols={props.details.protocols} rse={props.details.rse} value={value} />
+        <TabProtocol
+          protocols={props.details.protocols}
+          rse={props.details.rse}
+          id={props.details.id}
+          value={value}
+        />
         <TabPanel value={value} index={2}>
           Attributes
         </TabPanel>
         <TabPanel value={value} index={3}>
           Usage
         </TabPanel>
-        <TabPanel value={value} index={4}>
-          History
-        </TabPanel>
+        <TabHistory value={value} id={props.details.id} />
       </div>
     );
   }

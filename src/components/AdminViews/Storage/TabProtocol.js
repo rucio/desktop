@@ -13,6 +13,7 @@ import ConfirmChangeDialog from "./ConfirmChangeDialog";
 import { updateProtocol } from "../../Utils/Storage";
 import { useDispatch } from "react-redux";
 import AlertSnackbar from "../../Utils/Snackbar";
+import { getCurrentServer } from "../../Utils/Servers";
 
 const useStyles = makeStyles({
   inputLabel: {
@@ -89,11 +90,13 @@ function TabProtocol(props) {
     const hostname = initialProtocols[currentIndex].hostname;
     const port = initialProtocols[currentIndex].port;
     const currentAccount = localStorage.getItem("CURR_ACCOUNT");
-    
+    const currentServer = getCurrentServer();
+
     await updateProtocol(
       currentAccount,
-      "rucio-server-x509",
+      currentServer,
       props.rse,
+      props.id,
       scheme,
       hostname,
       port,
@@ -104,6 +107,48 @@ function TabProtocol(props) {
       .then(dispatch({ type: "LOADING_FALSE" }))
       .then(setOpen(false))
       .then(() => dispatch({ type: "SHOW_SNACKBAR" }));
+  };
+
+  /**
+   * Process the `domains` for a protocol
+   * @param {Object} event 
+   * @param {number} index 
+   */
+  function processDomains (event, index) {
+    const [component, subcomponent] = event.target.name.split(".");
+    setCurrentIndex(index);
+    setNextProps({
+      protocols: [
+        ...nextProps.protocols.slice(0, index),
+        {
+          ...nextProps.protocols[index],
+          domains: {
+            ...nextProps.protocols[index].domains,
+            [component]: {
+              ...nextProps.protocols[index].domains[component],
+              [subcomponent]: parseInt(event.target.value),
+            },
+          },
+        },
+        ...nextProps.protocols.slice(index + 1),
+      ],
+    });
+
+    setValues({
+      ...nextProps.protocols[index],
+      domains: {
+        ...nextProps.protocols[index].domains,
+        [component]: {
+          ...nextProps.protocols[index].domains[component],
+          [subcomponent]: parseInt(event.target.value),
+        },
+      },
+    });
+
+    setChanges({
+      ...changes,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleChange = (event, index) => {
@@ -194,7 +239,9 @@ function TabProtocol(props) {
                 variant="outlined"
                 type="number"
                 label="Read"
+                name="lan.read"
                 value={item.domains.lan.read}
+                onChange={(e) => processDomains(e, index)}
               />
               <TextField
                 className={classes.smallTextField}
@@ -202,7 +249,9 @@ function TabProtocol(props) {
                 variant="outlined"
                 type="number"
                 label="Write"
+                name="lan.write"
                 value={item.domains.lan.write}
+                onChange={(e) => processDomains(e, index)}
               />
               <TextField
                 className={classes.smallTextField}
@@ -210,7 +259,9 @@ function TabProtocol(props) {
                 variant="outlined"
                 type="number"
                 label="Delete"
+                name="lan.delete"
                 value={item.domains.lan.delete}
+                onChange={(e) => processDomains(e, index)}
               />
             </FormGroup>
             <InputLabel className={classes.inputLabel}>WAN</InputLabel>
@@ -221,7 +272,9 @@ function TabProtocol(props) {
                 variant="outlined"
                 type="number"
                 label="Read"
+                name="wan.read"
                 value={item.domains.wan.read}
+                onChange={(e) => processDomains(e, index)}
               />
               <TextField
                 className={classes.smallTextField}
@@ -229,7 +282,9 @@ function TabProtocol(props) {
                 variant="outlined"
                 type="number"
                 label="Write"
+                name="wan.write"
                 value={item.domains.wan.write}
+                onChange={(e) => processDomains(e, index)}
               />
               <TextField
                 className={classes.smallTextField}
@@ -237,7 +292,9 @@ function TabProtocol(props) {
                 variant="outlined"
                 type="number"
                 label="Delete"
+                name="wan.delete"
                 value={item.domains.wan.delete}
+                onChange={(e) => processDomains(e, index)}
               />
               <TextField
                 className={classes.smallTextField}
@@ -245,7 +302,9 @@ function TabProtocol(props) {
                 variant="outlined"
                 type="number"
                 label="Third Party Copy"
+                name="wan.third_party_copy"
                 value={item.domains.wan.third_party_copy}
+                onChange={(e) => processDomains(e, index)}
               />
             </FormGroup>
             <Button
@@ -277,6 +336,7 @@ TabProtocol.propTypes = {
   value: PropTypes.any.isRequired,
   protocols: PropTypes.array,
   rse: PropTypes.string,
+  id: PropTypes.string,
 };
 
 export default TabProtocol;

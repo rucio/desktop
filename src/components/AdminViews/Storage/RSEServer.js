@@ -11,12 +11,12 @@ const useStyles = makeStyles((theme) => ({
   },
   text: {
     fontFamily: "Inter",
-    fontSize: 18,
+    fontSize: theme.typography.pxToRem(18),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.6,
-    paddingTop: 20,
-    paddingBottom: 30,
+    paddingTop: theme.typography.pxToRem(20),
+    paddingBottom: theme.typography.pxToRem(30),
   },
 }));
 

@@ -4,39 +4,41 @@ import AdminStorage from "../AdminViews/Storage/AdminStorage";
 import UserStorage from "../UserViews/Storage/UserStorage";
 import { grey } from "@material-ui/core/colors";
 import { fetchRSEs } from "../Utils/Storage";
+import { getCurrentServer } from "../Utils/Servers";
+import { useDispatch, useSelector } from "react-redux";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    width: "calc(100% - 48px)",
+    width: "calc(100% - 3rem)",
     textAlign: "left",
     fontFamily: "Inter",
   },
   title: {
-    fontSize: 32,
+    fontSize: theme.typography.pxToRem(32),
     fontWeight: 500,
     color: grey[800],
-    paddingTop: 20,
+    paddingTop: theme.typography.pxToRem(20),
   },
   hint: {
-    fontSize: 16,
+    fontSize: theme.typography.pxToRem(16),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.5,
-    paddingTop: 20,
+    paddingTop: theme.typography.pxToRem(20),
   },
   info: {
-    fontSize: 14,
+    fontSize: theme.typography.pxToRem(14),
     color: "#000000",
     opacity: 0.8,
-    paddingRight: 10,
-    paddingTop: 10,
+    paddingRight: theme.typography.pxToRem(10),
+    paddingTop: theme.typography.pxToRem(10),
   },
   panel: {
-    padding: 20,
-    marginTop: 20,
+    padding: theme.typography.pxToRem(20),
+    marginTop: theme.typography.pxToRem(20),
     width: "32%",
   },
-});
+}));
 
 function Storage() {
   const classes = useStyles();
@@ -45,12 +47,25 @@ function Storage() {
   const [filteredList, setFilteredList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const currentServer = getCurrentServer();
+  const dispatch = useDispatch();
+  const fetch = useSelector((state) => state.fetch);
 
   React.useEffect(() => {
-    fetchRSEs(currentAccount, "rucio-server-x509").then((res) => {
+    fetchRSEs(currentAccount, currentServer).then((res) => {
       setList(res.data);
     });
-  }, [currentAccount]);
+  }, [currentAccount, currentServer]);
+
+  React.useEffect(() => {
+    if (fetch === 1) {
+      fetchRSEs(currentAccount, currentServer).then((res) => {
+        setList(res.data);
+      });
+    }
+
+    return () => dispatch({type: "CANCEL_FETCH"})
+  }, [dispatch, currentAccount, currentServer, fetch]);
 
   React.useEffect(() => {
     const newList = list.filter((item) =>
@@ -73,7 +88,7 @@ function Storage() {
         />
       </div>
       {view === "admin" ? (
-        <AdminStorage list={filteredList} searchPhrase={searchTerm}/>
+        <AdminStorage list={filteredList} searchPhrase={searchTerm} />
       ) : (
         <UserStorage />
       )}

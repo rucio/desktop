@@ -14,22 +14,22 @@ import FileIcons from "./FileIcons";
 import { useSelector, useDispatch } from "react-redux";
 import { getFileMetadata } from "../Utils/Metadata";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: "80%",
     width: "100%",
-    padding: 12,
-    margin: 12,
+    padding: theme.typography.pxToRem(12),
+    margin: theme.typography.pxToRem(12),
   },
   container: {
     maxHeight: "100%",
   },
-});
+}));
 
 // Add Objects to this array to add columns to FileList.
 const columns = [
-  { id: "name", label: "Name", minWidth: 100 },
-  { id: "type", label: "Type", minWidth: 100 },
+  { id: "name", label: "Name", minWidth: "6.25rem" },
+  { id: "type", label: "Type", minWidth: "6.25rem" },
 ];
 
 function FileList() {
@@ -92,7 +92,14 @@ function FileList() {
                         align={column.align}
                         onClick={() => renderFileList(row.name)}
                       >
-                        <div style={{ display: "flex", alignItems: "center" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            fontSize: "1rem",
+                            fontFamily: "Inter",
+                          }}
+                        >
                           <FileIcons type={row.type} rowValue={value} />
                           {value}
                         </div>

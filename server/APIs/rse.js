@@ -243,6 +243,39 @@ async function addProtocol(
     });
 }
 
+/**
+ * Attempts to update setting parameters for given `rse`.
+ * @param {String} certlocation
+ * @param {{name: String, host: String, auth: String}} server
+ * @param {String} token
+ * @param {String} rse RSE name
+ * @param {Object} params RSE Setting Parameters
+ */
+async function updateSettings(
+  certlocation,
+  server,
+  token,
+  rse,
+  params
+) {
+  return superagent
+    .put(`https://${server.host}/rses/${rse}`)
+    .set("X-Rucio-Auth-Token", token)
+    .set("User-Agent", `rucio-desktop/${packageJSON.version}`)
+    .ca(fs.readFileSync(certlocation))
+    .send(params)
+    .ok((res) => {
+      console.log(`[INFO] Updated parameters for ${rse}`);
+      return res.status === 201;
+    })
+    .on("error", (res) => {
+      console.log(res);
+      res.status === 401
+        ? console.log("[ERROR] Invalid Credentials")
+        : console.log("[ERROR] Internal Server Error");
+    });
+}
+
 module.exports = {
   getRSEs,
   info,
@@ -254,4 +287,5 @@ module.exports = {
   processResponseData,
   deleteProtocol,
   addProtocol,
+  updateSettings
 };

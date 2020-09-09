@@ -4,11 +4,14 @@ import SettingsIcon from "@material-ui/icons/Settings";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import { IconButton, makeStyles } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   optionIcon: {
     color: "#3e55ab",
   },
-});
+  icon: {
+    fontSize: theme.typography.pxToRem(32)
+  }
+}));
 
 function ToolbarOptions() {
   const classes = useStyles();
@@ -16,13 +19,13 @@ function ToolbarOptions() {
   return (
     <div id="options">
       <IconButton className={classes.optionIcon} href="#app/settings">
-        <SettingsIcon />
+        <SettingsIcon className={classes.icon} />
       </IconButton>
       <IconButton className={classes.optionIcon}>
-        <NotificationsIcon />
+        <NotificationsIcon className={classes.icon} />
       </IconButton>
       <IconButton className={classes.optionIcon} href="#app/account">
-        <AccountCircleIcon />
+        <AccountCircleIcon className={classes.icon} />
       </IconButton>
     </div>
   );

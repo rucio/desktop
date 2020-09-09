@@ -1,4 +1,5 @@
 import { Cookies } from "react-cookie";
+import { getAvailableTokens } from "./Tokens";
 
 /**
  * Returns an array of all the server-names for the servers present.
@@ -13,6 +14,22 @@ export function getAllServersByNames() {
   }
 
   return serverNames
+}
+
+/**
+ * Returns the name of the current server
+ */
+export function getCurrentServer() {
+  const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const tokens = getAvailableTokens();
+  for (let i = 0; i < tokens.length; i++){
+    const account = tokens[i].token.split('-')[0]
+    if (currentAccount === account){
+      return tokens[i].servername
+    }
+  }
+
+  return null;
 }
 
 export function serverStatus() {

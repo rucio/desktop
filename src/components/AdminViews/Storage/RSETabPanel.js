@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles, Box } from "@material-ui/core";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "18rem",
     maxHeight: "30rem",
@@ -11,13 +11,13 @@ const useStyles = makeStyles({
   box: {
     display: "flex",
     flex: 1,
-    padding: 10,
-    margin: 20,
+    padding: theme.typography.pxToRem(10),
+    margin: theme.typography.pxToRem(20),
     fontSize: "1rem",
     flexDirection: "column",
     justifyContent: "space-between",
   },
-});
+}));
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;

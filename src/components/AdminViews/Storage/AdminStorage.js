@@ -5,31 +5,36 @@ import { useSpring, animated } from "react-spring";
 import RSECard from "./RSECard";
 import { fetchRSEInfo } from "../../Utils/Storage";
 import RSEInfo from "./RSEInfo";
+import { useSelector, useDispatch } from "react-redux";
+import { getCurrentServer } from "../../Utils/Servers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: theme.typography.pxToRem(10),
+    paddingBottom: theme.typography.pxToRem(10),
     display: "flex",
     justifyContent: "space-between",
   },
   list: {
     width: "40%",
-    flex: "1 1 512px",
-    height: `calc(100vh - 256px)`,
+    flex: "1 1 32rem",
+    height: `calc(100vh - 16rem)`,
     overflow: "auto",
     position: "relative",
     [theme.breakpoints.down("md")]: {
       width: "100%",
     },
+    [theme.breakpoints.down("lg")]: {
+      height: `calc(100vh - 20rem)`,
+    },
   },
   hint: {
-    fontSize: "1rem",
+    fontSize: theme.typography.pxToRem(16),
     fontWeight: 500,
     color: "#000000",
     opacity: 0.4,
-    padding: 20,
+    padding: theme.typography.pxToRem(20),
   },
 }));
 
@@ -40,6 +45,9 @@ function AdminStorage(props) {
   const [rseInfo, setRSEInfo] = useState({});
   const [rseDetails, setRSEDetails] = useState({});
   const currentAccount = localStorage.getItem("CURR_ACCOUNT");
+  const currentServer = getCurrentServer();
+  const fetch = useSelector((state) => state.fetch);
+  const dispatch = useDispatch();
   const fade = useSpring({
     from: {
       opacity: 0,
@@ -49,13 +57,26 @@ function AdminStorage(props) {
 
   React.useEffect(() => {
     if (currentRSE !== null) {
-      fetchRSEInfo(currentAccount, "rucio-server-x509", currentRSE).then(
+      fetchRSEInfo(currentAccount, currentServer, currentRSE).then(
         (rseInfo) => {
           setRSEInfo(rseInfo.data);
         }
       );
     }
-  }, [currentAccount, currentRSE]);
+  }, [currentAccount, currentServer, currentRSE]);
+
+  React.useEffect(() => {
+    if (fetch === 1) {
+      console.log("Fetching Again...");
+      fetchRSEInfo(currentAccount, currentServer, currentRSE).then(
+        (rseInfo) => {
+          setRSEInfo(rseInfo.data);
+        }
+      );
+    }
+
+    return () => dispatch({type: "CANCEL_FETCH"})
+  }, [dispatch, currentAccount, currentServer, currentRSE, fetch]);
 
   return (
     <div id="admin-storage-root" className={classes.root}>

@@ -4,13 +4,13 @@ import DescriptionIcon from "@material-ui/icons/Description";
 import { makeStyles } from "@material-ui/core";
 import { lightBlue } from "@material-ui/core/colors";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    fontSize: 24,
+    fontSize: theme.typography.pxToRem(32),
     color: lightBlue[400],
-    padding: 5
+    padding: theme.typography.pxToRem(5)
   },
-});
+}));
 
 function FileIcons(props) {
   const classes = useStyles();

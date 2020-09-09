@@ -5,7 +5,7 @@ import ToolbarOptions from "./ToolbarOptions";
 import Sidebar from "./Sidebar";
 import RenderLayout from "./RenderLayout";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   Toolbar: {
     display: "flex",
     alignItems: "center",
@@ -14,14 +14,14 @@ const useStyles = makeStyles({
   title: {
     color: grey[800],
     fontFamily: "Inter",
-    fontSize: 18,
+    fontSize: theme.typography.pxToRem(18),
   },
-});
+}));
 
 function Landing(props) {
   const classes = useStyles();
   const page = props.page;
-  const drawerWidth = 240
+  const drawerWidth = "15rem"
 
   return (
     <React.Fragment>
