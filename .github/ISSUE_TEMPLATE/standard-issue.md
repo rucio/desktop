@@ -1,6 +1,6 @@
 ---
 name: Standard Issue
-about: Want to contribute? Open an issue using this template.
+about: Want to contribute? Open an issue before making a PR.
 title: ''
 labels: ''
 assignees: ''
