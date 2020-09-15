@@ -6,10 +6,49 @@ Welcome to Rucio Desktop's contribution guide! Here are some things you need to 
 * The issue should contain the __motivation__, __modification__ and __expected results__ (discussions usually happen there).
 * No pull request will be merged without an associated issue (release notes are generated from issues).
 * You should make sure to add your name (and organisation) to [AUTHORS](AUTHORS.md).
-* If you have questions, you can reach @viveknigam3003 on our [Slack](https://rucio.slack.com/) channel, or send an email to [@viveknigam3003](mailto:viveknigam.nigam3@gmail.com)
+* If you have questions, you can reach the development team on our [Slack](https://rucio.slack.com/) channel, or send an email to [@viveknigam3003](mailto:viveknigam.nigam3@gmail.com)
 
 A contribution can be either be a __patch__ or __feature__:
 
  * __Patches__ include bugfixes and minor changes to the code and are included in patch releases.
 
  * __Features__ include major developments or potentially disruptive changes and are included in feature releases made multiple times a year.
+
+
+## Contribution steps
+
+Pre-requisite: Setup a development environment by refering to the guide given [here](https://github.com/rucio/desktop/tree/master/docs/dev#setting-up-a-developement-environment) in our developer documentation. After completing that follow the steps below to create a PR in the repository.
+
+#### STEP 1
+
+If not exist, create an [issue](https://github.com/rucio/rucio/issues/new) with the description of the contribution (motivation, modification and expected results). Every issue will get a __unique issue number__.
+
+#### STEP 2
+
+Create a local branch that corresponds to the issue. To easily identify the purpose of branches different keywords must be used:
+
+* Patch branches must be named __patch-[issue number]-[short description]__
+* Feature branches must be named __feature-[issue number]-[short description]__
+
+#### STEP 3
+
+Commit your change. The commit command must include a specific message format
+
+```shell
+$ git commit -m "<component>: <change_message> #<issue number>"
+```
+
+Valid component names are listed in the [label list](https://github.com/rucio/desktop/labels) and are usually specified on the issue of the change.
+
+__STEP 4:__ Push the commit to your forked repository and create the pull request from your created branch to `rucio/desktop master` 
+
+The format of the pull request title must be: `<component>: <short_change_message> #<issue number>`
+
+You must mention the changes made in a bullet point format in the PR description. In the end if the PR is intented to close an issue add this line:
+
+`This PR Fixes #<issue-number>`
+
+and mention the issue-number you are making the PR against. This shall help later in closing the issue automatically if the PR is merged.
+
+__STEP 5:__ 
+Watch the pull request for comments and reviews. For any pull requests update, please try to squash/amend your commits to avoid "in-between" commits.
