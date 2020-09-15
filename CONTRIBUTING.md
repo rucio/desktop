@@ -72,4 +72,4 @@ We use ESlint and Prettier to sanitize and format our code. The linting configur
 
 ## Help and Support
 
-If you have questions, you can reach the development team on our [Slack](https://rucio.slack.com/) channel, or send an email to [@viveknigam3003](mailto:viveknigam.nigam3@gmail.com)
+If you have questions, you can reach the development team on our [Slack](https://rucio.slack.com/) channel, or send an email to [@viveknigam3003](mailto:viveknigam.nigam3@gmail.com) or to our development mailing list [rucio-dev@cern.ch](mailto:rucio-dev@cern.ch).
