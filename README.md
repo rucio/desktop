@@ -1,5 +1,5 @@
 <div align="center">
-    <img alt="Notifier" src="https://user-images.githubusercontent.com/30192068/90972709-254e3380-e539-11ea-9f81-8fc13e3055f5.png" width=100% />
+    <img alt="Rucio Desktop" src="https://user-images.githubusercontent.com/30192068/90972709-254e3380-e539-11ea-9f81-8fc13e3055f5.png" width=100% />
 </div>
 
 # Rucio Desktop
@@ -10,6 +10,9 @@
 ## Description
 
 Rucio Desktop is a new and easier way to use Rucio with a modern graphical user interface.
+<div align="center">
+    <img alt="Desktop" src="https://user-images.githubusercontent.com/30192068/91706755-73e47900-eb9c-11ea-818f-92dc91a51766.png" width=100% />
+</div>
 
 ### Key Features
 * **Multi-Account Setup**: Add all your accounts associated with Rucio in the app and manage them in a really efficient way, right from your desktop in a few clicks.
