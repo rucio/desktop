@@ -1,13 +1,12 @@
 # Contribution Guide
 
-Welcome to Rucio Desktop's contribution guide! 
+Welcome to Rucio Desktop's contribution guide!
 Here are some things you need to keep in mind while contributing to this repository.
 
 * Please ensure that an [issue](https://github.com/rucio/rucio/issues/new) exists before submitting your contribution as a pull request.
 * The issue should contain the __motivation__, __modification__ and __expected results__ (discussions usually happen there).
 * No pull request will be merged without an associated issue (release notes are generated from issues).
 * You should make sure to add your name (and organisation) to [AUTHORS](AUTHORS.md).
-* If you have questions, you can reach the development team on our [Slack](https://rucio.slack.com/) channel, or send an email to [@viveknigam3003](mailto:viveknigam.nigam3@gmail.com)
 
 A contribution can be either be a __patch__ or __feature__:
 
@@ -44,6 +43,9 @@ $ git commit -m "<component>: <change_message> #<issue number>"
 
 Valid component names are listed in the [label list](https://github.com/rucio/desktop/labels) and are usually specified on the issue of the change.
 
+__NOTE__: For first-time contributors, add your Name and Organisation in the [AUTHORS.md](AUTHORS.md) file before creating a PR to the master branch. 
+Follow the same format as previous contributors.
+
 #### STEP 4
 
 Push the commit to your forked repository and create the pull request from your created branch to `rucio/desktop master` 
@@ -63,3 +65,11 @@ This shall help later in closing the issue automatically if the PR is merged.
 
 Watch the pull request for comments and reviews.
 For any pull requests update, please try to squash/amend your commits to avoid "in-between" commits.
+
+## Coding Style
+
+We use ESlint and Prettier to sanitize and format our code. The linting configuration is supplied alonf with the code. Please do use the same before submitting a pull request.
+
+## Help and Support
+
+If you have questions, you can reach the development team on our [Slack](https://rucio.slack.com/) channel, or send an email to [@viveknigam3003](mailto:viveknigam.nigam3@gmail.com)
