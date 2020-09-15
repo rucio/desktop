@@ -3,7 +3,7 @@
 Welcome to Rucio Desktop's contribution guide!
 Here are some things you need to keep in mind while contributing to this repository.
 
-* Please ensure that an [issue](https://github.com/rucio/rucio/issues/new) exists before submitting your contribution as a pull request.
+* Please ensure that an [issue](https://github.com/rucio/rucio/issues/new) exists before submitting your contribution as a pull request. Use the __Standard Issue__ template for quick start.
 * The issue should contain the __motivation__, __modification__ and __expected results__ (discussions usually happen there).
 * No pull request will be merged without an associated issue (release notes are generated from issues).
 * You should make sure to add your name (and organisation) to [AUTHORS](AUTHORS.md).
