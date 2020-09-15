@@ -7,16 +7,18 @@
  * Authors:
  * - Vivek Nigam, <viveknigam.nigam3@gmail.com>, 2020
  */
+ 
+::-webkit-scrollbar {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
 
-const initialState = false;
-
-export function fetchReducer(state = initialState, action) {
-  switch (action.type) {
-    case "TRIGGER_FETCH":
-      return 1;
-    case "CANCEL_FETCH":
-      return 0;
-    default:
-      return 0;
-  }
+.App {
+  min-width: 50rem;
+  min-height: 25rem;
+  text-align: center;
+  background-color: #fffafa;
+  height: 100vh;
+  width: auto;
+  overflow: hidden;
 }

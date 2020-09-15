@@ -1,7 +1,17 @@
+/*
+ * Copyright European Organization for Nuclear Research (CERN)
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * You may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Authors:
+ * - Vivek Nigam, <viveknigam.nigam3@gmail.com>, 2020
+ */
+
 import React, { useState } from "react";
 import { HashRouter as Router, Route } from "react-router-dom";
 import LoginScreen from "./components/Authentication/LoginScreen";
-import "./App.css";
+import "./styles/App.css";
 import LoginForm from "./components/Authentication/LoginForm";
 import AddAccount from "./components/Authentication/AddAccount";
 import AppLayout from "./layout/AppLayout";
