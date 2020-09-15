@@ -9,7 +9,8 @@
 
 ## Description
 
-Rucio Desktop is a new and easier way to use Rucio with a modern graphical user interface.
+Rucio Desktop is a new and easier way to use Rucio with a modern graphical user interface. You can download Rucio Desktop and use it as a client or a Rucio admin. It provides a simpler workflow in comparision to traditional command-line interface provided by Rucio for both type of users.
+
 <div align="center">
     <img alt="Desktop" src="https://user-images.githubusercontent.com/30192068/91706755-73e47900-eb9c-11ea-818f-92dc91a51766.png" width=100% />
 </div>
