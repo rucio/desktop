@@ -12,10 +12,10 @@ v0.1.5
 * [Introduction](#introduction)
 * [Tech Stack](#tech-stack)
 * [Contributing to the project](#contributing-to-the-project)
-* [Setting Up a Developement Environment](#setting-up-a-development-environment)
+* [Setting Up a Developement Environment](#setting-up-a-developement-environment)
     * [Installing FUSE-POSIX Interface](#installing-fuse-posix-interface)
     * [Installing NodeJS](#installing-nodejs)
-    * [Setting up the repository](#setting-up-the-repository)
+    * [Setting up the repository](#setting-up-the-repository-and-dependencies)
     * [Setup Scripts](#setup-scripts)
     * [Troubleshooting](#troubleshooting)
 * [Component Reference](#component-reference)
@@ -38,12 +38,25 @@ We __highly recommend__ that before contributing to the project you must get you
 ## Tech Stack
 
 Before contributing to the project, you must be familiar with the tech stack used to build this project.
+<div align="left">
+    <img alt="desktop_dev_docs" src="https://user-images.githubusercontent.com/30192068/93226237-b909cd00-f790-11ea-8cdd-483a1e8d7bdb.png" width=50% height=auto />
+</div>
 
-* ReactJS `(^16.13.1 and above)`
-* React Router
+
+* React 16.13+
+* Electron 7.0.0+
 * Redux
-* ExpressJS
-* Electron `(^9.1)`
+* Node JS
+* Express JS
+* React Router
+* Material-UI 4.11.0+
+* React Spring
+
+Rucio Desktop follows the following core architecture to communicate to Rucio servers and Rucio FUSE-POSIX Module.
+<div align="left">
+    <img alt="desktop_dev_docs" src="https://user-images.githubusercontent.com/30192068/93226993-8c09ea00-f791-11ea-930b-60a73eba3132.png" width=80% height=auto />
+</div>
+
 
 ### Note on React JS v16.13
 
