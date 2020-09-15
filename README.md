@@ -46,6 +46,12 @@ For Detailed Instructions refer to our Usage Guide [here](https://github.com/viv
 
 * [Developer Documentation](https://github.com/rucio/desktop/tree/master/docs/dev) - Includes instructions for setting up dev environment, Component and API references.
 
+## Contributing
+
+If you are interested in contributing to this project to add features or make bug fixes, we would encourage you to have a look at our [CONTRIBUTION GUIDE](CONTRIBUTING.md).
+
+A huge thanks to all the [contributors](AUTHORS.md) of Rucio Desktop!
+
 ## Extra Notes
 
 * This project is under development as part of the Google Summer of Code 2020 project for CERN-HSF's Rucio.
