@@ -3,7 +3,7 @@
 </p>
 
 # Rucio Desktop : Developer Documentation
-v0.1.5
+v0.1.6
 
 # Table of Contents
 
