@@ -4,8 +4,6 @@
 
 # Rucio Desktop
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/desktop?style=flat-square)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/react?style=flat-square)
-![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/rucio/desktop/dev/electron?style=flat-square)
 
 ## Description
 
