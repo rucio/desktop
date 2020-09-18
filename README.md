@@ -39,7 +39,7 @@ Simply add more accounts from __Add your Rucio account__ utility from the Login 
 After adding the details log in to the app using any added account. 
 The app will authenticate all the added accounts automatically.
 
-For Detailed Instructions refer to our Usage Guide [here](https://github.com/viveknigam3003/rocinante/blob/master/docs/README.md).
+For Detailed Instructions refer to our Usage Guide [here](https://github.com/rucio/desktop/tree/master/docs).
 
 ## Documentation
 
