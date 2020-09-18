@@ -54,7 +54,7 @@ Before contributing to the project, you must be familiar with the tech stack use
 
 Rucio Desktop follows the following core architecture to communicate to Rucio servers and Rucio FUSE-POSIX Module.
 <div align="left">
-    <img alt="desktop_dev_docs" src="https://user-images.githubusercontent.com/30192068/93226993-8c09ea00-f791-11ea-930b-60a73eba3132.png" width=80% height=auto />
+    <img alt="desktop_dev_docs" src="https://user-images.githubusercontent.com/30192068/93555276-24bb8800-f993-11ea-801d-1cd075a5387d.png" width=80% height=auto />
 </div>
 
 
