@@ -1,5 +1,5 @@
 <div align="center">
-    <img alt="Rucio Desktop" src="https://user-images.githubusercontent.com/30192068/90972709-254e3380-e539-11ea-9f81-8fc13e3055f5.png" width=100% />
+    <img alt="Rucio Desktop" src="https://user-images.githubusercontent.com/30192068/93554908-37818d00-f992-11ea-934d-aaacfa04f072.png" width=100% />
 </div>
 
 # Rucio Desktop
