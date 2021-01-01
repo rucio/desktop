@@ -31,7 +31,7 @@ It was built by [@viveknigam3003](https://github.com/viveknigam3003) and has bee
 
 We __highly recommend__ that before contributing to the project you must get yourself familiar with Rucio itself, since the application highly relies on Rucio for most of its APIs and functionality. Some references are attached below:
 
-* [Rucio Documentation](https://rucio.readthedocs.io/en/latest/)
+* [Rucio Documentation](http://rucio.cern.ch/documentation/)
 * [Rucio - Scientific data management (paper)](https://arxiv.org/abs/1902.09857)
 * [rucio/rucio](https://github.com/rucio/rucio)
 
