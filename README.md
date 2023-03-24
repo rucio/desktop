@@ -5,6 +5,10 @@
 # Rucio Desktop
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/desktop?style=flat-square)
 
+## :warning: **rucio/desktop is not maintained**
+
+This repository is not maintained and has been archived.
+
 ## Description
 
 Rucio Desktop is a new and easier way to use Rucio with a modern graphical user interface. You can download Rucio Desktop and use it as a client or a Rucio admin. It provides a simpler workflow in comparision to traditional command-line interface provided by Rucio for both type of users.
