@@ -1,13 +1,13 @@
+## :warning: **rucio/desktop is not maintained**
+
+This repository is not maintained and has been archived.
+
 <div align="center">
     <img alt="Rucio Desktop" src="https://user-images.githubusercontent.com/30192068/93554908-37818d00-f992-11ea-934d-aaacfa04f072.png" width=100% />
 </div>
 
 # Rucio Desktop
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/rucio/desktop?style=flat-square)
-
-## :warning: **rucio/desktop is not maintained**
-
-This repository is not maintained and has been archived.
 
 ## Description
 
